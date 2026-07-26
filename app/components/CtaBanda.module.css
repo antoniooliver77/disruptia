@@ -1,0 +1,30 @@
+.banda {
+  background: var(--hueso);
+  color: var(--tinta);
+  padding: var(--e-12) clamp(24px, 6vw, 96px);
+}
+
+.titulo {
+  max-width: 22ch;
+  margin-bottom: var(--e-3);
+}
+
+.texto {
+  font-size: 21px;
+  line-height: 1.5;
+  max-width: 58ch;
+  margin-bottom: var(--e-6);
+}
+
+.acciones {
+  display: flex;
+  align-items: center;
+  gap: var(--e-3);
+  flex-wrap: wrap;
+}
+
+.wa {
+  color: var(--tinta);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

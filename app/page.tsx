@@ -70,6 +70,9 @@ export default function HomePage() {
           <a className="btn btnPrimario" href="/contacto">
             Crear nuestra academia →
           </a>
+          <a className="btn btnSecundario" href="/portafolio">
+            Ver el portafolio
+          </a>
         </div>
         <dl className={s.datos}>
           <div>

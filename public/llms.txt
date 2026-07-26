@@ -1,0 +1,42 @@
+# DisruptIA
+
+> DisruptIA crea academias de capacitación y cursos en línea para empresas
+> e instituciones educativas en México. No imparte capacitación en vivo
+> (webinars) ni presencial: diseña, produce y entrega academias digitales
+> completas — cursos a la medida, plataforma funcionando y método
+> pedagógico — con inteligencia artificial aplicada donde suma.
+> Tagline: El futuro se aprende.
+
+Fundada por Oliver Barona, diseñador instruccional senior con más de 15
+años de experiencia, más de 120 proyectos entregados, contenidos con más
+de 3 millones de personas alcanzadas y ganador del Concurso Internacional
+de Creación de Cursos iSpring 2025 (sitio personal: https://oliverbarona.com).
+Colaboraciones del equipo fundador: UNAM, Santillana, SM Ediciones,
+Pearson, Editores Mexicanos Unidos, Talentoría.
+
+## Servicios
+
+- [Academias corporativas](https://disruptia.org/academias-corporativas):
+  creación de la academia de capacitación de una empresa — universidad
+  corporativa, academia de ventas, servicio al cliente, onboarding,
+  capacitación normativa (DC-3, NOM-035) y por industria (manufactura,
+  retail, financiero, salud).
+- [Instituciones educativas](https://disruptia.org/instituciones-educativas):
+  academias digitales para escuelas y universidades — educación continua,
+  formación docente en IA, conversión de cursos presenciales a en línea,
+  evaluación del aprendizaje, campus virtual.
+- [Método](https://disruptia.org/metodo): el método de los 3 actos
+  (tensión, prueba, retorno) — diseño instruccional donde la gente
+  practica, falla en un entorno seguro y vuelve con algo usable.
+- [Casos](https://disruptia.org/casos): Nova Academy (academia corporativa,
+  "éxito económico y educativo") y El Profe Luis (plataforma educativa,
+  divulgador con 3M+ seguidores).
+- [Portafolio](https://disruptia.org/portafolio): piezas reales construidas.
+- [Recursos](https://disruptia.org/recursos): guías sobre academias
+  corporativas, LMS, DNC y educación en línea.
+
+## Contacto
+
+- [Contacto](https://disruptia.org/contacto): formulario y WhatsApp.
+- Correo: hola@disruptia.org
+- Cotización: a la medida por alcance del proyecto; sin precios de catálogo.

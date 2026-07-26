@@ -1,0 +1,188 @@
+/* Layout de las páginas comerciales de los silos (pillars y clusters):
+   lectura larga en tinta, tablas y listas citables, párrafos 3–5 líneas. */
+
+.head {
+  padding: var(--e-8) clamp(24px, 6vw, 96px) var(--e-6);
+  max-width: 1180px;
+}
+
+.kicker {
+  display: block;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--t-meta);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ia);
+  margin-bottom: var(--e-2);
+}
+
+.title {
+  max-width: 18ch;
+  margin-bottom: var(--e-3);
+}
+
+.lede {
+  font-size: 21px;
+  line-height: 1.5;
+  max-width: 60ch;
+  opacity: 0.92;
+}
+
+.ctaTop {
+  margin-top: var(--e-4);
+}
+
+.section {
+  padding: 0 clamp(24px, 6vw, 96px) var(--e-6);
+  max-width: 1100px;
+}
+
+.h2 {
+  margin: var(--e-8) 0 var(--e-3);
+  max-width: 26ch;
+}
+
+.h3 {
+  margin: var(--e-4) 0 var(--e-2);
+}
+
+.prose {
+  margin-bottom: var(--e-3);
+  opacity: 0.94;
+}
+
+.prose a,
+.lista a {
+  color: var(--hueso);
+  text-decoration: underline;
+  text-decoration-color: var(--ia);
+  text-underline-offset: 4px;
+}
+
+.destacado {
+  border-left: 2px solid var(--disrupcion);
+  padding-left: var(--e-3);
+  font-size: 21px;
+  max-width: 58ch;
+  margin: var(--e-4) 0;
+}
+
+/* Listas citables */
+.lista {
+  list-style: none;
+  margin: 0 0 var(--e-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-2);
+}
+
+.lista li {
+  padding-left: var(--e-3);
+  position: relative;
+  max-width: 68ch;
+}
+
+.lista li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 10px;
+  height: 2px;
+  background: var(--disrupcion);
+}
+
+/* Pasos numerados (las IAs citan estructuras) */
+.pasos {
+  list-style: none;
+  counter-reset: paso;
+  margin: 0 0 var(--e-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-3);
+}
+
+.pasos li {
+  counter-increment: paso;
+  padding-left: var(--e-6);
+  position: relative;
+  max-width: 66ch;
+}
+
+.pasos li::before {
+  content: "0" counter(paso);
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--disrupcion);
+}
+
+.pasos strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Tabla comparativa */
+.tablaWrap {
+  overflow-x: auto;
+  margin: var(--e-3) 0 var(--e-4);
+}
+
+.tabla {
+  border-collapse: collapse;
+  min-width: 560px;
+  width: 100%;
+}
+
+.tabla th {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--ia);
+  border-bottom: 2px solid var(--navy);
+  padding: var(--e-1) var(--e-2);
+}
+
+.tabla td {
+  font-size: 16px;
+  border-bottom: 1px solid var(--navy);
+  padding: var(--e-2);
+  vertical-align: top;
+}
+
+/* Cita de testimonio dentro de página */
+.cita {
+  border-left: 2px solid var(--ia);
+  padding-left: var(--e-3);
+  margin: var(--e-4) 0;
+  max-width: 62ch;
+}
+
+.cita blockquote {
+  font-size: 21px;
+  line-height: 1.45;
+  margin-bottom: var(--e-1);
+}
+
+.cita figcaption {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+}
+
+/* Banda navy intermedia (ritmo de fondos) */
+.bandaNavy {
+  background: var(--navy);
+  padding: var(--e-8) clamp(24px, 6vw, 96px);
+  margin: var(--e-6) 0;
+}
+
+.bandaNavy .h2 {
+  margin-top: 0;
+}

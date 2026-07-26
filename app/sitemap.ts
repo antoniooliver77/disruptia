@@ -10,6 +10,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   return [
     { url: `${BASE}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
+    { url: `${BASE}/academias-corporativas`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/instituciones-educativas`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/metodo`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/casos`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/recursos`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE}/contacto`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
     { url: `${BASE}/portafolio`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/aviso-de-privacidad`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
