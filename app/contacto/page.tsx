@@ -3,6 +3,7 @@ import { PageShell } from "../components/PageShell";
 import { ContactForm } from "../components/ContactForm";
 import { CONTACTO, waLink } from "../lib/contacto";
 import p from "../prosa.module.css";
+import s from "../silo.module.css";
 
 export const metadata: Metadata = {
   title: "Contacto",
@@ -14,7 +15,10 @@ export const metadata: Metadata = {
 export default function ContactoPage() {
   return (
     <PageShell migas={[{ href: "/contacto", label: "Contacto" }]}>
-      <header className={p.head}>
+      <header
+        className={`${p.head} ${s.headFoto}`}
+        style={{ "--foto": "url(/fotos/escribiendo.jpg)" } as React.CSSProperties}
+      >
         <span className={p.code}>CONTACTO</span>
         <h1 className={p.title}>Hablemos de tu academia</h1>
         <p className={p.lede}>

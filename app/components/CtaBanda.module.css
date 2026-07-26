@@ -2,6 +2,23 @@
   background: var(--hueso);
   color: var(--tinta);
   padding: var(--e-12) clamp(24px, 6vw, 96px);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Isotipo gigante recortado al borde derecho de la banda de cierre */
+.banda::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("/logos/isotipo-transparente.png");
+  background-repeat: no-repeat;
+  background-size: min(520px, 85vw) auto;
+  background-position: right -140px center;
+  opacity: 0.1;
+  pointer-events: none;
 }
 
 .titulo {

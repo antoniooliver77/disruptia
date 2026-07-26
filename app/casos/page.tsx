@@ -41,7 +41,10 @@ export default function CasosPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsJsonLd) }}
       />
 
-      <header className={s.head}>
+      <header
+        className={`${s.head} ${s.headFoto}`}
+        style={{ "--foto": "url(/fotos/piso-manufactura.jpg)" } as React.CSSProperties}
+      >
         <span className={s.kicker}>CASOS</span>
         <h1 className={`${s.title} aparece`}>
           Esto ya funciona: dos historias con academia andando

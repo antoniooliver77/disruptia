@@ -13,7 +13,31 @@
 /* ── PROMESA ── */
 .hero {
   padding: var(--e-12) clamp(24px, 6vw, 96px) var(--e-8);
-  max-width: 1280px;
+  position: relative;
+  isolation: isolate;
+  min-height: min(78vh, 780px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Foto de sesión real con velo de tinta desde el borde del texto */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: linear-gradient(
+      90deg,
+      #060d16 0%,
+      rgba(6, 13, 22, 0.94) 36%,
+      rgba(6, 13, 22, 0.7) 62%,
+      rgba(6, 13, 22, 0.3) 100%
+    ),
+    url("/fotos/sesion-diseno.jpg");
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
 }
 
 .titulo {
@@ -64,8 +88,32 @@
 
 /* ── TENSIÓN ── */
 .tension {
-  padding: var(--e-8) clamp(24px, 6vw, 96px) var(--e-12);
-  max-width: 1280px;
+  padding: var(--e-12) clamp(24px, 6vw, 96px) var(--e-12);
+  position: relative;
+  isolation: isolate;
+}
+
+/* Piso de manufactura de fondo: el dolor ocurre en la operación */
+.tension::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: linear-gradient(
+      90deg,
+      #060d16 0%,
+      rgba(6, 13, 22, 0.95) 40%,
+      rgba(6, 13, 22, 0.82) 100%
+    ),
+    url("/fotos/piso-manufactura.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.tension .dolor {
+  background: rgba(14, 26, 43, 0.72);
+  padding: var(--e-3);
 }
 
 .tensionTitulo {
@@ -338,7 +386,23 @@
 /* ── CIERRE ── */
 .cierre {
   padding: var(--e-8) clamp(24px, 6vw, 96px) var(--e-12);
-  max-width: 1280px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Isotipo gigante recortado: sello de cierre */
+.cierre::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("/logos/isotipo-transparente.png");
+  background-repeat: no-repeat;
+  background-size: min(620px, 85vw) auto;
+  background-position: right -140px center;
+  opacity: 0.08;
+  pointer-events: none;
 }
 
 .cierreTitulo {

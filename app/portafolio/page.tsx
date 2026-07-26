@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageShell } from "../components/PageShell";
 import p from "../prosa.module.css";
+import s from "../silo.module.css";
 
 export const metadata: Metadata = {
   title: "Portafolio",
@@ -16,7 +17,10 @@ export const metadata: Metadata = {
 export default function PortafolioPage() {
   return (
     <PageShell migas={[{ href: "/portafolio", label: "Portafolio" }]} ctaMovil>
-      <header className={p.head}>
+      <header
+        className={`${p.head} ${s.headFoto}`}
+        style={{ "--foto": "url(/fotos/sesion-diseno.jpg)" } as React.CSSProperties}
+      >
         <span className={p.code}>PORTAFOLIO</span>
         <h1 className={p.title}>Trabajo que puedes ver funcionando</h1>
         <p className={p.lede}>

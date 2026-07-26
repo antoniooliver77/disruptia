@@ -11,6 +11,72 @@
   max-width: 1280px;
 }
 
+/* Hero con fotografía: velo de tinta desde el borde donde vive el
+   texto (regla del manual). La foto llega por la variable --foto. */
+.headFoto {
+  position: relative;
+  isolation: isolate;
+  max-width: none;
+  min-height: min(68vh, 680px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.headFoto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: linear-gradient(
+      90deg,
+      #060d16 0%,
+      rgba(6, 13, 22, 0.94) 36%,
+      rgba(6, 13, 22, 0.72) 62%,
+      rgba(6, 13, 22, 0.34) 100%
+    ),
+    var(--foto);
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 720px) {
+  .headFoto {
+    min-height: 0;
+  }
+
+  .headFoto::after {
+    background-image: linear-gradient(
+        180deg,
+        rgba(6, 13, 22, 0.92) 0%,
+        rgba(6, 13, 22, 0.86) 100%
+      ),
+      var(--foto);
+    background-position: center;
+  }
+}
+
+/* Isotipo gigante de fondo, recortado al borde (decoración de banda) */
+.conIso {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.conIso::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("/logos/isotipo-transparente.png");
+  background-repeat: no-repeat;
+  background-size: min(560px, 80vw) auto;
+  background-position: right -120px center;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
 .kicker {
   display: block;
   font-family: var(--font-mono), ui-monospace, monospace;

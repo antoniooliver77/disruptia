@@ -38,7 +38,10 @@ export default function MetodoPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
 
-      <header className={s.head}>
+      <header
+        className={`${s.head} ${s.headFoto}`}
+        style={{ "--foto": "url(/fotos/storyboard.jpg)" } as React.CSSProperties}
+      >
         <span className={s.kicker}>EL MÉTODO</span>
         <h1 className={`${s.title} aparece`}>
           Tres actos: así se diseña un curso que sí cambia lo que la gente hace
@@ -59,7 +62,7 @@ export default function MetodoPage() {
         </div>
       </header>
 
-      <section className={s.bloque}>
+      <section className={`${s.bloque} ${s.conIso}`}>
         <span className={s.bloqueNum}>LA IDEA</span>
         <h2 className={s.h2}>¿Qué es el método de los 3 actos?</h2>
         <p className={s.respuesta}>

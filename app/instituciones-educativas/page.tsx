@@ -66,7 +66,10 @@ export default function InstitucionesEducativasPage() {
       />
 
       {/* HERO */}
-      <header className={s.head}>
+      <header
+        className={`${s.head} ${s.headFoto}`}
+        style={{ "--foto": "url(/fotos/docentes.jpg)" } as React.CSSProperties}
+      >
         <span className={s.kicker}>SILO · INSTITUCIONES EDUCATIVAS</span>
         <h1 className={`${s.title} aparece`}>
           La academia en línea de tu institución, con calidad académica real
@@ -526,7 +529,7 @@ export default function InstitucionesEducativasPage() {
       </section>
 
       {/* 11 · LA PRUEBA — banda navy */}
-      <div className={s.bandaNavy}>
+      <div className={`${s.bandaNavy} ${s.conIso}`}>
         <span className={s.bloqueNum}>11 · LA PRUEBA</span>
         <h2 className={s.h2}>La prueba: educación en línea que sí enganchó</h2>
         <figure className={s.cita}>

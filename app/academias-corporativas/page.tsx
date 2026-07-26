@@ -63,7 +63,10 @@ export default function AcademiasCorporativasPage() {
       />
 
       {/* HERO */}
-      <header className={s.head}>
+      <header
+        className={`${s.head} ${s.headFoto}`}
+        style={{ "--foto": "url(/fotos/practica-ventas.jpg)" } as React.CSSProperties}
+      >
         <span className={s.kicker}>SILO · EMPRESAS</span>
         <h1 className={`${s.title} aparece`}>
           Academia corporativa: la escuela interna de tu empresa
@@ -488,7 +491,7 @@ export default function AcademiasCorporativasPage() {
       </section>
 
       {/* 10 · LA PRUEBA — banda navy */}
-      <div className={s.bandaNavy}>
+      <div className={`${s.bandaNavy} ${s.conIso}`}>
         <span className={s.bloqueNum}>10 · LA PRUEBA</span>
         <h2 className={s.h2}>La prueba: una academia que ya funciona</h2>
         <figure className={s.cita}>
