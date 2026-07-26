@@ -1,0 +1,24 @@
+.franja {
+  margin: var(--e-6) clamp(24px, 6vw, 96px);
+  max-width: 1088px;
+  border: 1px solid var(--disrupcion);
+  padding: var(--e-3) var(--e-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e-3);
+  flex-wrap: wrap;
+}
+
+.texto {
+  font-size: 19px;
+  font-weight: 600;
+  max-width: 46ch;
+}
+
+@media (max-width: 720px) {
+  .franja {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+}

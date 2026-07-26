@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageShell } from "../components/PageShell";
 import { Faq } from "../components/Faq";
 import { CtaBanda } from "../components/CtaBanda";
+import { CtaInline } from "../components/CtaInline";
 import s from "../silo.module.css";
 
 export const metadata: Metadata = {
@@ -57,12 +58,14 @@ export default function InstitucionesEducativasPage() {
       migas={[
         { href: "/instituciones-educativas", label: "Instituciones educativas" },
       ]}
+      ctaMovil
     >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
 
+      {/* HERO */}
       <header className={s.head}>
         <span className={s.kicker}>SILO · INSTITUCIONES EDUCATIVAS</span>
         <h1 className={`${s.title} aparece`}>
@@ -79,14 +82,37 @@ export default function InstitucionesEducativasPage() {
           <a className="btn btnPrimario" href="/contacto">
             Crear nuestra academia →
           </a>
+          <a className="btn btnSecundario" href="/casos">
+            Ver casos reales
+          </a>
         </div>
+        <dl className={s.datos}>
+          <div>
+            <dt>Años de oficio</dt>
+            <dd>15+</dd>
+          </div>
+          <div>
+            <dt>Proyectos</dt>
+            <dd>120+</dd>
+          </div>
+          <div>
+            <dt>Personas alcanzadas</dt>
+            <dd>3M+</dd>
+          </div>
+          <div>
+            <dt>Colaboraciones</dt>
+            <dd>UNAM · Pearson</dd>
+          </div>
+        </dl>
       </header>
 
-      <section className={s.section}>
+      {/* 01 · LA DEFINICIÓN */}
+      <section className={s.bloque}>
+        <span className={s.bloqueNum}>01 · LA DEFINICIÓN</span>
         <h2 className={s.h2}>
           ¿Qué es una academia en línea para instituciones educativas?
         </h2>
-        <p className={s.prose}>
+        <p className={s.respuesta}>
           Es la oferta educativa digital de una escuela o universidad
           construida como sistema completo: cursos en línea con diseño
           instruccional (no clases grabadas subidas a una carpeta), un campus
@@ -100,36 +126,60 @@ export default function InstitucionesEducativasPage() {
           quiera cursar y un docente pueda operar. Esa distancia — entre la
           herramienta y la educación — es exactamente lo que construimos.
         </p>
+      </section>
 
+      {/* 02 · PARA QUÉ — banda navy con tarjetas */}
+      <div className={s.bandaNavy}>
+        <span className={s.bloqueNum}>02 · PARA QUÉ SIRVE</span>
         <h2 className={s.h2}>¿Para qué le sirve a tu institución una academia digital?</h2>
-        <ul className={s.lista}>
-          <li>
-            <strong>Nueva oferta sin nuevo campus</strong> — educación
-            continua, diplomados y micro-credenciales en línea que generan
-            ingresos propios con la infraestructura que ya tienes.
-          </li>
-          <li>
-            <strong>Continuidad y flexibilidad</strong> — programas híbridos
-            donde lo digital no es el plan B, sino la parte mejor diseñada
-            del modelo.
-          </li>
-          <li>
-            <strong>Retención de alumnos</strong> — nivelación, tutoría y
-            acompañamiento en línea para que la deserción deje de resolverse
-            con llamadas de última hora.
-          </li>
-          <li>
-            <strong>Docentes al día</strong> — formación docente en
-            herramientas digitales y en IA, con práctica real y no con otro
-            webinar de dos horas.
-          </li>
-          <li>
-            <strong>Vinculación con empresas</strong> — programas a la medida
-            para organizaciones, donde tu institución pone el aval académico
-            y la academia digital pone la escala.
-          </li>
-        </ul>
+        <div className={s.cards}>
+          <article className={s.card}>
+            <span className={s.cardMeta}>INGRESOS</span>
+            <h3>Nueva oferta sin nuevo campus</h3>
+            <p>
+              Educación continua, diplomados y micro-credenciales en línea
+              que generan ingresos propios con la infraestructura que ya
+              tienes.
+            </p>
+          </article>
+          <article className={s.card}>
+            <span className={s.cardMeta}>MODELO</span>
+            <h3>Continuidad y flexibilidad</h3>
+            <p>
+              Programas híbridos donde lo digital no es el plan B, sino la
+              parte mejor diseñada del modelo.
+            </p>
+          </article>
+          <article className={s.card}>
+            <span className={s.cardMeta}>MATRÍCULA</span>
+            <h3>Retención de alumnos</h3>
+            <p>
+              Nivelación, tutoría y acompañamiento en línea para que la
+              deserción deje de resolverse con llamadas de última hora.
+            </p>
+          </article>
+          <article className={s.card}>
+            <span className={s.cardMeta}>CLAUSTRO</span>
+            <h3>Docentes al día</h3>
+            <p>
+              Formación docente en herramientas digitales y en IA, con
+              práctica real y no con otro webinar de dos horas.
+            </p>
+          </article>
+          <article className={s.card}>
+            <span className={s.cardMeta}>VINCULACIÓN</span>
+            <h3>Vinculación con empresas</h3>
+            <p>
+              Programas a la medida para organizaciones, donde tu institución
+              pone el aval académico y la academia digital pone la escala.
+            </p>
+          </article>
+        </div>
+      </div>
 
+      {/* 03 · EL PROCESO */}
+      <section className={s.bloque}>
+        <span className={s.bloqueNum}>03 · EL PROCESO</span>
         <h2 className={s.h2}>¿Cómo construimos la academia de una institución?</h2>
         <p className={s.prose}>
           El mismo método de cinco pasos que usamos con empresas, ajustado al
@@ -167,77 +217,125 @@ export default function InstitucionesEducativasPage() {
             El proyecto termina cuando ya no nos necesitan.
           </li>
         </ol>
+      </section>
 
+      <CtaInline texto="¿Tu institución ya sabe qué programa quiere en línea? Platiquémoslo." />
+
+      {/* 04 · LO QUE CONSTRUIMOS */}
+      <section className={s.bloque}>
+        <span className={s.bloqueNum}>04 · LO QUE CONSTRUIMOS</span>
         <h2 className={s.h2}>¿Qué construimos para instituciones?</h2>
-        <ul className={s.lista}>
-          <li>
-            <strong>Academia digital universitaria</strong> — educación
-            continua y programas en línea que generan ingresos propios.
-          </li>
-          <li>
-            <strong>Formación docente en IA</strong> — el dolor más urgente
-            del aula: qué hacer con la inteligencia artificial en lugar de
-            prohibirla.
-          </li>
-          <li>
-            <strong>Cursos en línea institucionales</strong> — conversión de
-            programas presenciales con rediseño real, no con grabaciones.
-          </li>
-          <li>
-            <strong>Evaluación del aprendizaje</strong> — rúbricas, evaluación
-            auténtica y evidencia de desempeño para la era de la IA.
-          </li>
-          <li>
-            <strong>Plataformas para colegios, preparatorias, técnicas e
-            idiomas</strong> — cada nivel con su diseño, del aula de secundaria
-            al diplomado ejecutivo.
-          </li>
-        </ul>
+        <div className={s.cards}>
+          <article className={s.card}>
+            <span className={s.cardMeta}>UNIVERSIDADES</span>
+            <h3>Academia digital universitaria</h3>
+            <p>
+              Educación continua y programas en línea que generan ingresos
+              propios.
+            </p>
+          </article>
+          <article className={s.card}>
+            <span className={s.cardMeta}>DOCENTES · IA</span>
+            <h3>Formación docente en IA</h3>
+            <p>
+              El dolor más urgente del aula: qué hacer con la inteligencia
+              artificial en lugar de prohibirla.
+            </p>
+          </article>
+          <article className={s.card}>
+            <span className={s.cardMeta}>PRODUCCIÓN</span>
+            <h3>Cursos en línea institucionales</h3>
+            <p>
+              Conversión de programas presenciales con rediseño real, no con
+              grabaciones.
+            </p>
+          </article>
+          <article className={s.card}>
+            <span className={s.cardMeta}>EVALUACIÓN</span>
+            <h3>Evaluación del aprendizaje</h3>
+            <p>
+              Rúbricas, evaluación auténtica y evidencia de desempeño para la
+              era de la IA.
+            </p>
+          </article>
+          <article className={s.card}>
+            <span className={s.cardMeta}>POR NIVEL</span>
+            <h3>Colegios, preparatorias, técnicas e idiomas</h3>
+            <p>
+              Cada nivel con su diseño, del aula de secundaria al diplomado
+              ejecutivo.
+            </p>
+          </article>
+        </div>
         <p className={s.prose}>
           Cada línea tiene su página con el detalle — las estamos publicando
           por partes. Si tu caso no aparece todavía,{" "}
           <a href="/contacto">escríbenos</a> y lo platicamos directo.
         </p>
+      </section>
 
+      {/* 05 · LOS ERRORES */}
+      <section className={s.bloque}>
+        <span className={s.bloqueNum}>05 · LOS ERRORES</span>
         <h2 className={s.h2}>Los errores que más proyectos digitales educativos matan</h2>
         <p className={s.prose}>
           La educación en línea institucional tiene su propio cementerio, y
           casi todas las lápidas dicen lo mismo. Estos son los errores que
           vemos repetirse — todos prevenibles desde el diseño:
         </p>
-        <ul className={s.lista}>
-          <li>
-            <strong>Grabar la clase y llamarle curso</strong> — una cámara al
-            fondo del salón produce videos de cincuenta minutos que nadie
-            termina. La clase presencial y el curso en línea son medios
-            distintos; lo que funciona en uno aburre en el otro.
-          </li>
-          <li>
-            <strong>Digitalizar sin rediseñar la evaluación</strong> — el
-            examen de siempre, en línea y con IA disponible, mide la
-            habilidad del alumno para preguntarle a ChatGPT. La evaluación
-            auténtica no es opcional: es la diferencia entre certificar
-            aprendizaje y certificar copiado.
-          </li>
-          <li>
-            <strong>Dejar solos a los docentes</strong> — se contrata la
-            plataforma, se da un curso de dos horas sobre botones y se
-            espera educación digital. El docente necesita formación
-            didáctica para el medio, no un manual de usuario.
-          </li>
-          <li>
-            <strong>Lanzar todo el catálogo a la vez</strong> — veinte
-            programas a medias pierden contra tres programas excelentes que
-            los alumnos recomiendan. En educación, la reputación es el
-            canal de venta.
-          </li>
-          <li>
-            <strong>Confundir plataforma con proyecto</strong> — Moodle
-            instalado no es una academia, igual que una biblioteca vacía no
-            es una universidad.
-          </li>
-        </ul>
+        <div className={s.cards}>
+          <article className={s.card}>
+            <span className={s.cardMeta}>ERROR 1</span>
+            <h3>Grabar la clase y llamarle curso</h3>
+            <p>
+              Una cámara al fondo del salón produce videos de cincuenta
+              minutos que nadie termina. La clase presencial y el curso en
+              línea son medios distintos; lo que funciona en uno aburre en el
+              otro.
+            </p>
+          </article>
+          <article className={s.card}>
+            <span className={s.cardMeta}>ERROR 2</span>
+            <h3>Digitalizar sin rediseñar la evaluación</h3>
+            <p>
+              El examen de siempre, en línea y con IA disponible, mide la
+              habilidad del alumno para preguntarle a ChatGPT. La evaluación
+              auténtica no es opcional: es la diferencia entre certificar
+              aprendizaje y certificar copiado.
+            </p>
+          </article>
+          <article className={s.card}>
+            <span className={s.cardMeta}>ERROR 3</span>
+            <h3>Dejar solos a los docentes</h3>
+            <p>
+              Se contrata la plataforma, se da un curso de dos horas sobre
+              botones y se espera educación digital. El docente necesita
+              formación didáctica para el medio, no un manual de usuario.
+            </p>
+          </article>
+          <article className={s.card}>
+            <span className={s.cardMeta}>ERROR 4</span>
+            <h3>Lanzar todo el catálogo a la vez</h3>
+            <p>
+              Veinte programas a medias pierden contra tres programas
+              excelentes que los alumnos recomiendan. En educación, la
+              reputación es el canal de venta.
+            </p>
+          </article>
+          <article className={s.card}>
+            <span className={s.cardMeta}>ERROR 5</span>
+            <h3>Confundir plataforma con proyecto</h3>
+            <p>
+              Moodle instalado no es una academia, igual que una biblioteca
+              vacía no es una universidad.
+            </p>
+          </article>
+        </div>
+      </section>
 
+      {/* 06 · LA PLATAFORMA — banda hueso */}
+      <div className={s.bandaHueso}>
+        <span className={s.bloqueNum}>06 · LA PLATAFORMA</span>
         <h2 className={s.h2}>¿Moodle, plataforma comercial o desarrollo a medida?</h2>
         <p className={s.prose}>
           La pregunta que toda institución hace primero — y que conviene
@@ -280,9 +378,13 @@ export default function InstitucionesEducativasPage() {
           curricular, y nosotros no vendemos ninguna — por eso podemos
           recomendarte la que te conviene y no la que nos deja comisión.
         </p>
+      </div>
 
+      {/* 07 · FORMACIÓN DOCENTE */}
+      <section className={s.bloque}>
+        <span className={s.bloqueNum}>07 · EL CLAUSTRO</span>
         <h2 className={s.h2}>Formación docente: la pieza que decide todo lo demás</h2>
-        <p className={s.prose}>
+        <p className={s.respuesta}>
           Puedes tener el mejor campus virtual del país: si el claustro no lo
           hace suyo, tienes un archivero caro. Por eso toda academia
           institucional que construimos incluye formación docente — y la
@@ -298,34 +400,54 @@ export default function InstitucionesEducativasPage() {
           de temerle. Es nuestra línea de formación más pedida, y la que más
           rápido cambia la conversación en una sala de maestros.
         </p>
+      </section>
 
+      {/* 08 · LA MEDICIÓN — banda navy */}
+      <div className={s.bandaNavy}>
+        <span className={s.bloqueNum}>08 · LA MEDICIÓN</span>
         <h2 className={s.h2}>¿Cómo se mide la calidad de una academia digital?</h2>
         <p className={s.prose}>
           Con los indicadores que una institución seria ya conoce, leídos
           para el medio digital:
         </p>
-        <ul className={s.lista}>
-          <li>
-            <strong>Terminación real por programa</strong> — no inscritos:
-            alumnos que llegan al final. En línea, la deserción silenciosa
-            es el enemigo número uno.
-          </li>
-          <li>
-            <strong>Evidencia de aprendizaje</strong> — desempeño en
-            proyectos y casos, comparable entre generaciones.
-          </li>
-          <li>
-            <strong>Recomendación de alumnos y docentes</strong> — el
-            indicador que predice la matrícula del siguiente ciclo.
-          </li>
-          <li>
-            <strong>Sustentabilidad</strong> — para educación continua: que
-            el programa pague su producción y deje margen. Un programa en
-            línea que pierde dinero cada generación no es un proyecto
-            académico, es un hobby caro.
-          </li>
-        </ul>
+        <div className={s.cards}>
+          <article className={s.card}>
+            <span className={s.cardMeta}>INDICADOR 1</span>
+            <h3>Terminación real por programa</h3>
+            <p>
+              No inscritos: alumnos que llegan al final. En línea, la
+              deserción silenciosa es el enemigo número uno.
+            </p>
+          </article>
+          <article className={s.card}>
+            <span className={s.cardMeta}>INDICADOR 2</span>
+            <h3>Evidencia de aprendizaje</h3>
+            <p>
+              Desempeño en proyectos y casos, comparable entre generaciones.
+            </p>
+          </article>
+          <article className={s.card}>
+            <span className={s.cardMeta}>INDICADOR 3</span>
+            <h3>Recomendación de alumnos y docentes</h3>
+            <p>
+              El indicador que predice la matrícula del siguiente ciclo.
+            </p>
+          </article>
+          <article className={s.card}>
+            <span className={s.cardMeta}>INDICADOR 4</span>
+            <h3>Sustentabilidad</h3>
+            <p>
+              Para educación continua: que el programa pague su producción y
+              deje margen. Un programa en línea que pierde dinero cada
+              generación no es un proyecto académico, es un hobby caro.
+            </p>
+          </article>
+        </div>
+      </div>
 
+      {/* 09 · EDUCACIÓN CONTINUA */}
+      <section className={s.bloque}>
+        <span className={s.bloqueNum}>09 · LA PUERTA DE ENTRADA</span>
         <h2 className={s.h2}>
           Educación continua: la puerta de entrada más inteligente
         </h2>
@@ -348,7 +470,11 @@ export default function InstitucionesEducativasPage() {
           de paso le da a tus académicos un canal digno de publicar lo que
           saben.
         </p>
+      </section>
 
+      {/* 10 · LOS PRIMEROS 30 DÍAS */}
+      <section className={s.bloque}>
+        <span className={s.bloqueNum}>10 · EL ARRANQUE</span>
         <h2 className={s.h2}>¿Cómo arranca el proyecto? Los primeros 30 días</h2>
         <p className={s.prose}>
           Para quitarle lo abstracto: esto es lo que pasa el primer mes de
@@ -399,27 +525,27 @@ export default function InstitucionesEducativasPage() {
         </p>
       </section>
 
+      {/* 11 · LA PRUEBA — banda navy */}
       <div className={s.bandaNavy}>
-        <section>
-          <h2 className={s.h2}>La prueba: educación en línea que sí enganchó</h2>
-          <figure className={s.cita}>
-            <blockquote>
-              &ldquo;Oliver logró encontrar mi esencia y ponerla en una
-              plataforma educativa.&rdquo;
-            </blockquote>
-            <figcaption>
-              El Profe Luis — divulgador educativo con más de 3 millones de
-              seguidores
-            </figcaption>
-          </figure>
-          <p className={s.prose}>
-            El equipo fundador de DisruptIA ha colaborado con UNAM,
-            Santillana, SM Ediciones, Pearson y Editores Mexicanos Unidos —
-            editorial y academia, no solo tecnología.{" "}
-            <a href="/casos">Lee los casos completos</a> o{" "}
-            <a href="/metodo">conoce el método de los 3 actos</a>.
-          </p>
-        </section>
+        <span className={s.bloqueNum}>11 · LA PRUEBA</span>
+        <h2 className={s.h2}>La prueba: educación en línea que sí enganchó</h2>
+        <figure className={s.cita}>
+          <blockquote>
+            &ldquo;Oliver logró encontrar mi esencia y ponerla en una
+            plataforma educativa.&rdquo;
+          </blockquote>
+          <figcaption>
+            El Profe Luis — divulgador educativo con más de 3 millones de
+            seguidores
+          </figcaption>
+        </figure>
+        <p className={s.prose}>
+          El equipo fundador de DisruptIA ha colaborado con UNAM,
+          Santillana, SM Ediciones, Pearson y Editores Mexicanos Unidos —
+          editorial y academia, no solo tecnología.{" "}
+          <a href="/casos">Lee los casos completos</a> o{" "}
+          <a href="/metodo">conoce el método de los 3 actos</a>.
+        </p>
       </div>
 
       <Faq

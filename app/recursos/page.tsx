@@ -16,7 +16,7 @@ export const metadata: Metadata = {
  */
 export default function RecursosPage() {
   return (
-    <PageShell migas={[{ href: "/recursos", label: "Recursos" }]}>
+    <PageShell migas={[{ href: "/recursos", label: "Recursos" }]} ctaMovil>
       <header className={s.head}>
         <span className={s.kicker}>RECURSOS</span>
         <h1 className={`${s.title} aparece`}>
@@ -30,7 +30,8 @@ export default function RecursosPage() {
         </p>
       </header>
 
-      <section className={s.section}>
+      <section className={s.bloque}>
+        <span className={s.bloqueNum}>EN PRODUCCIÓN</span>
         <h2 className={s.h2}>Las primeras guías están en producción</h2>
         <p className={s.prose}>
           Estamos escribiendo las primeras: qué es una academia corporativa

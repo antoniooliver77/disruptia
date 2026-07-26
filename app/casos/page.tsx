@@ -35,7 +35,7 @@ const reviewsJsonLd = {
 
 export default function CasosPage() {
   return (
-    <PageShell migas={[{ href: "/casos", label: "Casos" }]}>
+    <PageShell migas={[{ href: "/casos", label: "Casos" }]} ctaMovil>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsJsonLd) }}
@@ -53,7 +53,8 @@ export default function CasosPage() {
         </p>
       </header>
 
-      <section className={s.section}>
+      <section className={s.bloque}>
+        <span className={s.bloqueNum}>CASO 01 · EMPRESA</span>
         <h2 className={s.h2}>Nova Academy: una academia corporativa rentable</h2>
         <p className={s.prose}>
           Nova Academy necesitaba lo que muchas empresas: que su capacitación
@@ -86,6 +87,7 @@ export default function CasosPage() {
 
       <div className={s.bandaNavy}>
         <section>
+          <span className={s.bloqueNum}>CASO 02 · EDUCACIÓN</span>
           <h2 className={s.h2}>
             El Profe Luis: de 3 millones de seguidores a plataforma educativa
           </h2>
@@ -113,7 +115,8 @@ export default function CasosPage() {
         </section>
       </div>
 
-      <section className={s.section}>
+      <section className={s.bloque}>
+        <span className={s.bloqueNum}>EL CONTEXTO</span>
         <h2 className={s.h2}>El contexto: con quién ha trabajado este equipo</h2>
         <p className={s.prose}>
           Detrás de estos casos hay 15+ años de oficio y 120+ proyectos del

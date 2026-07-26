@@ -14,9 +14,12 @@ const SITE_URL = "https://disruptia.org";
 export function PageShell({
   children,
   migas,
+  ctaMovil = false,
 }: {
   children: ReactNode;
   migas?: Miga[];
+  /** CTA principal fijo abajo en móvil (regla del manual, mín 48px). */
+  ctaMovil?: boolean;
 }) {
   const breadcrumbJsonLd = migas
     ? {
@@ -63,6 +66,11 @@ export function PageShell({
         )}
         {children}
       </main>
+      {ctaMovil && (
+        <a href="/contacto" className={s.ctaMovil}>
+          Crear nuestra academia →
+        </a>
+      )}
       <SiteFooter />
     </>
   );

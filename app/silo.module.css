@@ -1,9 +1,14 @@
-/* Layout de las páginas comerciales de los silos (pillars y clusters):
-   lectura larga en tinta, tablas y listas citables, párrafos 3–5 líneas. */
+/* ============================================================
+   Layout LANDING de las páginas comerciales (pillars y clusters).
+   Ritmo de bandas de altura desigual, tarjetas del manual
+   (metadato mono → título Archivo → barra naranja) y CTAs
+   intermedios en puntos de decisión.
+   ============================================================ */
 
+/* ── HERO ── */
 .head {
-  padding: var(--e-8) clamp(24px, 6vw, 96px) var(--e-6);
-  max-width: 1180px;
+  padding: var(--e-8) clamp(24px, 6vw, 96px) var(--e-8);
+  max-width: 1280px;
 }
 
 .kicker {
@@ -17,29 +22,74 @@
 }
 
 .title {
-  max-width: 18ch;
+  max-width: 16ch;
   margin-bottom: var(--e-3);
 }
 
 .lede {
   font-size: 21px;
   line-height: 1.5;
-  max-width: 60ch;
+  max-width: 58ch;
   opacity: 0.92;
 }
 
 .ctaTop {
+  display: flex;
+  align-items: center;
+  gap: var(--e-3);
+  flex-wrap: wrap;
   margin-top: var(--e-4);
 }
 
-.section {
-  padding: 0 clamp(24px, 6vw, 96px) var(--e-6);
-  max-width: 1100px;
+/* Fila de datos del hero: cian = dato */
+.datos {
+  display: flex;
+  gap: var(--e-6);
+  flex-wrap: wrap;
+  border-top: 1px solid var(--navy);
+  margin-top: var(--e-6);
+  padding-top: var(--e-3);
+}
+
+.datos div {
+  min-width: 120px;
+}
+
+.datos dt {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--t-meta);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 4px;
+}
+
+.datos dd {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-stretch: 118%;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--ia);
+}
+
+/* ── BLOQUES numerados ── */
+.bloque {
+  padding: var(--e-8) clamp(24px, 6vw, 96px);
+  max-width: 1280px;
+}
+
+.bloqueNum {
+  display: block;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--t-meta);
+  letter-spacing: 0.16em;
+  color: var(--disrupcion);
+  margin-bottom: var(--e-2);
 }
 
 .h2 {
-  margin: var(--e-8) 0 var(--e-3);
   max-width: 26ch;
+  margin-bottom: var(--e-3);
 }
 
 .h3 {
@@ -48,6 +98,7 @@
 
 .prose {
   margin-bottom: var(--e-3);
+  max-width: 66ch;
   opacity: 0.94;
 }
 
@@ -59,15 +110,124 @@
   text-underline-offset: 4px;
 }
 
-.destacado {
-  border-left: 2px solid var(--disrupcion);
-  padding-left: var(--e-3);
+/* Respuesta directa destacada (formato snippet para las IAs) */
+.respuesta {
+  border-left: 2px solid var(--ia);
+  padding: var(--e-2) 0 var(--e-2) var(--e-3);
   font-size: 21px;
+  line-height: 1.5;
   max-width: 58ch;
+  margin-bottom: var(--e-3);
+}
+
+/* ── TARJETAS del manual ── */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--e-3);
   margin: var(--e-4) 0;
 }
 
-/* Listas citables */
+.card {
+  background: var(--navy);
+  padding: var(--e-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-1);
+}
+
+.cardMeta {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--t-meta);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ia);
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 21px;
+}
+
+.card p {
+  font-size: 16px;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* Barra de escasez/progreso naranja al pie de la tarjeta */
+.card::after {
+  content: "";
+  margin-top: auto;
+  padding-top: var(--e-2);
+  width: 48px;
+  border-bottom: 3px solid var(--disrupcion);
+}
+
+/* Variante sobre hueso */
+.cardClara {
+  background: var(--tinta);
+  color: var(--hueso);
+}
+
+/* ── PASOS como línea de progreso ── */
+.pasos {
+  list-style: none;
+  counter-reset: paso;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--e-3);
+  margin: var(--e-4) 0;
+}
+
+.pasos li {
+  counter-increment: paso;
+  background: var(--navy);
+  padding: var(--e-3);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.pasos li::before {
+  content: "0" counter(paso);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 34px;
+  font-weight: 500;
+  color: var(--disrupcion);
+  margin-bottom: var(--e-2);
+}
+
+.pasos strong {
+  display: block;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-stretch: 118%;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 1.1;
+  margin-bottom: var(--e-1);
+}
+
+.pasos li p,
+.pasos li {
+  font-size: 15px;
+}
+
+/* Avance de barra: el paso N lleva la barra al N/5 (movimiento #2) */
+.pasos li::after {
+  content: "";
+  margin-top: auto;
+  padding-top: var(--e-2);
+  border-bottom: 3px solid var(--disrupcion);
+}
+
+.pasos li:nth-child(1)::after { width: 20%; }
+.pasos li:nth-child(2)::after { width: 40%; }
+.pasos li:nth-child(3)::after { width: 60%; }
+.pasos li:nth-child(4)::after { width: 80%; }
+.pasos li:last-child::after { width: 100%; }
+
+/* ── LISTA con guion naranja (para textos cortos) ── */
 .lista {
   list-style: none;
   margin: 0 0 var(--e-3);
@@ -92,43 +252,11 @@
   background: var(--disrupcion);
 }
 
-/* Pasos numerados (las IAs citan estructuras) */
-.pasos {
-  list-style: none;
-  counter-reset: paso;
-  margin: 0 0 var(--e-3);
-  display: flex;
-  flex-direction: column;
-  gap: var(--e-3);
-}
-
-.pasos li {
-  counter-increment: paso;
-  padding-left: var(--e-6);
-  position: relative;
-  max-width: 66ch;
-}
-
-.pasos li::before {
-  content: "0" counter(paso);
-  position: absolute;
-  left: 0;
-  top: 2px;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--disrupcion);
-}
-
-.pasos strong {
-  display: block;
-  margin-bottom: 4px;
-}
-
-/* Tabla comparativa */
+/* ── TABLA ── */
 .tablaWrap {
   overflow-x: auto;
   margin: var(--e-3) 0 var(--e-4);
+  border: 1px solid var(--navy);
 }
 
 .tabla {
@@ -144,8 +272,8 @@
   text-transform: uppercase;
   text-align: left;
   color: var(--ia);
-  border-bottom: 2px solid var(--navy);
-  padding: var(--e-1) var(--e-2);
+  background: var(--navy);
+  padding: var(--e-2);
 }
 
 .tabla td {
@@ -155,7 +283,11 @@
   vertical-align: top;
 }
 
-/* Cita de testimonio dentro de página */
+.tabla tr:last-child td {
+  border-bottom: none;
+}
+
+/* ── CITA ── */
 .cita {
   border-left: 2px solid var(--ia);
   padding-left: var(--e-3);
@@ -164,8 +296,8 @@
 }
 
 .cita blockquote {
-  font-size: 21px;
-  line-height: 1.45;
+  font-size: 24px;
+  line-height: 1.4;
   margin-bottom: var(--e-1);
 }
 
@@ -176,13 +308,48 @@
   opacity: 0.8;
 }
 
-/* Banda navy intermedia (ritmo de fondos) */
+/* ── BANDAS ── */
 .bandaNavy {
   background: var(--navy);
   padding: var(--e-8) clamp(24px, 6vw, 96px);
-  margin: var(--e-6) 0;
+}
+
+.bandaNavy .card,
+.bandaNavy .pasos li {
+  background: var(--tinta);
 }
 
 .bandaNavy .h2 {
   margin-top: 0;
+}
+
+/* Banda hueso intermedia (respiro claro con contenido que vende) */
+.bandaHueso {
+  background: var(--hueso);
+  color: var(--tinta);
+  padding: var(--e-8) clamp(24px, 6vw, 96px);
+}
+
+.bandaHueso .h2 {
+  margin-top: 0;
+}
+
+.bandaHueso .prose {
+  opacity: 1;
+}
+
+.bandaHueso .card {
+  background: var(--tinta);
+  color: var(--hueso);
+}
+
+@media (max-width: 720px) {
+  .datos {
+    gap: var(--e-3);
+  }
+
+  .cards,
+  .pasos {
+    grid-template-columns: 1fr;
+  }
 }

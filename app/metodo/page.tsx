@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageShell } from "../components/PageShell";
 import { CtaBanda } from "../components/CtaBanda";
+import { CtaInline } from "../components/CtaInline";
 import s from "../silo.module.css";
 
 export const metadata: Metadata = {
@@ -31,7 +32,7 @@ const personJsonLd = {
 
 export default function MetodoPage() {
   return (
-    <PageShell migas={[{ href: "/metodo", label: "Método" }]}>
+    <PageShell migas={[{ href: "/metodo", label: "Método" }]} ctaMovil>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
@@ -48,11 +49,20 @@ export default function MetodoPage() {
           cursos técnicamente impecables que no cambiaban nada. La estructura
           es simple; lo difícil es respetarla.
         </p>
+        <div className={s.ctaTop}>
+          <a className="btn btnPrimario" href="/contacto">
+            Crear nuestra academia →
+          </a>
+          <a className="btn btnSecundario" href="/casos">
+            Ver el método aplicado
+          </a>
+        </div>
       </header>
 
-      <section className={s.section}>
+      <section className={s.bloque}>
+        <span className={s.bloqueNum}>LA IDEA</span>
         <h2 className={s.h2}>¿Qué es el método de los 3 actos?</h2>
-        <p className={s.prose}>
+        <p className={s.respuesta}>
           Es la estructura narrativa y pedagógica con la que diseñamos cada
           curso y cada academia: primero la tensión (nombrar lo que no
           funciona), luego la prueba (practicar y fallar en un entorno
@@ -60,8 +70,12 @@ export default function MetodoPage() {
           usable). Viene del modo en que las personas realmente aprenden un
           oficio — no del índice de un manual.
         </p>
+      </section>
 
-        <h2 className={s.h2}>Acto 1 · Tensión: nombrar el dolor antes que la solución</h2>
+      {/* ACTO 1 — banda navy */}
+      <div className={s.bandaNavy}>
+        <span className={s.bloqueNum}>ACTO 01</span>
+        <h2 className={s.h2}>Tensión: nombrar el dolor antes que la solución</h2>
         <p className={s.prose}>
           Todo curso nuestro empieza donde le duele al que lo toma: la venta
           que se cayó, el cliente que se fue, la clase donde nadie levantó la
@@ -74,8 +88,12 @@ export default function MetodoPage() {
           que el experto sabe"; lleva lo que resuelve la tensión elegida. Lo
           demás estorba — y cortarlo es la mitad de nuestro trabajo.
         </p>
+      </div>
 
-        <h2 className={s.h2}>Acto 2 · Prueba: practicar y fallar sin costo</h2>
+      {/* ACTO 2 — tinta */}
+      <section className={s.bloque}>
+        <span className={s.bloqueNum}>ACTO 02</span>
+        <h2 className={s.h2}>Prueba: practicar y fallar sin costo</h2>
         <p className={s.prose}>
           En el centro de cada curso hay práctica con decisiones: casos,
           simulaciones, escenarios con consecuencias. El participante se
@@ -90,8 +108,12 @@ export default function MetodoPage() {
           pedagógico — qué practicar, qué evaluar, qué perdonar — lo ponen
           humanos que han dado clase.
         </p>
+      </section>
 
-        <h2 className={s.h2}>Acto 3 · Retorno: volver con algo que se usa el lunes</h2>
+      {/* ACTO 3 — banda navy */}
+      <div className={s.bandaNavy}>
+        <span className={s.bloqueNum}>ACTO 03</span>
+        <h2 className={s.h2}>Retorno: volver con algo que se usa el lunes</h2>
         <p className={s.prose}>
           Cada programa termina en una pieza usable: el guion de venta
           ajustado a tu producto, la planeación de clase lista para el grupo
@@ -99,29 +121,45 @@ export default function MetodoPage() {
           diplomas: coleccionamos evidencia de que algo cambió en la
           operación. Esa evidencia es también lo que le reportas a dirección.
         </p>
+      </div>
 
+      <CtaInline texto="¿Quieres ver los 3 actos aplicados a tu operación? Es una conversación, no un compromiso." />
+
+      <section className={s.bloque}>
+        <span className={s.bloqueNum}>LOS LÍMITES</span>
         <h2 className={s.h2}>¿Qué NO hacemos (y por qué)?</h2>
-        <ul className={s.lista}>
-          <li>
-            <strong>No damos capacitación en vivo ni presencial</strong> —
-            construimos cursos en línea y academias que capacitan solas,
-            todos los días. Es otro oficio, y es el nuestro.
-          </li>
-          <li>
-            <strong>No vendemos cursos de catálogo</strong> — lo genérico ya
-            lo probaste y ya sabes cómo termina.
-          </li>
-          <li>
-            <strong>No subimos tus PDF a un LMS</strong> — eso no es una
-            academia, es un archivero con contraseña.
-          </li>
-          <li>
-            <strong>No prometemos magia con IA</strong> — la usamos donde
-            suma y la revisamos siempre. Un curso malo generado rápido sigue
-            siendo un curso malo.
-          </li>
-        </ul>
+        <div className={s.cards}>
+          <article className={s.card}>
+            <span className={s.cardMeta}>LÍMITE 1</span>
+            <h3>No damos capacitación en vivo ni presencial</h3>
+            <p>
+              Construimos cursos en línea y academias que capacitan solas,
+              todos los días. Es otro oficio, y es el nuestro.
+            </p>
+          </article>
+          <article className={s.card}>
+            <span className={s.cardMeta}>LÍMITE 2</span>
+            <h3>No vendemos cursos de catálogo</h3>
+            <p>Lo genérico ya lo probaste y ya sabes cómo termina.</p>
+          </article>
+          <article className={s.card}>
+            <span className={s.cardMeta}>LÍMITE 3</span>
+            <h3>No subimos tus PDF a un LMS</h3>
+            <p>Eso no es una academia, es un archivero con contraseña.</p>
+          </article>
+          <article className={s.card}>
+            <span className={s.cardMeta}>LÍMITE 4</span>
+            <h3>No prometemos magia con IA</h3>
+            <p>
+              La usamos donde suma y la revisamos siempre. Un curso malo
+              generado rápido sigue siendo un curso malo.
+            </p>
+          </article>
+        </div>
+      </section>
 
+      <div className={s.bandaNavy}>
+        <span className={s.bloqueNum}>EL OFICIO</span>
         <h2 className={s.h2}>¿Quién está detrás del método?</h2>
         <p className={s.prose}>
           <a href="https://oliverbarona.com" rel="noopener">
@@ -141,7 +179,25 @@ export default function MetodoPage() {
           <a href="/casos">los casos</a> y en{" "}
           <a href="/portafolio">el portafolio</a>.
         </p>
-      </section>
+        <dl className={s.datos}>
+          <div>
+            <dt>Años de oficio</dt>
+            <dd>15+</dd>
+          </div>
+          <div>
+            <dt>Proyectos</dt>
+            <dd>120+</dd>
+          </div>
+          <div>
+            <dt>Personas alcanzadas</dt>
+            <dd>3M+</dd>
+          </div>
+          <div>
+            <dt>iSpring internacional</dt>
+            <dd>1er lugar</dd>
+          </div>
+        </dl>
+      </div>
 
       <CtaBanda
         titulo="El método funciona cuando se aplica a un caso real: el tuyo"

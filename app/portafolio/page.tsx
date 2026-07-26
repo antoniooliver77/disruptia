@@ -15,7 +15,7 @@ export const metadata: Metadata = {
  */
 export default function PortafolioPage() {
   return (
-    <PageShell migas={[{ href: "/portafolio", label: "Portafolio" }]}>
+    <PageShell migas={[{ href: "/portafolio", label: "Portafolio" }]} ctaMovil>
       <header className={p.head}>
         <span className={p.code}>PORTAFOLIO</span>
         <h1 className={p.title}>Trabajo que puedes ver funcionando</h1>

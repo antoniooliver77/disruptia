@@ -45,7 +45,7 @@ const faqJsonLd = {
 
 export default function HomePage() {
   return (
-    <PageShell>
+    <PageShell ctaMovil>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
