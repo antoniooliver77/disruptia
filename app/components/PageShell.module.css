@@ -1,0 +1,33 @@
+.main {
+  min-height: 60vh;
+}
+
+.migas {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--t-meta);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: var(--e-3) clamp(24px, 6vw, 96px) 0;
+}
+
+.migas a {
+  color: var(--hueso);
+  opacity: 0.7;
+  text-decoration: none;
+}
+
+.migas a:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-decoration-color: var(--ia);
+  text-underline-offset: 4px;
+}
+
+.migas [aria-current="page"] {
+  color: var(--ia);
+}
+
+.sep {
+  opacity: 0.4;
+  margin: 0 var(--e-1);
+}

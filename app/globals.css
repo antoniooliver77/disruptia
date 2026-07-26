@@ -1,0 +1,188 @@
+/* ============================================================
+   Tokens de identidad DisruptIA — Manual v1.0
+   Espaciado en múltiplos de 8px. Radio 0 SIEMPRE.
+   ============================================================ */
+:root {
+  /* Paleta (proporciones del manual: 55/22/13/7/3) */
+  --tinta: #060d16;
+  --hueso: #f4efe6;
+  --navy: #0e1a2b;
+  --disrupcion: #ff5c1f; /* SOLO acción: botones, número de acto, subrayado */
+  --ia: #3fd0e0; /* SOLO inteligencia artificial, datos, progreso */
+
+  /* Fondo horneado de los PNG del logo — bandas de nav/footer */
+  --banda-logo: #000712;
+
+  /* Escala tipográfica FIJA del manual */
+  --t-hero: 132px;
+  --t-1: 80px;
+  --t-2: 46px;
+  --t-cuerpo: 19px;
+  --t-meta: 12px;
+
+  /* Ritmo de espaciado (múltiplos de 8) */
+  --e-1: 8px;
+  --e-2: 16px;
+  --e-3: 24px;
+  --e-4: 32px;
+  --e-6: 48px;
+  --e-8: 64px;
+  --e-12: 96px;
+  --e-16: 128px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 0; /* regla del manual: esquinas rectas siempre */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--tinta);
+  color: var(--hueso);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: var(--t-cuerpo);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Titulares: Archivo Expanded Black */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-stretch: 118%;
+  font-weight: 900;
+  line-height: 0.92;
+}
+
+h1 {
+  font-size: clamp(44px, 8.5vw, var(--t-hero));
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: clamp(32px, 4.5vw, var(--t-2));
+  letter-spacing: -0.03em;
+}
+
+h3 {
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 700;
+}
+
+p {
+  max-width: 68ch;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+::selection {
+  background: var(--disrupcion);
+  color: var(--tinta);
+}
+
+/* Foco visible: contorno cian 2px (manual, accesibilidad) */
+:focus-visible {
+  outline: 2px solid var(--ia);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   Botones del manual — esquinas rectas, etiqueta en Plex Mono
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--e-1);
+  min-height: 48px;
+  padding: 12px var(--e-3);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: background-color 150ms ease, color 150ms ease,
+    border-color 150ms ease;
+}
+
+/* Primario: naranja con texto tinta. Hover: lo naranja se vuelve
+   tinta y el fondo se vuelve hueso. */
+.btnPrimario {
+  background: var(--disrupcion);
+  color: var(--tinta);
+}
+
+.btnPrimario:hover {
+  background: var(--hueso);
+  color: var(--tinta);
+}
+
+/* Secundario: borde hueso */
+.btnSecundario {
+  background: transparent;
+  color: var(--hueso);
+  border: 1px solid var(--hueso);
+}
+
+.btnSecundario:hover {
+  background: var(--hueso);
+  color: var(--tinta);
+}
+
+/* Terciario: subrayado cian */
+.btnTerciario {
+  background: transparent;
+  color: var(--hueso);
+  padding: 0;
+  min-height: 0;
+  text-decoration: underline;
+  text-decoration-color: var(--ia);
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+}
+
+/* Movimiento permitido #1: aparición de titular (200ms) */
+@keyframes aparicionTitular {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.aparece {
+  animation: aparicionTitular 200ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aparece {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

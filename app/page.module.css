@@ -1,0 +1,130 @@
+/* Ritmo de bandas del manual: tinta → navy → hueso. Alturas desiguales,
+   nada centrado por default, el vacío no se rellena. */
+
+.hero {
+  padding: var(--e-12) clamp(24px, 6vw, 96px) var(--e-16);
+  max-width: 1280px;
+}
+
+.kicker {
+  display: block;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--t-meta);
+  letter-spacing: 0.16em;
+  color: var(--ia);
+  margin-bottom: var(--e-3);
+}
+
+.titulo {
+  max-width: 14ch;
+  margin-bottom: var(--e-4);
+}
+
+.lede {
+  font-size: 21px;
+  line-height: 1.5;
+  max-width: 58ch;
+  margin-bottom: var(--e-6);
+  opacity: 0.92;
+}
+
+.ctas {
+  display: flex;
+  gap: var(--e-3);
+  flex-wrap: wrap;
+}
+
+/* Los 3 actos — banda navy */
+.actos {
+  background: var(--navy);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--e-6);
+  padding: var(--e-8) clamp(24px, 6vw, 96px);
+}
+
+.acto p {
+  font-size: 17px;
+  opacity: 0.9;
+}
+
+.numActo {
+  display: block;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--t-2);
+  font-weight: 500;
+  color: var(--disrupcion); /* el naranja marca el número de acto */
+  margin-bottom: var(--e-2);
+}
+
+.actoTitulo {
+  font-size: 28px;
+  margin-bottom: var(--e-2);
+}
+
+/* Banda hueso — LA SECCIÓN QUE VENDE */
+.oferta {
+  background: var(--hueso);
+  color: var(--tinta);
+  padding: var(--e-12) clamp(24px, 6vw, 96px);
+}
+
+.ofertaTitulo {
+  margin-bottom: var(--e-6);
+  max-width: 20ch;
+}
+
+.ofertaCols {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--e-8);
+  margin-bottom: var(--e-8);
+}
+
+.ofertaCol h3 {
+  margin-bottom: var(--e-2);
+}
+
+.ofertaCol p {
+  margin-bottom: var(--e-3);
+}
+
+.ofertaLink {
+  color: var(--tinta);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--disrupcion);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+.ofertaCta {
+  display: flex;
+  align-items: center;
+  gap: var(--e-3);
+  flex-wrap: wrap;
+}
+
+.ofertaWa {
+  color: var(--tinta);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 900px) {
+  .actos,
+  .ofertaCols {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding-top: var(--e-8);
+    padding-bottom: var(--e-8);
+  }
+
+  .titulo {
+    font-size: 44px; /* héroe móvil del manual */
+  }
+}

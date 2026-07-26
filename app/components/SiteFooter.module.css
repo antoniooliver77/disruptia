@@ -1,0 +1,81 @@
+.banda {
+  background: var(--banda-logo);
+  border-top: 1px solid var(--navy);
+  margin-top: var(--e-12);
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--e-6);
+  flex-wrap: wrap;
+  padding: var(--e-6) clamp(24px, 6vw, 96px);
+}
+
+.marca {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-2);
+}
+
+.marca img {
+  width: auto;
+  height: 40px;
+}
+
+.tagline {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--t-meta);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ia); /* cian = dato/progreso; aquí funciona como metadato */
+}
+
+.columnas {
+  display: flex;
+  gap: var(--e-8);
+  flex-wrap: wrap;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-1);
+}
+
+.colTitulo {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--t-meta);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--hueso);
+  opacity: 0.6;
+  margin-bottom: var(--e-1);
+}
+
+.col a {
+  font-size: 16px;
+  text-decoration: none;
+  color: var(--hueso);
+}
+
+.col a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--ia);
+  text-underline-offset: 4px;
+}
+
+.legal {
+  border-top: 1px solid var(--navy);
+  padding: var(--e-3) clamp(24px, 6vw, 96px);
+}
+
+.legal p {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.legal a {
+  color: var(--hueso);
+}

@@ -1,0 +1,116 @@
+/* Formulario del manual: campos con línea inferior de 1px, etiqueta
+   mono arriba, errores en tinta sobre banda naranja. */
+.form {
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--e-4) var(--e-4);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-1);
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.label {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--t-meta);
+  letter-spacing: 0.12em;
+  color: var(--hueso);
+  opacity: 0.8;
+}
+
+.input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--hueso);
+  color: var(--hueso);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 17px;
+  padding: var(--e-1) 0;
+}
+
+.input::placeholder {
+  color: var(--hueso);
+  opacity: 0.4;
+}
+
+.input:focus {
+  outline: none;
+  border-bottom-color: var(--ia);
+}
+
+select.input {
+  cursor: pointer;
+}
+
+select.input option {
+  background: var(--navy);
+  color: var(--hueso);
+}
+
+textarea.input {
+  resize: vertical;
+  min-height: 96px;
+}
+
+.invalid .input {
+  border-bottom-color: var(--disrupcion);
+}
+
+/* Error: texto tinta sobre banda naranja (regla del manual) */
+.fieldError {
+  background: var(--disrupcion);
+  color: var(--tinta);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 4px var(--e-1);
+  align-self: flex-start;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--e-3);
+  flex-wrap: wrap;
+  margin-top: var(--e-4);
+}
+
+.errMsg {
+  background: var(--disrupcion);
+  color: var(--tinta);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 4px var(--e-1);
+}
+
+.success {
+  border: 1px solid var(--ia);
+  padding: var(--e-4);
+}
+
+.successTitle {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 16px;
+  letter-spacing: 0.12em;
+  color: var(--ia);
+  margin-bottom: var(--e-1);
+}
+
+.successSub {
+  opacity: 0.9;
+}
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

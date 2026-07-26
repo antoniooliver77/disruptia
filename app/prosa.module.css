@@ -1,0 +1,46 @@
+/* Layout de lectura larga compartido (legales, contacto y interiores
+   sencillas). Las páginas comerciales tendrán sus propios módulos. */
+.head {
+  padding: var(--e-8) clamp(24px, 6vw, 96px) var(--e-4);
+  max-width: 1100px;
+}
+
+.code {
+  display: block;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--t-meta);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ia);
+  margin-bottom: var(--e-2);
+}
+
+.title {
+  margin-bottom: var(--e-3);
+}
+
+.lede {
+  font-size: 21px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.section {
+  padding: 0 clamp(24px, 6vw, 96px) var(--e-8);
+  max-width: 1100px;
+}
+
+.h2 {
+  margin: var(--e-6) 0 var(--e-2);
+}
+
+.prose {
+  margin-bottom: var(--e-2);
+}
+
+.prose a {
+  color: var(--hueso);
+  text-decoration: underline;
+  text-decoration-color: var(--ia);
+  text-underline-offset: 4px;
+}

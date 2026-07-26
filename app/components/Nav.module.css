@@ -1,0 +1,74 @@
+/* Banda del nav: usa el color horneado del PNG del logo para que la
+   firma se integre sin costuras. Banda ≠ fondo de página: el ritmo de
+   bandas de altura desigual es parte del manual. */
+.banda {
+  background: var(--banda-logo);
+  border-bottom: 1px solid var(--navy);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e-3);
+  flex-wrap: wrap;
+  padding: var(--e-2) clamp(24px, 6vw, 96px);
+}
+
+.logo {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.logo img {
+  width: auto;
+  height: 48px; /* ancho resultante ~215px, arriba del mínimo de 120px */
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--e-3);
+}
+
+.link {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--hueso);
+  padding: var(--e-1) 0;
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--ia);
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+}
+
+.activo {
+  text-decoration: underline;
+  text-decoration-color: var(--disrupcion);
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+}
+
+.cta {
+  min-height: 40px;
+  padding: 8px var(--e-2);
+}
+
+@media (max-width: 720px) {
+  .inner {
+    justify-content: center;
+  }
+
+  .nav {
+    justify-content: center;
+    row-gap: var(--e-1);
+  }
+}
