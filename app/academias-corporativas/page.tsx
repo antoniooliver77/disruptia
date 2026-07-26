@@ -3,6 +3,7 @@ import { PageShell } from "../components/PageShell";
 import { Faq } from "../components/Faq";
 import { CtaBanda } from "../components/CtaBanda";
 import { CtaInline } from "../components/CtaInline";
+import { IndiceSilo } from "../components/IndiceSilo";
 import s from "../silo.module.css";
 
 export const metadata: Metadata = {
@@ -105,6 +106,27 @@ export default function AcademiasCorporativasPage() {
           </div>
         </dl>
       </header>
+
+      <IndiceSilo
+        titulo="En este silo"
+        items={[
+          {
+            href: "/universidad-corporativa",
+            label: "Universidad corporativa",
+            nota: "La estructura completa: escuelas, rutas de carrera y certificación interna",
+          },
+          {
+            href: "/capacitacion-con-inteligencia-artificial",
+            label: "Capacitación con IA",
+            nota: "Dónde aporta de verdad la inteligencia artificial y dónde no",
+          },
+          {
+            href: "/onboarding-empresarial",
+            label: "Onboarding empresarial",
+            nota: "Los primeros 90 días para que la rotación temprana deje de costarte",
+          },
+        ]}
+      />
 
       {/* 01 · DEFINICIÓN */}
       <section className={s.bloque}>

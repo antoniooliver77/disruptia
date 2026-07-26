@@ -34,7 +34,7 @@
 
 .columnas {
   display: flex;
-  gap: var(--e-8);
+  gap: var(--e-6);
   flex-wrap: wrap;
 }
 

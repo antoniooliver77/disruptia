@@ -3,6 +3,7 @@ import { PageShell } from "../components/PageShell";
 import { Faq } from "../components/Faq";
 import { CtaBanda } from "../components/CtaBanda";
 import { CtaInline } from "../components/CtaInline";
+import { IndiceSilo } from "../components/IndiceSilo";
 import s from "../silo.module.css";
 
 export const metadata: Metadata = {
@@ -108,6 +109,17 @@ export default function InstitucionesEducativasPage() {
           </div>
         </dl>
       </header>
+
+      <IndiceSilo
+        titulo="En este silo"
+        items={[
+          {
+            href: "/formacion-docente-en-ia",
+            label: "Formación docente en IA",
+            nota: "Criterio didáctico y evaluación auténtica para tu claustro",
+          },
+        ]}
+      />
 
       {/* 01 · LA DEFINICIÓN */}
       <section className={s.bloque}>

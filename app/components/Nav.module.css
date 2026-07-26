@@ -1,10 +1,9 @@
-/* Banda del nav: usa el color horneado del PNG del logo para que la
-   firma se integre sin costuras. Banda ≠ fondo de página: el ritmo de
-   bandas de altura desigual es parte del manual. */
+/* Banda del nav: negro puro, el fondo horneado del wordmark recortado. */
 .banda {
-  /* Negro puro: el fondo horneado del wordmark recortado del nav */
   background: #000000;
   border-bottom: 1px solid var(--navy);
+  position: relative;
+  z-index: 40;
 }
 
 .inner {
@@ -58,12 +57,73 @@
   text-decoration-thickness: 2px;
 }
 
+/* Disparador de submenú: se ve igual que un link */
+.linkBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.flecha {
+  font-size: 9px;
+  color: var(--ia);
+}
+
+.grupo {
+  position: relative;
+}
+
+/* Submenú: aparece, no flota ni rebota (regla del manual) */
+.menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 260px;
+  margin: 0;
+  padding: var(--e-1) 0;
+  list-style: none;
+  background: var(--navy);
+  border: 1px solid var(--tinta);
+  border-top: 2px solid var(--disrupcion);
+  z-index: 50;
+}
+
+.menuAbierto {
+  display: block;
+}
+
+/* Accesible con teclado aunque no haya hover ni clic */
+.grupo:focus-within .menu {
+  display: block;
+}
+
+.subLink {
+  display: block;
+  padding: 10px var(--e-2);
+  font-size: 15px;
+  text-decoration: none;
+  color: var(--hueso);
+}
+
+.subLink:hover {
+  background: var(--tinta);
+  color: var(--ia);
+}
+
+.subLink[aria-current="page"] {
+  color: var(--ia);
+}
+
 .cta {
   min-height: 40px;
   padding: 8px var(--e-2);
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .inner {
     justify-content: center;
   }
@@ -71,5 +131,21 @@
   .nav {
     justify-content: center;
     row-gap: var(--e-1);
+  }
+
+  /* En móvil el submenú se despliega en flujo, sin superponerse */
+  .menu {
+    position: static;
+    min-width: 0;
+    width: 100%;
+    border-left: none;
+    border-right: none;
+  }
+
+  .grupo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }

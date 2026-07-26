@@ -18,13 +18,26 @@ export function SiteFooter() {
         </div>
 
         <div className={s.columnas}>
-          <nav className={s.col} aria-label="Servicios">
-            <span className={s.colTitulo}>Servicios</span>
-            <a href="/academias-corporativas">Academias para empresas</a>
-            <a href="/instituciones-educativas">Instituciones educativas</a>
+          <nav className={s.col} aria-label="Empresas">
+            <span className={s.colTitulo}>Empresas</span>
+            <a href="/academias-corporativas">Academias corporativas</a>
+            <a href="/universidad-corporativa">Universidad corporativa</a>
+            <a href="/capacitacion-con-inteligencia-artificial">
+              Capacitación con IA
+            </a>
+            <a href="/onboarding-empresarial">Onboarding empresarial</a>
+          </nav>
+          <nav className={s.col} aria-label="Instituciones educativas">
+            <span className={s.colTitulo}>Instituciones</span>
+            <a href="/instituciones-educativas">Academias educativas</a>
+            <a href="/formacion-docente-en-ia">Formación docente en IA</a>
+          </nav>
+          <nav className={s.col} aria-label="DisruptIA">
+            <span className={s.colTitulo}>DisruptIA</span>
             <a href="/metodo">Nuestro método</a>
             <a href="/casos">Casos</a>
             <a href="/portafolio">Portafolio</a>
+            <a href="/recursos">Recursos</a>
           </nav>
           <nav className={s.col} aria-label="Contacto y legales">
             <span className={s.colTitulo}>Contacto</span>
