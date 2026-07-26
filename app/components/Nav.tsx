@@ -9,6 +9,7 @@ const LINKS = [
   { href: "/instituciones-educativas", label: "Instituciones" },
   { href: "/metodo", label: "Método" },
   { href: "/casos", label: "Casos" },
+  { href: "/portafolio", label: "Portafolio" },
   { href: "/recursos", label: "Recursos" },
 ];
 
@@ -20,10 +21,10 @@ export function Nav() {
       <div className={s.inner}>
         <a href="/" className={s.logo} aria-label="DisruptIA — inicio">
           <Image
-            src="/logos/firma-horizontal-oscuro.png"
+            src="/logos/wordmark-oscuro-nav.png"
             alt="DisruptIA"
-            width={215}
-            height={48}
+            width={190}
+            height={40}
             priority
           />
         </a>

@@ -1,10 +1,5 @@
-/* Ritmo de bandas del manual: tinta → navy → hueso. Alturas desiguales,
-   nada centrado por default, el vacío no se rellena. */
-
-.hero {
-  padding: var(--e-12) clamp(24px, 6vw, 96px) var(--e-16);
-  max-width: 1280px;
-}
+/* Ritmo de bandas del manual: tinta, tinta, hueso, tinta — alturas
+   desiguales, nada centrado por default, el vacío no se rellena. */
 
 .kicker {
   display: block;
@@ -13,6 +8,12 @@
   letter-spacing: 0.16em;
   color: var(--ia);
   margin-bottom: var(--e-3);
+}
+
+/* ── PROMESA ── */
+.hero {
+  padding: var(--e-12) clamp(24px, 6vw, 96px) var(--e-8);
+  max-width: 1280px;
 }
 
 .titulo {
@@ -32,15 +33,80 @@
   display: flex;
   gap: var(--e-3);
   flex-wrap: wrap;
+  margin-bottom: var(--e-8);
 }
 
-/* Los 3 actos — banda navy */
-.actos {
-  background: var(--navy);
+/* Datos: cian = dato (nunca emoción) */
+.datos {
+  display: flex;
+  gap: var(--e-8);
+  flex-wrap: wrap;
+  border-top: 1px solid var(--navy);
+  padding-top: var(--e-3);
+}
+
+.datos dt {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--t-meta);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 4px;
+}
+
+.datos dd {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-stretch: 118%;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--ia);
+}
+
+/* ── TENSIÓN ── */
+.tension {
+  padding: var(--e-8) clamp(24px, 6vw, 96px) var(--e-12);
+  max-width: 1280px;
+}
+
+.tensionTitulo {
+  max-width: 24ch;
+  margin-bottom: var(--e-6);
+}
+
+.dolores {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--e-6);
+}
+
+.dolor h3 {
+  margin-bottom: var(--e-2);
+}
+
+.dolor p {
+  font-size: 17px;
+  opacity: 0.9;
+}
+
+/* ── MÉTODO · banda navy ── */
+.actos {
+  background: var(--navy);
   padding: var(--e-8) clamp(24px, 6vw, 96px);
+}
+
+.actosHead {
+  margin-bottom: var(--e-6);
+}
+
+.actosHead h2 {
+  max-width: 22ch;
+}
+
+.actosGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--e-6);
+  margin-bottom: var(--e-6);
 }
 
 .acto p {
@@ -62,7 +128,65 @@
   margin-bottom: var(--e-2);
 }
 
-/* Banda hueso — LA SECCIÓN QUE VENDE */
+/* ── PRUEBA SOCIAL ── */
+.prueba {
+  padding: var(--e-12) clamp(24px, 6vw, 96px);
+  max-width: 1280px;
+}
+
+.pruebaTitulo {
+  max-width: 22ch;
+  margin-bottom: var(--e-6);
+}
+
+.testimonios {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--e-6);
+  margin-bottom: var(--e-6);
+}
+
+.testimonio {
+  border-left: 2px solid var(--ia);
+  padding-left: var(--e-3);
+}
+
+.testimonio blockquote {
+  font-size: 21px;
+  line-height: 1.45;
+  margin-bottom: var(--e-2);
+}
+
+.testimonio figcaption {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+}
+
+.colaboraciones {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--t-meta);
+  letter-spacing: 0.12em;
+  opacity: 0.6;
+  max-width: none;
+  margin-bottom: var(--e-4);
+}
+
+.fundador {
+  font-size: 17px;
+  max-width: 62ch;
+  opacity: 0.9;
+}
+
+.fundador a {
+  color: var(--hueso);
+  text-decoration: underline;
+  text-decoration-color: var(--ia);
+  text-underline-offset: 4px;
+}
+
+/* ── OFERTA · banda hueso — LA SECCIÓN QUE VENDE ── */
 .oferta {
   background: var(--hueso);
   color: var(--tinta);
@@ -70,8 +194,15 @@
 }
 
 .ofertaTitulo {
-  margin-bottom: var(--e-6);
   max-width: 20ch;
+  margin-bottom: var(--e-3);
+}
+
+.ofertaLede {
+  font-size: 21px;
+  line-height: 1.5;
+  max-width: 58ch;
+  margin-bottom: var(--e-8);
 }
 
 .ofertaCols {
@@ -98,6 +229,39 @@
   text-decoration-thickness: 2px;
 }
 
+.incluye {
+  border-top: 1px solid var(--tinta);
+  padding-top: var(--e-4);
+  margin-bottom: var(--e-8);
+}
+
+.incluye h3 {
+  margin-bottom: var(--e-3);
+}
+
+.incluye ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--e-2) var(--e-6);
+}
+
+.incluye li {
+  font-size: 17px;
+  padding-left: var(--e-3);
+  position: relative;
+}
+
+.incluye li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 10px;
+  height: 2px;
+  background: var(--disrupcion);
+}
+
 .ofertaCta {
   display: flex;
   align-items: center;
@@ -111,9 +275,90 @@
   text-underline-offset: 4px;
 }
 
+/* ── FAQ ── */
+.faq {
+  padding: var(--e-12) clamp(24px, 6vw, 96px) var(--e-8);
+  max-width: 1100px;
+}
+
+.faqTitulo {
+  margin-bottom: var(--e-6);
+  max-width: 22ch;
+}
+
+.faqLista {
+  display: flex;
+  flex-direction: column;
+}
+
+.faqItem {
+  border-top: 1px solid var(--navy);
+}
+
+.faqItem:last-child {
+  border-bottom: 1px solid var(--navy);
+}
+
+.faqItem summary {
+  cursor: pointer;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  padding: var(--e-3) var(--e-6) var(--e-3) 0;
+  position: relative;
+  list-style: none;
+}
+
+.faqItem summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Indicador claramente clicable: + que rota a × en naranja */
+.faqItem summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 24px;
+  color: var(--disrupcion);
+}
+
+.faqItem[open] summary::after {
+  content: "–";
+}
+
+.faqItem p {
+  padding: 0 0 var(--e-3);
+  max-width: 68ch;
+  opacity: 0.9;
+}
+
+/* ── CIERRE ── */
+.cierre {
+  padding: var(--e-8) clamp(24px, 6vw, 96px) var(--e-12);
+  max-width: 1280px;
+}
+
+.cierreTitulo {
+  margin-bottom: var(--e-2);
+}
+
+.cierreLede {
+  font-size: 19px;
+  max-width: 52ch;
+  margin-bottom: var(--e-4);
+  opacity: 0.9;
+}
+
+/* ── Responsivo ── */
 @media (max-width: 900px) {
-  .actos,
-  .ofertaCols {
+  .dolores,
+  .actosGrid,
+  .testimonios,
+  .ofertaCols,
+  .incluye ul {
     grid-template-columns: 1fr;
   }
 }
@@ -121,10 +366,13 @@
 @media (max-width: 720px) {
   .hero {
     padding-top: var(--e-8);
-    padding-bottom: var(--e-8);
   }
 
   .titulo {
     font-size: 44px; /* héroe móvil del manual */
+  }
+
+  .datos {
+    gap: var(--e-4);
   }
 }

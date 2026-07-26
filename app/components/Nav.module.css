@@ -2,7 +2,8 @@
    firma se integre sin costuras. Banda ≠ fondo de página: el ritmo de
    bandas de altura desigual es parte del manual. */
 .banda {
-  background: var(--banda-logo);
+  /* Negro puro: el fondo horneado del wordmark recortado del nav */
+  background: #000000;
   border-bottom: 1px solid var(--navy);
 }
 
@@ -22,7 +23,7 @@
 
 .logo img {
   width: auto;
-  height: 48px; /* ancho resultante ~215px, arriba del mínimo de 120px */
+  height: 40px; /* ancho resultante ~190px, arriba del mínimo de 120px */
 }
 
 .nav {

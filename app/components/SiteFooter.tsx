@@ -24,6 +24,7 @@ export function SiteFooter() {
             <a href="/instituciones-educativas">Instituciones educativas</a>
             <a href="/metodo">Nuestro método</a>
             <a href="/casos">Casos</a>
+            <a href="/portafolio">Portafolio</a>
           </nav>
           <nav className={s.col} aria-label="Contacto y legales">
             <span className={s.colTitulo}>Contacto</span>
