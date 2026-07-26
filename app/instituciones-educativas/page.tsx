@@ -237,14 +237,14 @@ export default function InstitucionesEducativasPage() {
               propios.
             </p>
           </article>
-          <article className={s.card}>
+          <a className={`${s.card} ${s.cardLink}`} href="/formacion-docente-en-ia">
             <span className={s.cardMeta}>DOCENTES · IA</span>
             <h3>Formación docente en IA</h3>
             <p>
               El dolor más urgente del aula: qué hacer con la inteligencia
               artificial en lugar de prohibirla.
             </p>
-          </article>
+          </a>
           <article className={s.card}>
             <span className={s.cardMeta}>PRODUCCIÓN</span>
             <h3>Cursos en línea institucionales</h3>
@@ -401,7 +401,11 @@ export default function InstitucionesEducativasPage() {
           sentido, cómo se evalúa cuando la respuesta está a un prompt de
           distancia, y cómo usar la IA para planear mejor una clase en lugar
           de temerle. Es nuestra línea de formación más pedida, y la que más
-          rápido cambia la conversación en una sala de maestros.
+          rápido cambia la conversación en una sala de maestros:{" "}
+          <a href="/formacion-docente-en-ia">
+            así es el programa de formación docente en IA
+          </a>
+          .
         </p>
       </section>
 

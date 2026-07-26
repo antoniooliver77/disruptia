@@ -11,7 +11,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${BASE}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${BASE}/academias-corporativas`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/universidad-corporativa`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/capacitacion-con-inteligencia-artificial`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/onboarding-empresarial`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/instituciones-educativas`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/formacion-docente-en-ia`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/metodo`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/casos`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/recursos`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },

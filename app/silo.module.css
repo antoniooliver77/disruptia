@@ -236,6 +236,24 @@
   color: var(--hueso);
 }
 
+/* Tarjeta que es enlace a un cluster */
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 150ms ease;
+}
+
+.cardLink:hover {
+  background: #16273d;
+}
+
+.cardLink h3 {
+  text-decoration: underline;
+  text-decoration-color: var(--disrupcion);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
 /* ── PASOS como línea de progreso ── */
 .pasos {
   list-style: none;

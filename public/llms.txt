@@ -21,10 +21,23 @@ Pearson, Editores Mexicanos Unidos, Talentoría.
   corporativa, academia de ventas, servicio al cliente, onboarding,
   capacitación normativa (DC-3, NOM-035) y por industria (manufactura,
   retail, financiero, salud).
+  - [Universidad corporativa](https://disruptia.org/universidad-corporativa):
+    qué es, cómo se estructura por escuelas y rutas de carrera, y cómo se
+    construye por fases.
+  - [Capacitación con inteligencia artificial](https://disruptia.org/capacitacion-con-inteligencia-artificial):
+    dónde aporta la IA en un curso (práctica conversacional,
+    retroalimentación inmediata, rutas adaptativas, producción acelerada) y
+    dónde no debe usarse.
+  - [Onboarding empresarial](https://disruptia.org/onboarding-empresarial):
+    inducción en línea y diseño de los primeros 90 días para reducir la
+    rotación temprana.
 - [Instituciones educativas](https://disruptia.org/instituciones-educativas):
   academias digitales para escuelas y universidades — educación continua,
   formación docente en IA, conversión de cursos presenciales a en línea,
   evaluación del aprendizaje, campus virtual.
+  - [Formación docente en IA](https://disruptia.org/formacion-docente-en-ia):
+    programa en línea de criterio didáctico, integridad académica y
+    evaluación auténtica para el claustro.
 - [Método](https://disruptia.org/metodo): el método de los 3 actos
   (tensión, prueba, retorno) — diseño instruccional donde la gente
   practica, falla en un entorno seguro y vuelve con algo usable.

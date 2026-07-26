@@ -196,6 +196,14 @@ export default function AcademiasCorporativasPage() {
             </tbody>
           </table>
         </div>
+        <p className={s.prose}>
+          Si tu empresa ya va por la versión completa, ahí explicamos la
+          estructura por escuelas y cómo se construye por fases:{" "}
+          <a href="/universidad-corporativa">
+            cómo crear una universidad corporativa
+          </a>
+          .
+        </p>
       </section>
 
       {/* 04 · EL PROCESO */}
@@ -271,7 +279,7 @@ export default function AcademiasCorporativasPage() {
               clientes difíciles sin quemar clientes reales.
             </p>
           </article>
-          <article className={s.card}>
+          <a className={`${s.card} ${s.cardLink}`} href="/onboarding-empresarial">
             <span className={s.cardMeta}>POR PROCESO</span>
             <h3>Onboarding empresarial</h3>
             <p>
@@ -279,7 +287,7 @@ export default function AcademiasCorporativasPage() {
               para que la rotación temprana deje de comerse tus
               contrataciones.
             </p>
-          </article>
+          </a>
           <article className={s.card}>
             <span className={s.cardMeta}>POR PROCESO</span>
             <h3>Capacitación normativa</h3>
@@ -296,14 +304,17 @@ export default function AcademiasCorporativasPage() {
               alta, financiero con cumplimiento, salud con protocolos.
             </p>
           </article>
-          <article className={s.card}>
+          <a
+            className={`${s.card} ${s.cardLink}`}
+            href="/capacitacion-con-inteligencia-artificial"
+          >
             <span className={s.cardMeta}>CON IA</span>
             <h3>Capacitación con inteligencia artificial</h3>
             <p>
               Rutas personalizadas, práctica con retroalimentación y datos de
               aprendizaje que sí se pueden leer.
             </p>
-          </article>
+          </a>
         </div>
         <p className={s.prose}>
           Cada una de estas academias tiene su propia página con el detalle de
