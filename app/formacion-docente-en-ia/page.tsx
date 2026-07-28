@@ -18,7 +18,7 @@ const serviceJsonLd = {
   name: "Formación docente en inteligencia artificial",
   serviceType:
     "Diseño y producción de programas en línea de formación docente en IA",
-  provider: { "@type": "Organization", name: "DisruptIA", url: "https://disruptia.org" },
+  provider: { "@type": "Organization", name: "DIsruptIA", url: "https://disruptia.org" },
   areaServed: "MX",
   description:
     "Programa en línea para formar al claustro en uso didáctico de la inteligencia artificial, integridad académica y evaluación auténtica.",
@@ -304,7 +304,7 @@ export default function FormacionDocenteIaPage() {
         <h2 className={s.h2}>Diseñado por gente que ha dado clase</h2>
         <p className={s.prose}>
           Es la única credencial que importa para este tema. El equipo
-          fundador de DisruptIA viene del aula y de la producción editorial y
+          fundador de DIsruptIA viene del aula y de la producción editorial y
           educativa —con colaboraciones para UNAM, Santillana, SM Ediciones,
           Pearson y Editores Mexicanos Unidos—, y lleva más de 15 años
           diseñando formación que se aplica.

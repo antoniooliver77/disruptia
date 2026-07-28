@@ -60,7 +60,7 @@ export default function HomePage() {
           Creamos la academia donde tu gente sí aprende
         </h1>
         <p className={s.lede}>
-          DisruptIA construye academias de capacitación y cursos en línea
+          DIsruptIA construye academias de capacitación y cursos en línea
           completos para empresas e instituciones educativas. No damos webinars
           ni sesiones presenciales: diseñamos, producimos y entregamos tu
           academia digital funcionando — con método pedagógico, y con
@@ -181,7 +181,7 @@ export default function HomePage() {
               gracias a su gran labor pedagógica.&rdquo;
             </blockquote>
             <figcaption>
-              <strong>Nova Academy</strong> — academia corporativa
+              <strong>Nova Insurance Academy</strong> — academia corporativa
             </figcaption>
           </figure>
           <figure className={s.testimonio}>
@@ -201,7 +201,7 @@ export default function HomePage() {
         </p>
 
         <p className={s.fundador}>
-          Detrás de DisruptIA está{" "}
+          Detrás de DIsruptIA está{" "}
           <a href="https://oliverbarona.com" rel="noopener">
             Oliver Barona
           </a>

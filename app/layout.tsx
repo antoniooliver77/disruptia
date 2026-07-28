@@ -30,8 +30,8 @@ const mono = IBM_Plex_Mono({
 });
 
 const SITE_URL = "https://disruptia.org";
-const SITE_NAME = "DisruptIA";
-const TITLE = "DisruptIA — Academias de capacitación y cursos en línea";
+const SITE_NAME = "DIsruptIA";
+const TITLE = "DIsruptIA — Academias de capacitación y cursos en línea";
 const DESCRIPTION =
   "Creamos academias de capacitación y cursos en línea para empresas e instituciones educativas. Inteligencia artificial, pedagogía humana. Cuéntanos tu proyecto.";
 
@@ -39,13 +39,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: TITLE,
-    template: "%s · DisruptIA",
+    template: "%s · DIsruptIA",
   },
   description: DESCRIPTION,
   applicationName: SITE_NAME,
   authors: [{ name: "Oliver Barona", url: "https://oliverbarona.com" }],
-  creator: "DisruptIA",
-  publisher: "DisruptIA",
+  creator: "DIsruptIA",
+  publisher: "DIsruptIA",
   keywords: [
     "academia corporativa",
     "academia de capacitación",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     "academia digital universitaria",
     "diseño instruccional",
     "e-learning",
-    "DisruptIA",
+    "DIsruptIA",
   ],
   alternates: {
     canonical: "/",
@@ -99,7 +99,7 @@ export const viewport: Viewport = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "DisruptIA",
+  name: "DIsruptIA",
   url: SITE_URL,
   logo: `${SITE_URL}/logos/isotipo-oscuro.png`,
   description:
@@ -123,7 +123,7 @@ const websiteJsonLd = {
   name: SITE_NAME,
   url: SITE_URL,
   inLanguage: "es-MX",
-  publisher: { "@type": "Organization", name: "DisruptIA" },
+  publisher: { "@type": "Organization", name: "DIsruptIA" },
 };
 
 export default function RootLayout({

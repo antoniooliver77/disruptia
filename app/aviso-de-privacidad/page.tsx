@@ -28,7 +28,7 @@ export default function AvisoPrivacidadPage() {
       <section className={p.section}>
         <h2 className={p.h2}>Responsable de tus datos</h2>
         <p className={p.prose}>
-          DisruptIA, representada por Oliver Barona (en adelante, &ldquo;el
+          DIsruptIA, representada por Oliver Barona (en adelante, &ldquo;el
           Responsable&rdquo;), con domicilio en México, es responsable del
           tratamiento de los datos personales que proporciones a través de
           este sitio, conforme a la Ley Federal de Protección de Datos

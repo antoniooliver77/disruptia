@@ -18,7 +18,7 @@ const serviceJsonLd = {
   name: "Capacitación con inteligencia artificial",
   serviceType:
     "Diseño y producción de cursos en línea con inteligencia artificial aplicada",
-  provider: { "@type": "Organization", name: "DisruptIA", url: "https://disruptia.org" },
+  provider: { "@type": "Organization", name: "DIsruptIA", url: "https://disruptia.org" },
   areaServed: "MX",
   description:
     "Cursos en línea con práctica conversacional, rutas adaptativas y analítica de aprendizaje, con revisión pedagógica humana.",

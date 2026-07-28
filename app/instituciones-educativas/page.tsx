@@ -19,7 +19,7 @@ const serviceJsonLd = {
   name: "Creación de academias digitales para instituciones educativas",
   serviceType:
     "Diseño y producción de cursos en línea y academias digitales institucionales",
-  provider: { "@type": "Organization", name: "DisruptIA", url: "https://disruptia.org" },
+  provider: { "@type": "Organization", name: "DIsruptIA", url: "https://disruptia.org" },
   areaServed: "MX",
   description:
     "Diseño instruccional, producción de cursos en línea, formación docente y montaje de campus virtual para escuelas y universidades.",
@@ -559,7 +559,7 @@ export default function InstitucionesEducativasPage() {
           </figcaption>
         </figure>
         <p className={s.prose}>
-          El equipo fundador de DisruptIA ha colaborado con UNAM,
+          El equipo fundador de DIsruptIA ha colaborado con UNAM,
           Santillana, SM Ediciones, Pearson y Editores Mexicanos Unidos —
           editorial y academia, no solo tecnología.{" "}
           <a href="/casos">Lee los casos completos</a> o{" "}

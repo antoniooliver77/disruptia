@@ -1,0 +1,157 @@
+/* Piezas propias del portafolio: ficha de caso, botones de demo y
+   capturas de integración. El resto lo aporta silo.module.css. */
+
+/* Ficha: los tres datos duros de cada caso */
+/* Tres datos exactos por ficha: columnas fijas para que las líneas de
+   1px no dejen tracks vacíos al final. */
+.ficha {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--navy);
+  border-top: 2px solid var(--disrupcion);
+  margin: var(--e-4) 0;
+}
+
+.fichaDato {
+  background: var(--tinta);
+  padding: var(--e-3);
+}
+
+.fichaEtiqueta {
+  display: block;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--t-meta);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ia);
+  margin-bottom: 6px;
+}
+
+.fichaValor {
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+/* Sobre banda hueso la ficha invierte */
+.bandaClara .fichaDato {
+  background: var(--hueso);
+  color: var(--tinta);
+}
+
+.bandaClara .fichaEtiqueta {
+  color: var(--tinta);
+  opacity: 0.65;
+}
+
+/* Botonera de demos */
+.demos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-2);
+  margin: var(--e-3) 0 var(--e-2);
+}
+
+.demo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--e-1);
+  min-height: 48px;
+  padding: 12px var(--e-3);
+  background: transparent;
+  border: 1px solid var(--ia);
+  color: var(--hueso);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.demo:hover {
+  background: var(--ia);
+  color: var(--tinta);
+}
+
+.demo::after {
+  content: "↗";
+  font-size: 15px;
+}
+
+.notaDemo {
+  font-size: 15px;
+  opacity: 0.7;
+  max-width: 62ch;
+}
+
+/* Capturas de integración en producción */
+.capturas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--e-3);
+  margin: var(--e-4) 0;
+}
+
+.captura {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: var(--navy);
+  border-bottom: 3px solid var(--disrupcion);
+}
+
+.captura img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 1px solid var(--tinta);
+}
+
+.captura figcaption {
+  padding: var(--e-2);
+  font-size: 15px;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+/* Cierre: qué demuestra el portafolio */
+.demuestra {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: var(--e-3);
+  margin: var(--e-4) 0;
+}
+
+.demuestraItem {
+  border-left: 2px solid var(--ia);
+  padding-left: var(--e-2);
+}
+
+.demuestraItem strong {
+  display: block;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-stretch: 118%;
+  font-weight: 700;
+  font-size: 19px;
+  margin-bottom: 4px;
+}
+
+.demuestraItem span {
+  font-size: 15px;
+  opacity: 0.85;
+}
+
+@media (max-width: 860px) {
+  .ficha {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .capturas,
+  .demuestra {
+    grid-template-columns: 1fr;
+  }
+}

@@ -10,7 +10,7 @@ export function SiteFooter() {
         <div className={s.marca}>
           <Image
             src="/logos/firma-horizontal-oscuro.png"
-            alt="DisruptIA"
+            alt="DIsruptIA"
             width={179}
             height={40}
           />
@@ -32,8 +32,8 @@ export function SiteFooter() {
             <a href="/instituciones-educativas">Academias educativas</a>
             <a href="/formacion-docente-en-ia">Formación docente en IA</a>
           </nav>
-          <nav className={s.col} aria-label="DisruptIA">
-            <span className={s.colTitulo}>DisruptIA</span>
+          <nav className={s.col} aria-label="DIsruptIA">
+            <span className={s.colTitulo}>DIsruptIA</span>
             <a href="/metodo">Nuestro método</a>
             <a href="/casos">Casos</a>
             <a href="/portafolio">Portafolio</a>
@@ -51,7 +51,7 @@ export function SiteFooter() {
 
       <div className={s.legal}>
         <p>
-          © {new Date().getFullYear()} DisruptIA · Fundada por{" "}
+          © {new Date().getFullYear()} DIsruptIA · Fundada por{" "}
           <a
             href="https://oliverbarona.com"
             rel="noopener"

@@ -7,7 +7,7 @@ import s from "../silo.module.css";
 export const metadata: Metadata = {
   title: "El método de los 3 actos: diseño instruccional que funciona",
   description:
-    "Tensión, prueba y retorno: el método de diseño instruccional de DisruptIA. Cursos en línea donde la gente practica, falla en un entorno seguro y vuelve con algo usable.",
+    "Tensión, prueba y retorno: el método de diseño instruccional de DIsruptIA. Cursos en línea donde la gente practica, falla en un entorno seguro y vuelve con algo usable.",
   alternates: { canonical: "/metodo" },
 };
 
@@ -17,7 +17,7 @@ const personJsonLd = {
   name: "Oliver Barona",
   url: "https://oliverbarona.com",
   jobTitle: "Diseñador Instruccional Senior",
-  worksFor: { "@type": "Organization", name: "DisruptIA", url: "https://disruptia.org" },
+  worksFor: { "@type": "Organization", name: "DIsruptIA", url: "https://disruptia.org" },
   knowsAbout: [
     "Diseño Instruccional",
     "Pedagogía",
@@ -176,7 +176,7 @@ export default function MetodoPage() {
           Concurso Internacional de Creación de Cursos iSpring 2025.
         </p>
         <p className={s.prose}>
-          DisruptIA es la empresa donde ese oficio se vuelve equipo y
+          DIsruptIA es la empresa donde ese oficio se vuelve equipo y
           sistema: diseño instruccional, producción y tecnología bajo el
           mismo método. Puedes ver el trabajo en{" "}
           <a href="/casos">los casos</a> y en{" "}

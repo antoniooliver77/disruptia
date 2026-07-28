@@ -25,7 +25,7 @@ export default function TerminosPage() {
       <section className={p.section}>
         <h2 className={p.h2}>Uso del sitio</h2>
         <p className={p.prose}>
-          disruptia.org es el sitio comercial de DisruptIA, empresa dedicada a
+          disruptia.org es el sitio comercial de DIsruptIA, empresa dedicada a
           la creación de academias de capacitación y cursos en línea para
           empresas e instituciones educativas. Su contenido busca explicar
           nuestros servicios y método. Al usarlo aceptas estos términos.
@@ -45,7 +45,7 @@ export default function TerminosPage() {
         <h2 className={p.h2}>Propiedad intelectual</h2>
         <p className={p.prose}>
           El diseño, los textos y el código de este sitio son propiedad de
-          DisruptIA, salvo las marcas de terceros mencionadas, que pertenecen
+          DIsruptIA, salvo las marcas de terceros mencionadas, que pertenecen
           a sus titulares. Puedes compartir el contenido citando la fuente; no
           puedes reproducirlo con fines comerciales sin permiso.
         </p>

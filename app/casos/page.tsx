@@ -6,19 +6,19 @@ import s from "../silo.module.css";
 export const metadata: Metadata = {
   title: "Casos: academias y cursos en línea que ya funcionan",
   description:
-    "Historias reales de DisruptIA: la academia corporativa de Nova Academy y la plataforma educativa de El Profe Luis (3M+ seguidores). Sin cifras infladas.",
+    "Historias reales de DIsruptIA: la academia corporativa de Nova Insurance Academy y la plataforma educativa de El Profe Luis (3M+ seguidores). Sin cifras infladas.",
   alternates: { canonical: "/casos" },
 };
 
 const reviewsJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "DisruptIA",
+  name: "DIsruptIA",
   url: "https://disruptia.org",
   review: [
     {
       "@type": "Review",
-      author: { "@type": "Organization", name: "Nova Academy" },
+      author: { "@type": "Organization", name: "Nova Insurance Academy" },
       reviewBody:
         "Oliver excedió por mucho nuestras expectativas. Nuestra academia ha sido un éxito tanto económico como educativo, gracias a su gran labor pedagógica.",
       itemReviewed: { "@type": "Service", name: "Creación de academia corporativa" },
@@ -58,9 +58,9 @@ export default function CasosPage() {
 
       <section className={s.bloque}>
         <span className={s.bloqueNum}>CASO 01 · EMPRESA</span>
-        <h2 className={s.h2}>Nova Academy: una academia corporativa rentable</h2>
+        <h2 className={s.h2}>Nova Insurance Academy: una academia corporativa rentable</h2>
         <p className={s.prose}>
-          Nova Academy necesitaba lo que muchas empresas: que su capacitación
+          Nova Insurance Academy necesitaba lo que muchas empresas: que su capacitación
           dejara de ser un evento y se volviera un sistema. Se construyó su
           academia corporativa completa — cursos diseñados sobre su
           operación, plataforma funcionando y método transferido a su equipo.
@@ -74,7 +74,7 @@ export default function CasosPage() {
             academia ha sido un éxito tanto económico como educativo, gracias
             a su gran labor pedagógica.&rdquo;
           </blockquote>
-          <figcaption>Nova Academy — academia corporativa</figcaption>
+          <figcaption>Nova Insurance Academy — academia corporativa</figcaption>
         </figure>
         <p className={s.prose}>
           La parte que más nos importa de esa frase: "económico y educativo".

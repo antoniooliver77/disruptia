@@ -17,7 +17,7 @@ const serviceJsonLd = {
   "@type": "Service",
   name: "Creación de universidades corporativas",
   serviceType: "Diseño y construcción de universidad corporativa",
-  provider: { "@type": "Organization", name: "DisruptIA", url: "https://disruptia.org" },
+  provider: { "@type": "Organization", name: "DIsruptIA", url: "https://disruptia.org" },
   areaServed: "MX",
   description:
     "Estructura de escuelas internas, rutas de carrera, producción de cursos en línea y plataforma para la universidad corporativa de tu empresa.",
@@ -369,7 +369,7 @@ export default function UniversidadCorporativaPage() {
             academia ha sido un éxito tanto económico como educativo, gracias
             a su gran labor pedagógica.&rdquo;
           </blockquote>
-          <figcaption>Nova Academy — academia corporativa</figcaption>
+          <figcaption>Nova Insurance Academy — academia corporativa</figcaption>
         </figure>
         <p className={s.prose}>
           Ese es exactamente el punto de partida de una universidad

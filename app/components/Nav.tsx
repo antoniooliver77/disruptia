@@ -65,10 +65,10 @@ export function Nav() {
   return (
     <header className={s.banda}>
       <div className={s.inner}>
-        <a href="/" className={s.logo} aria-label="DisruptIA — inicio">
+        <a href="/" className={s.logo} aria-label="DIsruptIA — inicio">
           <Image
             src="/logos/wordmark-oscuro-nav.png"
-            alt="DisruptIA"
+            alt="DIsruptIA"
             width={190}
             height={40}
             priority

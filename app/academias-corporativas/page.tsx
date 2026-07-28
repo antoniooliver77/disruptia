@@ -18,7 +18,7 @@ const serviceJsonLd = {
   "@type": "Service",
   name: "Creación de academias corporativas",
   serviceType: "Diseño y construcción de academias de capacitación empresarial",
-  provider: { "@type": "Organization", name: "DisruptIA", url: "https://disruptia.org" },
+  provider: { "@type": "Organization", name: "DIsruptIA", url: "https://disruptia.org" },
   areaServed: "MX",
   description:
     "Diseño instruccional, producción de cursos en línea a la medida y montaje de plataforma para la academia corporativa de tu empresa.",
@@ -349,7 +349,7 @@ export default function AcademiasCorporativasPage() {
       {/* 06 · EL ENTREGABLE — banda hueso */}
       <div className={s.bandaHueso}>
         <span className={s.bloqueNum}>06 · EL ENTREGABLE</span>
-        <h2 className={s.h2}>¿Qué incluye exactamente una academia hecha por DisruptIA?</h2>
+        <h2 className={s.h2}>¿Qué incluye exactamente una academia hecha por DIsruptIA?</h2>
         <p className={s.prose}>
           "Academia" es una palabra que cada proveedor usa como quiere, así
           que vale la pena aterrizarla. Cuando entregamos una academia
@@ -534,8 +534,8 @@ export default function AcademiasCorporativasPage() {
             gracias a su gran labor pedagógica.&rdquo;
           </blockquote>
           <figcaption>
-            Nova Academy — academia corporativa construida por el equipo de
-            DisruptIA
+            Nova Insurance Academy — academia corporativa construida por el equipo de
+            DIsruptIA
           </figcaption>
         </figure>
         <p className={s.prose}>

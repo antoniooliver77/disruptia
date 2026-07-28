@@ -4,7 +4,7 @@ import { join } from "node:path";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "DisruptIA — Academias de capacitación y cursos en línea";
+export const alt = "DIsruptIA — Academias de capacitación y cursos en línea";
 
 /**
  * Imagen Open Graph: la firma horizontal real (el logo jamás se

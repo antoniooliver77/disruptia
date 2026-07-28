@@ -17,7 +17,7 @@ const serviceJsonLd = {
   "@type": "Service",
   name: "Creación de programas de onboarding empresarial",
   serviceType: "Diseño y producción de onboarding digital e inducción de personal",
-  provider: { "@type": "Organization", name: "DisruptIA", url: "https://disruptia.org" },
+  provider: { "@type": "Organization", name: "DIsruptIA", url: "https://disruptia.org" },
   areaServed: "MX",
   description:
     "Diseño y producción del onboarding en línea de una empresa: inducción, primeros 90 días, rutas por puesto y evidencia de que la persona ya puede operar.",

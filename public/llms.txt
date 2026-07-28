@@ -1,6 +1,6 @@
-# DisruptIA
+# DIsruptIA
 
-> DisruptIA crea academias de capacitación y cursos en línea para empresas
+> DIsruptIA crea academias de capacitación y cursos en línea para empresas
 > e instituciones educativas en México. No imparte capacitación en vivo
 > (webinars) ni presencial: diseña, produce y entrega academias digitales
 > completas — cursos a la medida, plataforma funcionando y método
@@ -41,7 +41,7 @@ Pearson, Editores Mexicanos Unidos, Talentoría.
 - [Método](https://disruptia.org/metodo): el método de los 3 actos
   (tensión, prueba, retorno) — diseño instruccional donde la gente
   practica, falla en un entorno seguro y vuelve con algo usable.
-- [Casos](https://disruptia.org/casos): Nova Academy (academia corporativa,
+- [Casos](https://disruptia.org/casos): Nova Insurance Academy (academia corporativa,
   "éxito económico y educativo") y El Profe Luis (plataforma educativa,
   divulgador con 3M+ seguidores).
 - [Portafolio](https://disruptia.org/portafolio): piezas reales construidas.
