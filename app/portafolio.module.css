@@ -44,6 +44,66 @@
   opacity: 0.65;
 }
 
+/* Kicker protagonista del hero: que se sepa dónde estás parado */
+.kickerGrande {
+  font-size: 18px !important;
+  letter-spacing: 0.22em !important;
+  font-weight: 500;
+  padding: 6px 12px;
+  background: var(--disrupcion);
+  color: var(--tinta) !important;
+  display: inline-block !important;
+  margin-bottom: var(--e-3);
+}
+
+/* Demos como mini-tarjetas con descripción */
+.demoCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--e-2);
+  margin: var(--e-3) 0 var(--e-2);
+}
+
+.demoCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--e-2);
+  border: 1px solid var(--ia);
+  color: var(--hueso);
+  text-decoration: none;
+  transition: background-color 150ms ease;
+}
+
+.demoCard:hover {
+  background: rgba(63, 208, 224, 0.08);
+}
+
+.demoCard b {
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.demoCard b::after {
+  content: " ↗";
+  color: var(--ia);
+}
+
+.demoCard span {
+  font-size: 13.5px;
+  opacity: 0.8;
+  line-height: 1.4;
+}
+
+.demoCard .demoTag {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ia);
+  opacity: 1;
+}
+
 /* Botonera de demos */
 .demos {
   display: flex;
