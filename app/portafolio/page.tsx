@@ -69,9 +69,9 @@ const portafolioJsonLd = {
       position: 4,
       item: {
         "@type": "VideoGame",
-        name: "SEMANA UNO — Videojuego de liderazgo",
+        name: "EL VISTO BUENO — Juego de liderazgo y accountability",
         description:
-          "Juego de decisiones sobre liderazgo situacional y accountability: una semana como jefe nuevo, consecuencias diferidas y varios finales. Demo del laboratorio DIsruptIA.",
+          "Adaptación de la mecánica de Papers, Please a la jefatura: sella solicitudes contra un reglamento que cambia cada día, con reloj, citaciones y dilemas donde la regla y la persona no caben en el mismo sello. Demo del laboratorio DIsruptIA.",
         creator: { "@type": "Organization", name: "DIsruptIA", url: SITE },
         url: `${SITE}/demos/lab-juego-liderazgo.html`,
         gamePlatform: "Web",
@@ -178,10 +178,11 @@ export default function PortafolioPage() {
                 niveles, de la capacitación a la hora pico.
               </p>
               <ul className={p.labMecanicas}>
-                <li>Códigos PLU reales (4011, 4046…) que sí memorizas</li>
-                <li>Clientes con barra de paciencia que se van si tardas</li>
-                <li>Cobro completo: efectivo con cambio exacto o tarjeta</li>
-                <li>Corte de caja con tu repaso personalizado de errores</li>
+                <li>Códigos PLU reales que se desbloquean por nivel</li>
+                <li>Puntos, combos ×4 y racha — un error te la rompe</li>
+                <li>Clientes con paciencia que se van si tardas</li>
+                <li>Cobro real: efectivo con cambio exacto o tarjeta</li>
+                <li>Corte de caja con repaso personalizado de errores</li>
               </ul>
               <a
                 className={p.labJugar}
@@ -194,21 +195,22 @@ export default function PortafolioPage() {
             </div>
           </article>
           <article className={p.labCard}>
-            <div className={p.labArte} aria-hidden="true">📋🔥☕</div>
+            <div className={p.labArte} aria-hidden="true">📄🔴🔵</div>
             <div className={p.labCuerpo}>
-              <span className={p.labMeta}>VIDEOJUEGO DE DECISIONES · LIDERAZGO</span>
-              <h3>SEMANA UNO — la jefatura</h3>
+              <span className={p.labMeta}>PAPERS, PLEASE ADAPTADO · LIDERAZGO</span>
+              <h3>EL VISTO BUENO — el sello es tuyo</h3>
               <p>
-                Te ascendieron el viernes y el pedido grande se entrega en
-                cinco días. Cuatro personas distintas, doce decisiones,
-                consecuencias que regresan cuando ya las olvidaste y varios
-                finales. Se puede ganar la semana y perder al equipo.
+                Eres la nueva coordinación y todo pasa por tu firma:
+                vacaciones, gastos, horas extra. Sella contra un reglamento
+                que cambia cada día, con el reloj encima — hasta que la
+                solicitud trae post-it de tu director y el reglamento deja
+                de ser el problema.
               </p>
               <ul className={p.labMecanicas}>
-                <li>Tres medidores: resultados, confianza y tu energía</li>
-                <li>Decisiones con consecuencias diferidas entre días</li>
-                <li>Debrief de liderazgo situacional con TUS decisiones</li>
-                <li>Momento de accountability que define tu cultura</li>
+                <li>Verifica documentos contra reglas que cambian a diario</li>
+                <li>Reloj de turno, citaciones — a las 3 te corren</li>
+                <li>2 charlas por día para cuando el sello no alcanza</li>
+                <li>Dilemas con tu director, epílogos y varios finales</li>
               </ul>
               <a
                 className={p.labJugar}
@@ -216,7 +218,7 @@ export default function PortafolioPage() {
                 target="_blank"
                 rel="noopener"
               >
-                Jugar SEMANA UNO →
+                Jugar EL VISTO BUENO →
               </a>
             </div>
           </article>

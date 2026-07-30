@@ -76,7 +76,7 @@
   .paciencia i{position:absolute; inset:0; background:var(--naranja); transform-origin:left; transition:transform .3s linear}
   .cola{font-size:13px; opacity:.75}
 
-  .producto{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; text-align:center}
+  .producto{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; text-align:center; position:relative}
   .producto .art{font-size:110px; line-height:1; filter:drop-shadow(0 8px 12px rgba(0,0,0,.5))}
   .producto .nom{font-size:19px; font-weight:600}
   .producto .pista{font-family:"IBM Plex Mono",monospace; font-size:15px; color:var(--cian); min-height:20px}
@@ -123,6 +123,22 @@
 
   footer{padding:14px clamp(16px,3vw,40px); background:#000712; border-top:1px solid var(--navy); font-size:13px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap}
   footer a{color:var(--hueso); text-decoration:underline; text-decoration-color:var(--naranja); text-underline-offset:4px}
+
+  /* ── Arcade ── */
+  .combo{font-family:"IBM Plex Mono",monospace; font-size:13px}
+  .combo b{color:var(--naranja); font-weight:600; font-size:16px}
+  .flota{
+    position:absolute; left:50%; top:38%; transform:translateX(-50%);
+    font-family:"Archivo",sans-serif; font-stretch:118%; font-weight:900; font-size:30px;
+    color:var(--cian); pointer-events:none; animation:sube .8s ease-out forwards; z-index:5;
+  }
+  .flota.x2{color:var(--naranja); font-size:36px}
+  @keyframes sube{from{opacity:1; margin-top:0}to{opacity:0; margin-top:-70px}}
+  .tiembla{animation:tiembla .3s}
+  @keyframes tiembla{0%,100%{transform:none}25%{transform:translateX(-7px)}50%{transform:translateX(6px)}75%{transform:translateX(-3px)}}
+  .metaBarra{height:6px; background:var(--tinta); margin-top:8px; position:relative}
+  .metaBarra i{position:absolute; inset:0; background:var(--cian); transform-origin:left; transition:transform .4s ease}
+  .badgeNivel{font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.12em; color:var(--naranja); display:block; margin-top:4px}
 </style>
 </head>
 <body>
@@ -161,9 +177,12 @@
   <section class="screen" id="sJuego">
     <div class="hud">
       <span class="dato">NIVEL <b id="hNivel">1</b> · <span id="hNombre">CAPACITACIÓN</span></span>
-      <span class="dato">ACIERTOS <b id="hOk">0</b> · ERRORES <b id="hMal">0</b></span>
+      <span class="dato">PUNTOS <b id="hPts">0</b> / <span id="hMeta">300</span></span>
+      <span class="combo" id="hCombo">COMBO <b>×1</b></span>
       <span class="dato">CLIENTES <b id="hClientes">0</b></span>
     </div>
+    <div class="metaBarra"><i id="hMetaBar"></i></div>
+    <div style="height:10px"></div>
     <div class="juego">
       <div class="banda">
         <div class="cliente">
@@ -205,6 +224,8 @@
     <h2 id="corteTitulo">Corte de caja</h2>
     <div class="estrellas" id="corteEstrellas"></div>
     <div class="metricas">
+      <div class="metrica"><span class="et">Puntos / meta</span><span class="va" id="mPuntos">0</span></div>
+      <div class="metrica"><span class="et">Mejor racha</span><span class="va" id="mRacha">0</span></div>
       <div class="metrica"><span class="et">Clientes atendidos</span><span class="va" id="mClientes">0</span></div>
       <div class="metrica"><span class="et">Precisión</span><span class="va" id="mPrecision">0%</span></div>
       <div class="metrica"><span class="et">Cambio bien dado</span><span class="va" id="mCambio">0/0</span></div>
@@ -252,9 +273,9 @@ const BARRAS = [
 ];
 const NOMBRES = ["Doña Mary","Beto","La señora Icha","Karla","Don Ramón","Sofi","El licenciado","Pau","Chuy","La maestra Lupita"];
 const NIVELES = [
-  {nombre:"CAPACITACIÓN", clientes:1, items:[4,4], pluMin:2, paciencia:75, ayuda:true},
-  {nombre:"TURNO NORMAL", clientes:2, items:[4,6], pluMin:2, paciencia:55, ayuda:false},
-  {nombre:"HORA PICO",    clientes:3, items:[5,7], pluMin:3, paciencia:40, ayuda:false},
+  {nombre:"CAPACITACIÓN", clientes:1, items:[4,4], pluMin:2, paciencia:75, ayuda:true,  codigos:4, meta:300},
+  {nombre:"TURNO NORMAL", clientes:2, items:[4,6], pluMin:2, paciencia:55, ayuda:false, codigos:6, meta:900},
+  {nombre:"HORA PICO",    clientes:3, items:[5,7], pluMin:3, paciencia:40, ayuda:false, codigos:8, meta:1600},
 ];
 
 /* ── Estado ────────────────────────────────────────── */
@@ -284,21 +305,23 @@ function pantalla(id){document.querySelectorAll(".screen").forEach(s=>s.classLis
 
 /* ── Capacitación ──────────────────────────────────── */
 function pintaCodigos(){
-  $("tablaCodigos").innerHTML = PLU.map(x=>
-    `<div class="codigo"><span class="emoji">${x.e}</span><span class="num">${x.c}</span><span class="nom">${x.n}</span></div>`).join("");
+  $("tablaCodigos").innerHTML = PLU.map((x,i)=>{
+    const niv = i<4?1:i<6?2:3;
+    return `<div class="codigo"><span class="emoji">${x.e}</span><span class="num">${x.c}</span><span class="nom">${x.n}</span><span class="badgeNivel">NIVEL ${niv}</span></div>`;
+  }).join("");
 }
 
 /* ── Armar nivel ───────────────────────────────────── */
 function armaCliente(cfg){
   const n=entre(cfg.items[0],cfg.items[1]);
+  const mazo=PLU.slice(0,cfg.codigos); // los códigos se desbloquean por nivel
   const items=[];
   let plus=0;
   for(let i=0;i<n;i++){
     const usaPlu = plus<cfg.pluMin ? true : Math.random()<.45;
-    if(usaPlu){ items.push({tipo:"plu", ...azar(PLU)}); plus++; }
+    if(usaPlu){ items.push({tipo:"plu", ...azar(mazo)}); plus++; }
     else items.push({tipo:"barra", ...azar(BARRAS)});
   }
-  // garantizar mínimo de PLUs aunque el azar diga otra cosa
   return {nombre:azar(NOMBRES), items, idx:0, total:0, paciencia:100};
 }
 function iniciaNivel(n){
@@ -307,9 +330,11 @@ function iniciaNivel(n){
   st={
     cfg, ok:0, mal:0, atendidos:0, perdidos:0,
     cambiosOk:0, cambiosTot:0, fallas:{},
+    puntos:0, racha:0, mejorRacha:0,
     porAtender:Array.from({length:cfg.clientes},()=>armaCliente(cfg)),
     cliente:null, fase:"item",
   };
+  $("hMeta").textContent=cfg.meta;
   $("hNivel").textContent=n+1;
   $("hNombre").textContent=cfg.nombre;
   siguienteCliente();
@@ -375,15 +400,34 @@ function agregaLinea(it){
   $("lineas").scrollTop=$("lineas").scrollHeight;
   $("tTotal").textContent=dinero(st.cliente.total);
 }
+function combo(){ return Math.min(4, 1+Math.floor(st.racha/3)); }
+function anota(base){
+  const m=combo();
+  const pts=base*m;
+  st.puntos+=pts;
+  const f=document.createElement("span");
+  f.className="flota"+(m>1?" x2":"");
+  f.textContent=`+${pts}${m>1?` ×${m}`:""}`;
+  $("zonaProducto").appendChild(f);
+  setTimeout(()=>f.remove(),800);
+}
+function castigo(){
+  st.racha=0;
+  document.body.classList.add("tiembla");
+  setTimeout(()=>document.body.classList.remove("tiembla"),320);
+}
 function resuelveItem(bien, it){
   if(bien){
     bipOk(); st.ok++;
+    st.racha++; st.mejorRacha=Math.max(st.mejorRacha,st.racha);
+    anota(10);
     agregaLinea(it);
     st.cliente.idx++;
     aviso("✓ registrado", false);
     setTimeout(pintaItem, 250);
   }else{
     bipErr(); st.mal++;
+    castigo();
     st.cliente.paciencia-=12;
     st.fallas[it.c]=(st.fallas[it.c]||0)+1;
     aviso(`código incorrecto — ${st.cliente.nombre} suspira`, true);
@@ -401,6 +445,8 @@ function intentaCodigo(){
 function escanea(){
   const it=itemActual(); if(!it||it.tipo!=="barra")return;
   bipOk(); st.ok++;
+  st.racha++; st.mejorRacha=Math.max(st.mejorRacha,st.racha);
+  anota(5);
   agregaLinea(it);
   st.cliente.idx++;
   aviso("▮▮▮ bip", false);
@@ -444,9 +490,11 @@ function iniciaCobro(){
       if(isNaN(v))return;
       if(Math.abs(v-cambio)<0.005){
         bipCaja(); st.cambiosOk++;
+        st.racha++; st.mejorRacha=Math.max(st.mejorRacha,st.racha);
+        anota(50);
         cierraCliente(true);
       }else{
-        bipErr(); st.mal++; st.cliente.paciencia-=15;
+        bipErr(); st.mal++; castigo(); st.cliente.paciencia-=15;
         aviso(v>cambio?"le ibas a dar de más — la caja no cuadraría":"le ibas a dar de menos — así se pierden clientes", true);
         $("inCambio").value=""; $("inCambio").focus();
         pintaPaciencia(); refrescaHud();
@@ -467,9 +515,11 @@ function cierraCliente(pagado){
 
 /* ── HUD / avisos ──────────────────────────────────── */
 function refrescaHud(){
-  $("hOk").textContent=st.ok;
-  $("hMal").textContent=st.mal;
+  $("hPts").textContent=st.puntos;
   $("hClientes").textContent=st.atendidos;
+  const m=combo();
+  $("hCombo").innerHTML=`COMBO <b>×${m}${m>=3?" 🔥":""}</b>`;
+  $("hMetaBar").style.transform=`scaleX(${Math.min(1,st.puntos/st.cfg.meta)})`;
 }
 function aviso(txt, mal){
   const a=$("aviso");
@@ -482,9 +532,12 @@ function corte(){
   clearInterval(timer);
   const total=st.ok+st.mal;
   const prec= total? Math.round(st.ok*100/total):100;
-  const estrellas = (st.perdidos===0?1:0)+(prec>=85?1:0)+(st.cambiosTot===0||st.cambiosOk===st.cambiosTot?1:0);
+  const metaOk = st.puntos>=st.cfg.meta;
+  const estrellas = (st.perdidos===0?1:0)+(prec>=85?1:0)+(metaOk?1:0);
   $("corteTitulo").textContent = estrellas===3?"Cuadraste la caja como veterano":estrellas===2?"Buen turno — con detalles":"Sobreviviste, apenas";
   $("corteEstrellas").textContent="★".repeat(Math.max(1,estrellas))+"☆".repeat(3-Math.max(1,estrellas));
+  $("mPuntos").textContent=`${st.puntos}/${st.cfg.meta}`;
+  $("mRacha").textContent="×"+st.mejorRacha;
   $("mClientes").textContent=st.atendidos;
   $("mPrecision").textContent=prec+"%";
   $("mCambio").textContent=`${st.cambiosOk}/${st.cambiosTot}`;
