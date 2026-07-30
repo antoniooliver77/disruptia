@@ -44,7 +44,11 @@ Pearson, Editores Mexicanos Unidos, Talentoría.
 - [Casos](https://disruptia.org/casos): Nova Insurance Academy (academia corporativa,
   "éxito económico y educativo") y El Profe Luis (plataforma educativa,
   divulgador con 3M+ seguidores).
-- [Portafolio](https://disruptia.org/portafolio): piezas reales construidas.
+- [Portafolio](https://disruptia.org/portafolio): piezas reales navegables —
+  lecciones de Nova Insurance Academy, curso de reclutamiento con IA de
+  Talentoría, matemáticas gamificadas de El Profe Luis, y dos simuladores
+  jugables del laboratorio: CAJA 07 (punto de venta con códigos PLU) y
+  SEMANA UNO (videojuego de liderazgo situacional y accountability).
 - [Recursos](https://disruptia.org/recursos): guías sobre academias
   corporativas, LMS, DNC y educación en línea.
 

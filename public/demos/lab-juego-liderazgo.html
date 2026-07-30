@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>SEMANA UNO — Videojuego de liderazgo · Laboratorio DIsruptIA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@118,700;118,900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --tinta:#060D16; --hueso:#F4EFE6; --navy:#0E1A2B;
+    --naranja:#FF5C1F; --cian:#3FD0E0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;border-radius:0}
+  body{background:var(--tinta);color:var(--hueso);font-family:"IBM Plex Sans",system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+  h1,h2,h3{font-family:"Archivo",system-ui,sans-serif;font-stretch:118%;font-weight:900;line-height:.96}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+  .kicker{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--cian)}
+  button{font-family:"IBM Plex Mono",monospace;font-size:14px;font-weight:500;letter-spacing:.04em;cursor:pointer;border:none;min-height:48px;padding:10px 20px;background:var(--naranja);color:var(--tinta);text-align:left}
+  button:hover{background:var(--hueso)}
+  button:focus-visible{outline:2px solid var(--cian);outline-offset:2px}
+  button.sec{background:transparent;color:var(--hueso);border:1px solid var(--hueso)}
+  button.sec:hover{background:var(--hueso);color:var(--tinta)}
+
+  header.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px clamp(16px,3vw,40px);background:#000712;border-bottom:1px solid var(--navy)}
+  header.top .brand{font-family:"Archivo",sans-serif;font-stretch:118%;font-weight:900;font-size:18px}
+  header.top .brand em{font-style:normal;color:var(--naranja)}
+  header.top a{color:var(--hueso);font-size:13px;text-decoration:underline;text-decoration-color:var(--cian);text-underline-offset:4px}
+  .stage{flex:1;display:flex;justify-content:center;padding:clamp(12px,2.5vw,32px)}
+  .panel{max-width:900px;width:100%}
+  .screen{display:none}
+  .screen.on{display:block;animation:ap .2s ease-out}
+  @keyframes ap{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  /* INTRO */
+  .intro h1{font-size:clamp(34px,6vw,62px);max-width:16ch;margin:12px 0 16px}
+  .intro p{max-width:60ch;font-size:18px;line-height:1.55;margin-bottom:14px;opacity:.94}
+  .equipo{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:18px 0}
+  .persona{background:var(--navy);padding:14px}
+  .persona .cara{font-size:38px}
+  .persona b{display:block;margin:6px 0 2px}
+  .persona span{font-size:13.5px;opacity:.85;line-height:1.4;display:block}
+
+  /* JUEGO */
+  .hud{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+  .hud .dia{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em;color:var(--cian)}
+  .barras{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  @media(max-width:600px){.barras{grid-template-columns:1fr}}
+  .barra .et{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.7;display:flex;justify-content:space-between}
+  .barra .track{height:10px;background:var(--navy);margin-top:4px;position:relative}
+  .barra .track i{position:absolute;inset:0;transform-origin:left;transition:transform .5s ease;background:var(--cian)}
+  .barra.energia .track i{background:var(--naranja)}
+  .evento{background:var(--navy);padding:clamp(16px,3vw,26px)}
+  .evento .quien{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .evento .quien .cara{font-size:44px}
+  .evento .quien b{font-size:15px;display:block}
+  .evento .quien span{font-size:12.5px;opacity:.7}
+  .evento .texto{font-size:17.5px;line-height:1.55;margin-bottom:8px}
+  .evento .texto em{color:var(--cian);font-style:normal}
+  .consec{border-left:2px solid var(--naranja);padding:10px 14px;margin:10px 0;font-size:16px;line-height:1.5;background:rgba(255,92,31,.06)}
+  .opciones{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+  .opciones button{width:100%;font-family:"IBM Plex Sans",sans-serif;font-size:15.5px;text-transform:none;letter-spacing:0;line-height:1.45;padding:14px 16px;background:var(--tinta);color:var(--hueso);border:1px solid rgba(63,208,224,.35)}
+  .opciones button:hover{border-color:var(--naranja);background:#0b1523;color:var(--hueso)}
+  .opciones button b{color:var(--naranja)}
+  .sigue{margin-top:16px}
+
+  /* FINAL */
+  .final h2{font-size:clamp(28px,4.5vw,46px);margin:8px 0 12px;max-width:20ch}
+  .final .resumen{font-size:18px;line-height:1.55;max-width:60ch;margin-bottom:14px}
+  .final .resumen b{color:var(--cian)}
+  .tarjetas{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:18px 0}
+  .tarjeta{background:var(--navy);padding:16px;border-bottom:3px solid var(--naranja)}
+  .tarjeta .cab{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+  .tarjeta .cara{font-size:34px}
+  .tarjeta b{font-size:15px}
+  .tarjeta .estilo{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--cian);display:block}
+  .tarjeta p{font-size:14.5px;line-height:1.5;opacity:.92}
+  .tarjeta p b{color:var(--naranja)}
+  .sello{border-left:2px solid var(--cian);padding-left:14px;margin:18px 0;max-width:60ch;line-height:1.55}
+  .acciones{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+  footer{padding:14px clamp(16px,3vw,40px);background:#000712;border-top:1px solid var(--navy);font-size:13px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  footer a{color:var(--hueso);text-decoration:underline;text-decoration-color:var(--naranja);text-underline-offset:4px}
+</style>
+</head>
+<body>
+<header class="top">
+  <span class="brand"><em>SEMANA UNO</em> · videojuego de liderazgo · demo</span>
+  <a href="https://disruptia.org" target="_blank" rel="noopener">laboratorio DIsruptIA ↗</a>
+</header>
+
+<div class="stage"><div class="panel">
+
+  <!-- INTRO -->
+  <section class="screen intro on" id="sIntro">
+    <span class="kicker">ACTO 1 · TENSIÓN</span>
+    <h1>Te ascendieron el viernes. El pedido grande se entrega el viernes que viene</h1>
+    <p>Ayer eras parte del equipo; hoy eres su jefe. Nadie te dio un manual — te dieron un entregable imposible y cuatro personas que te miran distinto desde el anuncio. Cada decisión mueve tres cosas: <b>los resultados</b>, <b>la confianza del equipo</b> y <b>tu propia energía</b>. Se puede ganar la semana y perder al equipo. También al revés.</p>
+    <div class="equipo">
+      <div class="persona"><span class="cara">🧢</span><b>Tavo</b><span>Nuevo. Muchas ganas, cero técnica. Pregunta todo — o peor: no pregunta.</span></div>
+      <div class="persona"><span class="cara">☕</span><b>Rebe</b><span>Quince años de oficio y una ceja levantada. Sabe más que tú y lo sabe.</span></div>
+      <div class="persona"><span class="cara">🎧</span><b>Milo</b><span>Callado, cumplidor, con ideas que nunca nadie le pidió.</span></div>
+      <div class="persona"><span class="cara">🔥</span><b>Ceci</b><span>La estrella. Todo lo resuelve ella — y eso es exactamente el problema.</span></div>
+    </div>
+    <p class="mono" style="font-size:13px;opacity:.7">5 días · decisiones con consecuencias diferidas · varios finales</p>
+    <div class="acciones"><button id="bEmpezar">Tomar la jefatura →</button></div>
+  </section>
+
+  <!-- JUEGO -->
+  <section class="screen" id="sJuego">
+    <div class="hud">
+      <span class="dia" id="hDia">LUNES</span>
+      <div class="barras">
+        <div class="barra"><span class="et"><span>Resultados</span><span id="vRes">40</span></span><span class="track"><i id="bRes"></i></span></div>
+        <div class="barra"><span class="et"><span>Confianza del equipo</span><span id="vCon">50</span></span><span class="track"><i id="bCon"></i></span></div>
+        <div class="barra energia"><span class="et"><span>Tu energía</span><span id="vEne">80</span></span><span class="track"><i id="bEne"></i></span></div>
+      </div>
+    </div>
+    <div class="evento">
+      <div class="quien"><span class="cara" id="eCara">📋</span><span><b id="eQuien">—</b><span id="eRol"></span></span></div>
+      <div class="consec" id="eConsec" style="display:none"></div>
+      <p class="texto" id="eTexto"></p>
+      <div class="opciones" id="eOpciones"></div>
+      <div class="sigue" id="eSigue" style="display:none"><button id="bSigue">Continuar →</button></div>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <section class="screen final" id="sFinal">
+    <span class="kicker">ACTO 3 · RETORNO — VIERNES, 6:12 PM</span>
+    <h2 id="fTitulo">—</h2>
+    <p class="resumen" id="fResumen"></p>
+    <div class="barras" style="margin-bottom:6px">
+      <div class="barra"><span class="et"><span>Resultados</span><span id="fvRes"></span></span><span class="track"><i id="fbRes"></i></span></div>
+      <div class="barra"><span class="et"><span>Confianza</span><span id="fvCon"></span></span><span class="track"><i id="fbCon"></i></span></div>
+      <div class="barra energia"><span class="et"><span>Tu energía</span><span id="fvEne"></span></span><span class="track"><i id="fbEne"></i></span></div>
+    </div>
+    <h3 style="margin:20px 0 4px;font-size:20px">Lo que cada quien necesitaba de ti</h3>
+    <p style="opacity:.8;font-size:15px;max-width:62ch">Esto es liderazgo situacional sin el diagrama aburrido: cada persona, según su nivel de dominio y de ánimo, pide un estilo distinto. El juego te lo dice con tus propias decisiones:</p>
+    <div class="tarjetas" id="fTarjetas"></div>
+    <p class="sello">Así se ve la <b>evaluación de desempeño dentro de un juego</b>: nadie contestó un examen y aun así hay evidencia de cómo diriges, delegas, confrontas y te cuidas. Imagina este motor con los dilemas reales de tus mandos medios — sus clientes, sus métricas, su gente.</p>
+    <div class="acciones">
+      <button id="bOtra">Jugar otra vez con otras decisiones</button>
+      <button class="sec" onclick="window.open('https://disruptia.org/contacto','_blank')">Quiero uno así para mis líderes ↗</button>
+    </div>
+  </section>
+
+</div></div>
+
+<footer>
+  <span>Demo del laboratorio de <b>DIsruptIA</b> — mecánica real, consecuencias diferidas, varios finales.</span>
+  <a href="https://disruptia.org/portafolio" target="_blank" rel="noopener">ver más del portafolio</a>
+</footer>
+
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+const clamp=(v)=>Math.max(0,Math.min(100,v));
+let M, F, idx, cola;
+
+/* Personajes */
+const P={
+  yo:{cara:"📋",quien:"Tu primera semana",rol:"jefatura de operación"},
+  tavo:{cara:"🧢",quien:"Tavo",rol:"el nuevo"},
+  rebe:{cara:"☕",quien:"Rebe",rol:"senior, 15 años"},
+  milo:{cara:"🎧",quien:"Milo",rol:"el callado"},
+  ceci:{cara:"🔥",quien:"Ceci",rol:"la estrella"},
+  jefe:{cara:"👔",quien:"Tu director",rol:"y su prisa"},
+};
+
+/* Eventos: texto, opciones [txt, efectos{res,con,ene}, flags, reaccion] */
+const EVENTOS=[
+ {dia:"LUNES · 9:00",p:"yo",t:"Junta de arranque. Cuatro caras esperan tu primer discurso como jefe. El pedido grande — el que salva el trimestre — se entrega el viernes. ¿Cómo abres?",
+  o:[
+   ["Reparto tareas ya: no hay tiempo para rodeos.",{res:8,con:-6,ene:0},["arranqueDuro"],"Eficiente. Aunque Rebe murmura: «el poder, rapidito se le subió»."],
+   ["Explico el reto completo, con números, y pido su lectura antes de repartir.",{res:4,con:8,ene:-4},["arranqueAbierto"],"La junta dura más — pero salen dos riesgos que tú no habías visto."],
+   ["Suavizo el asunto: «relájense, lo sacamos como siempre».",{res:-6,con:2,ene:2},["minimizo"],"El equipo sale tranquilo. Demasiado tranquilo para lo que viene."],
+  ]},
+ {dia:"LUNES · 12:30",p:"tavo",t:"Tavo lleva 40 minutos atorado con la plantilla del pedido y no te había dicho nada. «Es que no quería molestarte, jefe.»",
+  o:[
+   ["Me siento con él 20 minutos y le enseño paso a paso, y que tome notas.",{res:-3,con:8,ene:-6},["tavoFormado"],"Pierdes media hora hoy. Tavo repite el proceso solo en la tarde — dos veces, sin error."],
+   ["Lo hago yo en 5 minutos; hoy no hay tiempo de escuelita.",{res:6,con:-4,ene:-4},["tavoDependiente"],"Listo en 5. Tavo aprende la lección equivocada: cuando se atore, mejor esperar a que lo hagas tú."],
+   ["«Ahí está el manual, campeón. Confío en ti.»",{res:0,con:-2,ene:2},["tavoSolo"],"Tavo asiente con una seguridad que no siente. Eso va a regresar."],
+  ]},
+ {dia:"MARTES · 9:15",p:"rebe",t:"Rebe llega 25 minutos tarde, café en mano: «Uy, perdón, es que como ahora todo es urgente...». Dos del equipo voltean a verte. Es una prueba y lo sabes.",
+  o:[
+   ["La confronto ahí mismo, delante de todos, para marcar línea.",{res:2,con:-10,ene:-3},["rebeHumillada"],"Silencio incómodo. Ganaste la escena y perdiste a la persona con más oficio del equipo."],
+   ["No digo nada frente al grupo; a las 11 la invito a un 1:1 y primero escucho.",{res:0,con:8,ene:-4},["rebeEscuchada"],"En el 1:1 sale la verdad: lleva dos años sin un reto nuevo y le duele que la brincaran en el ascenso. Ahora tienes con qué trabajar."],
+   ["Lo dejo pasar. Bastante tengo con el pedido.",{res:0,con:-5,ene:0},["rebeCinismo"],"Mensaje recibido por todos: llegar tarde no tiene consecuencia. Mañana no llega tarde solo ella."],
+  ]},
+ {dia:"MARTES · 13:00",p:"jefe",t:"Tu director por teléfono: el cliente cambió especificaciones. «Sé que es un golpe. Confío en que lo resuelvas, eh.» Cuelga. Es un 20% más de trabajo con los mismos días.",
+  o:[
+   ["Absorbo yo el cambio: me quedo las noches que haga falta.",{res:5,con:0,ene:-18},["heroe"],"Nadie se entera del golpe. Tu cuerpo sí."],
+   ["Reúno al equipo, muestro el cambio con números y repartimos el golpe entre todos.",{res:3,con:7,ene:-5},["cambioCompartido"],"Duele parejo — pero por primera vez la palabra «equipo» significa algo."],
+   ["Me quejo del cliente con el equipo: «nos volvieron a fregar, ni modo».",{res:-4,con:-4,ene:0},["quejica"],"Desahogarse se sintió bien 10 minutos. La moral quedó peor que el pedido."],
+  ]},
+ {dia:"MARTES · 18:40",p:"ceci",t:"Ceci, ya con la mochila puesta: «Me llevo lo de la validación a mi casa, hoy no acabé y no quiero atrasarlos». Es la tercera vez esta semana... y es martes.",
+  o:[
+   ["«Eres un ejemplo, Ceci.» Que se lo lleve — el pedido manda.",{res:6,con:-3,ene:0},["ceciQuemada"],"Te salvó el martes. El costo llega después, y con intereses."],
+   ["No se lo lleva: reparto la validación entre Milo y yo, y a Ceci le bajo carga mañana.",{res:-3,con:8,ene:-6},["ceciProtegida"],"Ceci protesta un poco... y sale a las 7 por primera vez en el mes. Milo resultó mejor validando de lo que nadie creía."],
+   ["«No te lo lleves, mejor mañana llegas temprano y le metes con todo.»",{res:-2,con:0,ene:0},["ceciParche"],"Le quitaste el síntoma, no la carga. Mañana será la cuarta vez."],
+  ]},
+ {dia:"MIÉRCOLES · 10:20",p:"tavo",t:null, // dinámico según flags de Tavo
+  dinamico:s=>{
+    if(F.has("tavoFormado")) return {t:"Tavo detecta ÉL SOLO un error en las cantidades del pedido — el proveedor mandó mal una partida. Lo trae en la mano, orgulloso: «¿así se reporta, jefe?»",
+      o:[
+       ["Lo reconozco frente al equipo: «esto nos salvó la entrega».",{res:6,con:8,ene:0},[],"Tavo crece tres centímetros. Rebe, contra todo pronóstico, asiente aprobando."],
+       ["«Bien. Déjalo en mi escritorio.»",{res:4,con:-4,ene:0},[],"Error salvado, motivación desperdiciada. Lo bueno que no se nombra deja de repetirse."],
+       ["Reviso yo todo el pedido de nuevo, por si acaso.",{res:2,con:-2,ene:-8},[],"El doble chequeo te costó la mañana. ¿Para qué formas gente si no vas a confiar en ella?"],
+      ]};
+    return {t:"Explota el error: Tavo capturó mal las cantidades "+(F.has("tavoSolo")?"del manual que «sí había entendido»":"desde el lunes")+" y el proveedor produjo una partida equivocada. Corregirlo cuesta medio día. El cliente pregunta qué pasó.",
+      o:[
+       ["Doy la cara yo con el cliente: el error fue de mi equipo, es decir, mío. En privado, corrijo el proceso con Tavo.",{res:-6,con:10,ene:-6},["accountability"],"El cliente respira al oír «me hago cargo». Tavo también. Acabas de comprar lealtad cara — de la buena."],
+       ["Exhibo el error en la junta para que «a nadie más se le ocurra».",{res:-4,con:-12,ene:-2},["miedo"],"Tavo no vuelve a equivocarse... porque no vuelve a intentar nada. El miedo también es una cultura."],
+       ["Lo tapo: muevo números y que parezca retraso del proveedor.",{res:2,con:-6,ene:-4},["tapadera"],"Funcionó. Y ahora Tavo sabe que aquí los errores se esconden. Recuérdalo el día que esconda uno él."],
+      ]};
+  }},
+ {dia:"MIÉRCOLES · 16:00",p:"milo",t:"Milo, que no pide nada nunca, se acerca con una hoja: rediseñó el flujo de empaque. «Creo que ahorraría como dos horas por lote... pero no sé, tú dime.»",
+  o:[
+   ["Le doy el volante: que lo pilotee él mañana con una parte del pedido.",{res:5,con:8,ene:0},["miloCrece"],"El piloto funciona. Milo habla en la junta por primera vez en meses — y el flujo ahorra 90 minutos por lote."],
+   ["«Buena idea, la vemos pasando el pedido.»",{res:0,con:-3,ene:0},["miloCajon"],"Traducción que entendió Milo: «guárdala». Las ideas que se posponen dos veces no vuelven."],
+   ["Tomo la idea y la implemento yo, a mi manera.",{res:3,con:-7,ene:-5},["miloRobado"],"El flujo mejora. Milo ve su idea con otro nombre y vuelve a ponerse los audífonos. Para siempre."],
+  ]},
+ {dia:"JUEVES · 8:30",p:"jefe",t:"Tu director necesita «para hoy» un reporte ejecutivo del avance. Tres horas de trabajo que no tienes. El pedido está en su punto crítico.",
+  o:[
+   ["Se lo delego a Rebe con todo el contexto: ella conoce estos reportes mejor que nadie.",{res:0,con:0,ene:0},["delegaRebe"],"Rebe alza la ceja: «¿yo? ¿el ejecutivo?». Se lleva la laptop sin decir que sí ni que no. Sabrás en la tarde."],
+   ["Lo hago yo hoy en la noche, después del cierre.",{res:2,con:0,ene:-15},["desvelo"],"Reporte impecable a la 1:40 am. El jueves te lo va a cobrar el viernes."],
+   ["Mando un avance a medias con dos pantallazos.",{res:-6,con:0,ene:0},["reporteFlojo"],"Tu director contesta con un «ok.» — con punto. Eso nunca es buena señal."],
+  ]},
+ {dia:"JUEVES · 12:00",p:"ceci",t:null,
+  dinamico:s=>{
+    if(F.has("ceciQuemada")) return {t:"Ceci no llegó. Mensaje de las 6 am: «no puedo ni levantarme, lo siento muchísimo». Migraña. El médico la manda a descansar 48 horas: justo el cierre. Su parte está a medias y solo ella la conoce.",
+      o:[
+       ["Junto al equipo: repartimos su parte, yo tomo lo más técnico y recorto un entregable secundario.",{res:-8,con:6,ene:-10},["rescateEquipo"],"Nadie duerme siesta, pero nadie se hunde solo. Y aprendiste — carísimo — por qué el conocimiento no puede vivir en una sola cabeza."],
+       ["Le marco: «¿puedes conectarte aunque sea dos horitas? Es el cierre».",{res:2,con:-10,ene:-2},["exprimida"],"Se conecta. Trabaja con el ojo izquierdo cerrado. Todos lo ven. Todos toman nota de cómo tratas a la gente rota."],
+       ["Que cada quien resuelva como pueda; ya no hay tiempo de coordinar nada.",{res:-10,con:-6,ene:-4},["caos"],"Tres personas hacen el mismo pedazo y nadie hace el difícil. El caos también delega, pero mal."],
+      ]};
+    return {t:"Ceci — con carga razonable gracias al martes — te trae un plan: «si Milo y yo nos enfocamos en la validación hoy, mañana solo queda empacar y revisar». Te está pidiendo permiso para organizarse sola.",
+      o:[
+       ["Permiso concedido: ustedes lo ven, yo quito obstáculos.",{res:8,con:8,ene:4},["equipoVuela"],"Trabajan sin ti toda la tarde. Da un poco de vértigo lo poco que te necesitan — así se ve un equipo maduro."],
+       ["Prefiero coordinarlo yo, no es día de experimentos.",{res:3,con:-5,ene:-8},["microgestion"],"Sale bien, pero todo pasó por ti. Otra vez. ¿Y cuando no estés?"],
+       ["Acepto, pero pido reporte cada hora.",{res:4,con:-2,ene:-4},["correa"],"Los reportes por hora convierten la confianza en trámite. Cumplen — de malas."],
+      ]};
+  }},
+ {dia:"JUEVES · 19:30",p:"yo",t:"Cierre a la vista y las cuentas no dan. Sobre la mesa, la tentación de siempre: saltarse la revisión final de calidad. «Total, casi nunca sale nada», dice alguien. Todos te miran.",
+  o:[
+   ["No se recorta calidad: llamo al cliente y negocio entregar un 5% el lunes.",{res:-4,con:6,ene:-5},["negocie"],"El cliente gruñe... y acepta. «Prefiero eso a devolverte todo», dice. Curiosamente, suena a respeto."],
+   ["Saltamos la revisión. El viernes es el viernes.",{res:8,con:-2,ene:0},["sinCalidad"],"La banda aplaude aliviada. La ruleta, girando."],
+   ["Revisión completa, cueste la noche que cueste: pido quedarnos todos.",{res:2,con:-6,ene:-12},["nocheForzada"],"Pizza fría a las 11 pm. La calidad sale; la gente sale peor."],
+  ]},
+];
+
+/* Evento condicional de Rebe (jueves delegación) */
+function reaccionRebe(){
+  if(!F.has("delegaRebe")) return null;
+  if(F.has("rebeEscuchada")) return {p:"rebe",dia:"JUEVES · 17:00",t:"Rebe te entrega el reporte para tu director. Está mejor que los tuyos — gráficas, riesgos, todo. «Hacía años que nadie me pedía algo de este nivel», dice, casi sin ironía.",
+    o:[["«Va con tu nombre en la portada, no con el mío.»",{res:4,con:9,ene:0},["rebeAliada"],"Tu director la felicita en copia a todos. Rebe borra su currículum de la otra pestaña."],
+       ["«Gracias, lo firmo y lo mando.»",{res:3,con:-4,ene:0},[],"Reporte enviado con tu firma. El crédito, como siempre, subió por la escalera equivocada."]]};
+  return {p:"rebe",dia:"JUEVES · 17:00",t:"Rebe entrega el reporte tarde y al mínimo: dos páginas secas. «Ahí está lo que pidieron», dice sin mirarte. El cinismo del martes sigue cobrando renta.",
+    o:[["Lo completo yo esta noche y mañana hablo con ella — a escuchar, no a regañar.",{res:0,con:3,ene:-10},["puenteTarde"],"Mejor tarde. En la charla sale lo del ascenso. Llegas al viernes con un puente a medio construir."],
+       ["Le regreso el reporte: «esto no es lo que tú sabes hacer».",{res:-2,con:-4,ene:-2},[],"Tiene razón el reclamo y aun así aterriza como golpe, porque no hay confianza que lo sostenga."]]};
+}
+
+/* ── Motor ─────────────────────────────────────────── */
+function empieza(){
+  M={res:40,con:50,ene:80}; F=new Set(); idx=0;
+  cola=[...EVENTOS];
+  pinta(); muestra();
+  pantalla("sJuego");
+}
+function pantalla(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("on"));$(id).classList.add("on")}
+function pinta(){
+  $("vRes").textContent=Math.round(M.res); $("vCon").textContent=Math.round(M.con); $("vEne").textContent=Math.round(M.ene);
+  $("bRes").style.transform=`scaleX(${M.res/100})`;
+  $("bCon").style.transform=`scaleX(${M.con/100})`;
+  $("bEne").style.transform=`scaleX(${M.ene/100})`;
+}
+function muestra(){
+  // inyectar la entrega de Rebe (17:00) después del evento de Ceci (12:00)
+  if(idx===8 && !F.has("rebeInyectada")){
+    const r=reaccionRebe();
+    if(r){ cola.splice(9,0,r); F.add("rebeInyectada"); }
+  }
+  const ev=cola[idx];
+  if(!ev){ final(); return; }
+  const datos = ev.dinamico? ev.dinamico() : ev;
+  const per=P[ev.p];
+  $("hDia").textContent=ev.dia;
+  $("eCara").textContent=per.cara; $("eQuien").textContent=per.quien; $("eRol").textContent=per.rol;
+  $("eConsec").style.display="none";
+  $("eTexto").innerHTML=datos.t;
+  const zona=$("eOpciones"); zona.innerHTML="";
+  $("eSigue").style.display="none";
+  datos.o.forEach(op=>{
+    const b=document.createElement("button");
+    b.textContent=op[0];
+    b.onclick=()=>elige(op);
+    zona.appendChild(b);
+  });
+}
+function elige(op){
+  const [_,ef,flags,reaccion]=op;
+  M.res=clamp(M.res+ (ef.res||0)); M.con=clamp(M.con+(ef.con||0)); M.ene=clamp(M.ene+(ef.ene||0));
+  (flags||[]).forEach(f=>F.add(f));
+  pinta();
+  $("eOpciones").innerHTML="";
+  if(reaccion){
+    $("eConsec").textContent=reaccion;
+    $("eConsec").style.display="block";
+  }
+  $("eSigue").style.display="block";
+  $("bSigue").focus();
+}
+$("bSigue").onclick=()=>{idx++;muestra()};
+
+/* ── Final ─────────────────────────────────────────── */
+function final(){
+  // castigo/premio diferido
+  if(F.has("sinCalidad")){
+    if(Math.random()<0.65){ M.res=clamp(M.res-25); F.add("devolucion"); }
+    else F.add("ruletaGano");
+  }
+  if(F.has("miloCrece")) M.res=clamp(M.res+5);
+  pantalla("sFinal");
+  const r=M.res,c=M.con,e=M.ene;
+  ["Res","Con","Ene"].forEach(k=>{
+    const v={Res:r,Con:c,Ene:e}[k];
+    $("fv"+k).textContent=Math.round(v);
+    $("fb"+k).style.transform=`scaleX(${v/100})`;
+  });
+  let titulo,resumen;
+  if(F.has("devolucion")){
+    titulo="El pedido salió… y regresó";
+    resumen="La ruleta de saltarse calidad cayó en rojo: <b>devolución parcial el lunes</b>. La semana que ganaste en la mesa la perdiste en el muelle. La lección más cara del liderazgo operativo: la calidad no es un paso del proceso, es la reputación del equipo.";
+  } else if(r>=60&&c>=60&&e>=35){
+    titulo="Entregaste — y el equipo entregó contigo";
+    resumen="El pedido salió a tiempo y, más raro todavía: <b>el lunes la gente quiere volver a trabajar contigo</b>. Formaste al nuevo, recuperaste a la senior, soltaste al callado y protegiste a la estrella. Eso no fue suerte: fue estilo correcto con la persona correcta.";
+  } else if(r>=60&&c<45){
+    titulo="Entregaste — pero cobraste en confianza";
+    resumen="El viernes el cliente aplaudió. El equipo no. <b>Los resultados con confianza rota son un préstamo</b>: la siguiente semana difícil la pagas con renuncias, silencio y «eso no me toca». Jefes que entregan hay muchos; jefes con equipo, pocos.";
+  } else if(c>=60&&r<50){
+    titulo="El equipo te adora — el cliente no tanto";
+    resumen="Cuidaste a la gente, y la gente lo sabe. Pero <b>el pedido salió cojo</b>, y un líder que no entrega tampoco protege a nadie: la presión que no absorbiste esta semana regresará doblada. Confianza sin resultados es un club, no un equipo.";
+  } else if(e<25){
+    titulo="Entregaste lo que pudiste — incluyéndote a ti";
+    resumen="Cargaste todo: los cambios, los desvelos, los reportes. El viernes quedó algo parecido a un pedido y algo parecido a un jefe. <b>El heroísmo no escala</b>: la próxima semana empieza en lunes y tú empiezas en cero.";
+  } else {
+    titulo="Sobreviviste la semana uno";
+    resumen="Ni desastre ni hazaña: decisiones buenas mezcladas con facturas que llegarán después. Así son casi todas las jefaturas reales. <b>La diferencia está en repetir las buenas a propósito</b> — para eso sirve ver el tablero de abajo.";
+  }
+  $("fTitulo").textContent=titulo;
+  $("fResumen").innerHTML=resumen;
+
+  /* Debrief por persona */
+  const t=[];
+  t.push({cara:"🧢",n:"Tavo",estilo:"NECESITABA: DIRECCIÓN",
+    p:F.has("tavoFormado")?"Le enseñaste el paso a paso cuando más caro parecía — y fue la mejor inversión de la semana: detectó solo el error del proveedor. <b>Al novato se le dirige de cerca</b>, no se le avienta al agua.":
+      F.has("tavoDependiente")?"Resolviste por él para ganar 5 minutos y compraste un empleado que espera. <b>Al novato con ganas se le enseña el cómo</b>; hacerle el trabajo es robarle el aprendizaje.":
+      "Lo mandaste al manual y el manual no hace preguntas. El error del miércoles nació ahí: <b>la instrucción que no diste la cobró el proceso</b>."});
+  t.push({cara:"☕",n:"Rebe",estilo:"NECESITABA: RETO Y RECONOCIMIENTO",
+    p:F.has("rebeAliada")?"Escuchaste antes de juzgar, le diste un reto de su tamaño y le pusiste su nombre. <b>A la gente experta y desmotivada no se le supervisa: se le devuelve el orgullo</b>. La recuperaste.":
+      F.has("rebeEscuchada")?"El 1:1 abrió la puerta correcta: su cinismo era un ascenso dolido. Te faltó darle el reto que lo convirtiera en compromiso — <b>escuchar es el paso uno, no el plan completo</b>.":
+      F.has("rebeHumillada")?"La corregiste en público y el oficio de 15 años se cerró como puño. <b>A la persona senior se le confronta en privado y se le reta en público</b> — al revés, pierdes su talento y su voto.":
+      "Su cinismo pasó sin consecuencia y se volvió el clima del equipo. <b>Lo que toleras, lo enseñas.</b>"});
+  t.push({cara:"🎧",n:"Milo",estilo:"NECESITABA: QUE LE SOLTARAS LA RIENDA",
+    p:F.has("miloCrece")?"Le diste el volante de su propia idea y ahorró 90 minutos por lote. <b>Al competente callado no se le motiva con discursos: se le delega en serio.</b> Habló en junta por primera vez en meses.":
+      F.has("miloRobado")?"Tomaste su idea y funcionó — a nombre equivocado. Milo volvió a los audífonos. <b>Robarle el crédito al callado es garantizar que sea la última idea que te traiga.</b>":
+      "Su propuesta quedó «para después», que en idioma de los callados significa nunca. <b>Las ideas no repetidas no son tímidas: están archivadas.</b>"});
+  t.push({cara:"🔥",n:"Ceci",estilo:"NECESITABA: PROTECCIÓN, NO PORRAS",
+    p:F.has("equipoVuela")?"Le bajaste carga a tiempo y el jueves te trajo un plan mejor que el tuyo. <b>A la estrella no se le exprime: se le protege y se le suelta.</b> El equipo voló solo toda una tarde — esa es la foto del éxito.":
+      F.has("ceciProtegida")?"Frenaste la tercera noche de trabajo en casa y redistribuiste. <b>Proteger a tu mejor gente de sí misma también es liderazgo</b> — y de paso descubriste que Milo validaba mejor de lo que nadie creía.":
+      F.has("rescateEquipo")?"La dejaste cargar hasta que el cuerpo dijo basta, y el cierre casi se cae con ella. Rescataste la semana en equipo, pero la lección quedó tatuada: <b>cuando todo depende de una persona, no tienes una estrella — tienes un riesgo</b>.":
+      "La estrella cargó de más toda la semana. Esta vez aguantó. <b>La pregunta no es si se rompe, sino cuándo — y qué se lleva puesto ese día.</b>"});
+  if(F.has("accountability")) t.push({cara:"🛡️",n:"Momento clave",estilo:"ACCOUNTABILITY",
+    p:"Diste la cara por el error de tu equipo frente al cliente y corregiste el proceso en privado. <b>Hacerse cargo del resultado sin fusilar al culpable</b> es la definición operativa de accountability — y tu equipo la vio en vivo."});
+  if(F.has("tapadera")) t.push({cara:"🕳️",n:"Momento clave",estilo:"ACCOUNTABILITY · PENDIENTE",
+    p:"El error se tapó y el cliente nunca supo. Funcionó — esta vez. <b>Una cultura donde los errores se esconden es una cultura donde te enteras de los problemas cuando ya son incendios.</b>"});
+  $("fTarjetas").innerHTML=t.map(x=>`<div class="tarjeta"><div class="cab"><span class="cara">${x.cara}</span><span><b>${x.n}</b><span class="estilo">${x.estilo}</span></span></div><p>${x.p}</p></div>`).join("");
+}
+
+$("bEmpezar").onclick=empieza;
+$("bOtra").onclick=()=>location.reload();
+</script>
+</body>
+</html>

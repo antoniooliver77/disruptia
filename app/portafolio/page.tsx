@@ -54,6 +54,34 @@ const portafolioJsonLd = {
       "@type": "ListItem",
       position: 3,
       item: {
+        "@type": "VideoGame",
+        name: "CAJA 07 — Simulador de punto de venta",
+        description:
+          "Simulador gamificado de caja de supermercado: memorización de códigos PLU, escaneo, cobro con cambio y clientes con paciencia limitada. Demo del laboratorio DIsruptIA.",
+        creator: { "@type": "Organization", name: "DIsruptIA", url: SITE },
+        url: `${SITE}/demos/lab-simulador-caja.html`,
+        gamePlatform: "Web",
+        inLanguage: "es-MX",
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 4,
+      item: {
+        "@type": "VideoGame",
+        name: "SEMANA UNO — Videojuego de liderazgo",
+        description:
+          "Juego de decisiones sobre liderazgo situacional y accountability: una semana como jefe nuevo, consecuencias diferidas y varios finales. Demo del laboratorio DIsruptIA.",
+        creator: { "@type": "Organization", name: "DIsruptIA", url: SITE },
+        url: `${SITE}/demos/lab-juego-liderazgo.html`,
+        gamePlatform: "Web",
+        inLanguage: "es-MX",
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 5,
+      item: {
         "@type": "CreativeWork",
         name: "El Profe Luis — Matemáticas con juegos de refuerzo",
         description:
@@ -90,9 +118,10 @@ export default function PortafolioPage() {
         </h1>
         <p className={s.lede}>
           Todo mundo enseña capturas de pantalla bonitas en un portafolio.
-          Nosotros te dejamos entrar. Abajo hay siete piezas que puedes abrir
-          ahora mismo — una lección de seguros, un curso de reclutamiento con
-          IA, juegos de matemáticas — y juzgar tú si tu gente las terminaría.
+          Nosotros te dejamos entrar. Aquí hay nueve piezas que puedes abrir
+          ahora mismo — dos simuladores jugables hechos en casa, lecciones
+          reales de clientes, juegos de matemáticas — y juzgar tú si tu
+          gente las terminaría.
         </p>
         <div className={s.ctaTop}>
           <a className="btn btnPrimario" href="/contacto">
@@ -123,6 +152,81 @@ export default function PortafolioPage() {
           construimos y no tengas que creernos.
         </p>
       </section>
+
+      {/* LABORATORIO · simuladores jugables */}
+      <div className={s.bandaHueso}>
+        <span className={s.bloqueNum}>EL LABORATORIO · JUEGA AHORA</span>
+        <h2 className={s.h2}>Dos simuladores que construimos para demostrarlo</h2>
+        <p className={s.prose}>
+          Estos dos no son de ningún cliente: los construimos en el
+          laboratorio para responder la pregunta que siempre nos hacen —
+          "¿qué tan lejos pueden llegar?". Juégalos. Tienen mecánica real,
+          consecuencias que se cobran después y un cierre que te dice qué
+          aprendiste. Si tu proveedor actual te entrega diapositivas con
+          quiz, esto te va a doler un poquito.
+        </p>
+        <div className={p.lab}>
+          <article className={p.labCard}>
+            <div className={p.labArte} aria-hidden="true">🛒⌨️💵</div>
+            <div className={p.labCuerpo}>
+              <span className={p.labMeta}>SIMULADOR OPERATIVO · HABILIDAD + MEMORIA</span>
+              <h3>CAJA 07 — punto de venta</h3>
+              <p>
+                Tu primer turno como cajero: memoriza los códigos PLU reales
+                de frutas y verduras, escanea con ritmo, cobra y da bien el
+                cambio mientras la paciencia del cliente se agota. Tres
+                niveles, de la capacitación a la hora pico.
+              </p>
+              <ul className={p.labMecanicas}>
+                <li>Códigos PLU reales (4011, 4046…) que sí memorizas</li>
+                <li>Clientes con barra de paciencia que se van si tardas</li>
+                <li>Cobro completo: efectivo con cambio exacto o tarjeta</li>
+                <li>Corte de caja con tu repaso personalizado de errores</li>
+              </ul>
+              <a
+                className={p.labJugar}
+                href="/demos/lab-simulador-caja.html"
+                target="_blank"
+                rel="noopener"
+              >
+                Jugar CAJA 07 →
+              </a>
+            </div>
+          </article>
+          <article className={p.labCard}>
+            <div className={p.labArte} aria-hidden="true">📋🔥☕</div>
+            <div className={p.labCuerpo}>
+              <span className={p.labMeta}>VIDEOJUEGO DE DECISIONES · LIDERAZGO</span>
+              <h3>SEMANA UNO — la jefatura</h3>
+              <p>
+                Te ascendieron el viernes y el pedido grande se entrega en
+                cinco días. Cuatro personas distintas, doce decisiones,
+                consecuencias que regresan cuando ya las olvidaste y varios
+                finales. Se puede ganar la semana y perder al equipo.
+              </p>
+              <ul className={p.labMecanicas}>
+                <li>Tres medidores: resultados, confianza y tu energía</li>
+                <li>Decisiones con consecuencias diferidas entre días</li>
+                <li>Debrief de liderazgo situacional con TUS decisiones</li>
+                <li>Momento de accountability que define tu cultura</li>
+              </ul>
+              <a
+                className={p.labJugar}
+                href="/demos/lab-juego-liderazgo.html"
+                target="_blank"
+                rel="noopener"
+              >
+                Jugar SEMANA UNO →
+              </a>
+            </div>
+          </article>
+        </div>
+        <p className={s.prose}>
+          Cada uno se diseñó y programó en cuestión de días con nuestro
+          método e inteligencia artificial en la producción. Ahora imagínalos
+          con tus códigos, tus procesos y los dilemas reales de tus líderes.
+        </p>
+      </div>
 
       {/* CASO 01 · NOVA */}
       <div className={s.bandaNavy}>

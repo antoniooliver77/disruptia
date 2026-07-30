@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>CAJA 07 — Simulador de punto de venta · Laboratorio DIsruptIA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@118,700;118,900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --tinta:#060D16; --hueso:#F4EFE6; --navy:#0E1A2B;
+    --naranja:#FF5C1F; --cian:#3FD0E0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;border-radius:0}
+  body{
+    background:var(--tinta); color:var(--hueso);
+    font-family:"IBM Plex Sans",system-ui,sans-serif; min-height:100vh;
+    display:flex; flex-direction:column;
+  }
+  h1,h2,h3{font-family:"Archivo",system-ui,sans-serif; font-stretch:118%; font-weight:900; line-height:.95}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+  .kicker{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--cian)}
+  button{
+    font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:14px; font-weight:500;
+    letter-spacing:.06em; text-transform:uppercase; cursor:pointer; border:none;
+    min-height:48px; padding:10px 20px; background:var(--naranja); color:var(--tinta);
+  }
+  button:hover{background:var(--hueso)}
+  button:focus-visible{outline:2px solid var(--cian); outline-offset:2px}
+  button.sec{background:transparent; color:var(--hueso); border:1px solid var(--hueso)}
+  button.sec:hover{background:var(--hueso); color:var(--tinta)}
+
+  header.top{
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+    padding:12px clamp(16px,3vw,40px); background:#000712; border-bottom:1px solid var(--navy);
+  }
+  header.top .brand{font-family:"Archivo",sans-serif;font-stretch:118%;font-weight:900;font-size:18px}
+  header.top .brand em{font-style:normal;color:var(--naranja)}
+  header.top .brand b{color:var(--cian)}
+  header.top a{color:var(--hueso);font-size:13px;text-decoration:underline;text-decoration-color:var(--cian);text-underline-offset:4px}
+
+  .stage{flex:1; display:flex; align-items:stretch; justify-content:center; padding:clamp(12px,2.5vw,32px)}
+  .panel{max-width:1080px; width:100%}
+
+  /* Pantallas */
+  .screen{display:none}
+  .screen.on{display:block; animation:ap .2s ease-out}
+  @keyframes ap{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  /* INTRO */
+  .intro h1{font-size:clamp(34px,6vw,64px); max-width:16ch; margin:12px 0 16px}
+  .intro p{max-width:60ch; font-size:18px; line-height:1.55; margin-bottom:14px; opacity:.94}
+  .intro .acciones{display:flex; gap:14px; flex-wrap:wrap; margin-top:22px}
+
+  /* CAPACITACIÓN */
+  .codigos{display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:10px; margin:18px 0}
+  .codigo{background:var(--navy); padding:14px 10px; text-align:center}
+  .codigo .emoji{font-size:42px; display:block}
+  .codigo .num{font-family:"IBM Plex Mono",monospace; font-size:22px; color:var(--cian); display:block; margin-top:6px}
+  .codigo .nom{font-size:13px; opacity:.85}
+
+  /* JUEGO */
+  .hud{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:12px}
+  .hud .dato{font-family:"IBM Plex Mono",monospace; font-size:13px}
+  .hud .dato b{color:var(--cian); font-weight:500}
+  .juego{display:grid; grid-template-columns:1.25fr .75fr; gap:14px}
+  @media(max-width:760px){.juego{grid-template-columns:1fr}}
+
+  .banda{background:var(--navy); padding:18px; position:relative; min-height:380px; display:flex; flex-direction:column}
+  .cliente{display:flex; align-items:center; gap:12px; margin-bottom:10px}
+  .cliente .cara{font-size:40px}
+  .cliente .quien{flex:1}
+  .cliente .quien b{display:block; font-size:15px}
+  .paciencia{height:8px; background:var(--tinta); margin-top:6px; position:relative}
+  .paciencia i{position:absolute; inset:0; background:var(--naranja); transform-origin:left; transition:transform .3s linear}
+  .cola{font-size:13px; opacity:.75}
+
+  .producto{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; text-align:center}
+  .producto .art{font-size:110px; line-height:1; filter:drop-shadow(0 8px 12px rgba(0,0,0,.5))}
+  .producto .nom{font-size:19px; font-weight:600}
+  .producto .pista{font-family:"IBM Plex Mono",monospace; font-size:15px; color:var(--cian); min-height:20px}
+  .aviso{min-height:24px; font-family:"IBM Plex Mono",monospace; font-size:14px; text-align:center}
+  .aviso.mal{background:var(--naranja); color:var(--tinta); padding:2px 8px; display:inline-block; align-self:center}
+  .aviso.bien{color:var(--cian)}
+
+  .controles{margin-top:12px}
+  .lector{display:flex; gap:10px}
+  .lector input{
+    flex:1; background:var(--tinta); border:none; border-bottom:2px solid var(--hueso);
+    color:var(--hueso); font-family:"IBM Plex Mono",monospace; font-size:26px; letter-spacing:.2em;
+    padding:8px 12px; text-align:center;
+  }
+  .lector input:focus{outline:none; border-bottom-color:var(--cian)}
+  .tecladito{display:grid; grid-template-columns:repeat(6,1fr); gap:8px; margin-top:10px}
+  .tecladito button{min-height:44px; padding:6px}
+  .tecladito .b0{grid-column:span 2}
+
+  .ticket{background:#0b1523; border:1px solid var(--navy); padding:14px; display:flex; flex-direction:column}
+  .ticket h3{font-size:15px; letter-spacing:.06em; border-bottom:1px dashed var(--navy); padding-bottom:8px; margin-bottom:8px}
+  .lineas{flex:1; overflow:auto; max-height:300px; font-family:"IBM Plex Mono",monospace; font-size:13px}
+  .lineas div{display:flex; justify-content:space-between; gap:8px; padding:3px 0; border-bottom:1px dotted rgba(63,208,224,.15)}
+  .total{display:flex; justify-content:space-between; font-family:"IBM Plex Mono",monospace; font-size:18px; color:var(--cian); border-top:2px solid var(--naranja); margin-top:8px; padding-top:8px}
+
+  /* COBRO */
+  .cobro{text-align:center; padding:20px 0}
+  .cobro .billete{font-size:64px}
+  .cobro p{margin:8px 0 14px; font-size:17px}
+  .cobro .grande{font-family:"IBM Plex Mono",monospace; font-size:26px; color:var(--cian)}
+
+  /* CORTE */
+  .corte h2{font-size:clamp(28px,4.5vw,44px); margin:8px 0 14px}
+  .metricas{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:16px 0}
+  .metrica{background:var(--navy); padding:14px}
+  .metrica .et{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; opacity:.65}
+  .metrica .va{font-family:"Archivo",sans-serif; font-stretch:118%; font-weight:700; font-size:30px; color:var(--cian)}
+  .estrellas{font-size:44px; letter-spacing:.1em; margin:6px 0}
+  .repaso{background:var(--navy); padding:16px; margin:14px 0}
+  .repaso h3{font-size:16px; margin-bottom:10px}
+  .repaso .item{display:inline-flex; align-items:center; gap:8px; background:var(--tinta); padding:8px 12px; margin:4px 6px 4px 0; font-family:"IBM Plex Mono",monospace; font-size:15px}
+  .repaso .item b{color:var(--naranja); font-weight:500}
+  .sello{border-left:2px solid var(--cian); padding-left:14px; margin:18px 0; max-width:58ch; line-height:1.5}
+
+  footer{padding:14px clamp(16px,3vw,40px); background:#000712; border-top:1px solid var(--navy); font-size:13px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap}
+  footer a{color:var(--hueso); text-decoration:underline; text-decoration-color:var(--naranja); text-underline-offset:4px}
+</style>
+</head>
+<body>
+<header class="top">
+  <span class="brand"><em>CAJA 07</em> · simulador de punto de venta <b>· demo</b></span>
+  <a href="https://disruptia.org" target="_blank" rel="noopener">laboratorio DIsruptIA ↗</a>
+</header>
+
+<div class="stage"><div class="panel">
+
+  <!-- INTRO -->
+  <section class="screen intro on" id="sIntro">
+    <span class="kicker">ACTO 1 · TENSIÓN</span>
+    <h1>Es tu primer turno en caja y la fila no perdona</h1>
+    <p>En este súper, las frutas y verduras no traen código de barras: la cajera se sabe los códigos <b>de memoria</b>. Los nuevos tardan semanas en aprendérselos — y cada segundo de duda es un cliente tamborileando los dedos.</p>
+    <p>Este simulador entrena ese oficio completo: memorizar los códigos PLU, escanear con ritmo, cobrar y <b>dar bien el cambio</b>. Primero practicas con ayuda; luego viene el turno real; al final, la hora pica... digo, pico.</p>
+    <p class="mono" style="font-size:13px;opacity:.7">Teclado: números y ENTER · productos con código de barras se escanean con el botón o la barra espaciadora</p>
+    <div class="acciones">
+      <button id="bCapacita">Empezar capacitación →</button>
+      <button class="sec" id="bDirecto">Ya me los sé, al turno</button>
+    </div>
+  </section>
+
+  <!-- CAPACITACIÓN -->
+  <section class="screen" id="sCodigos">
+    <span class="kicker">CAPACITACIÓN · CÓDIGOS PLU</span>
+    <h2 style="font-size:clamp(26px,4vw,40px);margin:10px 0 6px">Estos son los ocho que caen seguro</h2>
+    <p style="max-width:58ch;opacity:.9">Son códigos PLU reales — los mismos en casi cualquier súper del mundo. Dales una repasada; en el nivel 1 los tendrás a la vista, después no.</p>
+    <div class="codigos" id="tablaCodigos"></div>
+    <div class="acciones" style="display:flex;gap:14px;flex-wrap:wrap">
+      <button id="bNivel1">Abrir la caja (nivel 1) →</button>
+    </div>
+  </section>
+
+  <!-- JUEGO -->
+  <section class="screen" id="sJuego">
+    <div class="hud">
+      <span class="dato">NIVEL <b id="hNivel">1</b> · <span id="hNombre">CAPACITACIÓN</span></span>
+      <span class="dato">ACIERTOS <b id="hOk">0</b> · ERRORES <b id="hMal">0</b></span>
+      <span class="dato">CLIENTES <b id="hClientes">0</b></span>
+    </div>
+    <div class="juego">
+      <div class="banda">
+        <div class="cliente">
+          <span class="cara" id="cCara">🙂</span>
+          <span class="quien"><b id="cNombre">—</b>
+            <span class="paciencia"><i id="cPaciencia"></i></span>
+          </span>
+          <span class="cola" id="cCola"></span>
+        </div>
+        <div class="producto" id="zonaProducto">
+          <span class="art" id="pArt">🍌</span>
+          <span class="nom" id="pNom">—</span>
+          <span class="pista mono" id="pPista"></span>
+        </div>
+        <div class="aviso" id="aviso"></div>
+        <div class="controles" id="ctrlCodigo">
+          <div class="lector">
+            <input id="inCodigo" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="····" aria-label="Código PLU" />
+            <button id="bEnter">Enter</button>
+          </div>
+          <div class="tecladito" id="teclado"></div>
+        </div>
+        <div class="controles" id="ctrlScan" style="display:none">
+          <button id="bScan" style="width:100%">▮▮▮ Escanear código de barras (espacio)</button>
+        </div>
+        <div class="controles cobro" id="ctrlCobro" style="display:none"></div>
+      </div>
+      <aside class="ticket">
+        <h3 class="mono">TICKET · CAJA 07</h3>
+        <div class="lineas" id="lineas"></div>
+        <div class="total"><span>TOTAL</span><span id="tTotal">$0.00</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- CORTE -->
+  <section class="screen corte" id="sCorte">
+    <span class="kicker">ACTO 3 · RETORNO — CORTE DE CAJA</span>
+    <h2 id="corteTitulo">Corte de caja</h2>
+    <div class="estrellas" id="corteEstrellas"></div>
+    <div class="metricas">
+      <div class="metrica"><span class="et">Clientes atendidos</span><span class="va" id="mClientes">0</span></div>
+      <div class="metrica"><span class="et">Precisión</span><span class="va" id="mPrecision">0%</span></div>
+      <div class="metrica"><span class="et">Cambio bien dado</span><span class="va" id="mCambio">0/0</span></div>
+      <div class="metrica"><span class="et">Clientes perdidos</span><span class="va" id="mPerdidos">0</span></div>
+    </div>
+    <div class="repaso" id="repaso" style="display:none">
+      <h3>Los códigos que te fallaron — tu repaso personalizado</h3>
+      <div id="repasoLista"></div>
+    </div>
+    <p class="sello">Esto es lo que llamamos <b>evidencia de aprendizaje</b>: el simulador no te pone calificación — te dice exactamente qué repasar y te deja volver a intentarlo hasta que el oficio quede. Imagina esto con los productos, los códigos y los procesos de <i>tu</i> operación.</p>
+    <div class="acciones" style="display:flex;gap:14px;flex-wrap:wrap">
+      <button id="bSiguiente">—</button>
+      <button class="sec" id="bReiniciar">Reiniciar simulador</button>
+      <button class="sec" onclick="window.open('https://disruptia.org/contacto','_blank')">Quiero uno así para mi empresa ↗</button>
+    </div>
+  </section>
+
+</div></div>
+
+<footer>
+  <span>Demo del laboratorio de <b>DIsruptIA</b> — construida para mostrar mecánica real, no maqueta.</span>
+  <a href="https://disruptia.org/portafolio" target="_blank" rel="noopener">ver más del portafolio</a>
+</footer>
+
+<script>
+"use strict";
+/* ── Datos ─────────────────────────────────────────── */
+const PLU = [
+  {c:"4011", n:"Plátano",  e:"🍌", p:29.90},
+  {c:"4046", n:"Aguacate", e:"🥑", p:89.00},
+  {c:"4012", n:"Naranja",  e:"🍊", p:24.50},
+  {c:"4064", n:"Tomate",   e:"🍅", p:34.90},
+  {c:"4062", n:"Pepino",   e:"🥒", p:19.90},
+  {c:"4131", n:"Manzana",  e:"🍎", p:54.90},
+  {c:"4022", n:"Uvas",     e:"🍇", p:78.00},
+  {c:"4076", n:"Cebolla",  e:"🧅", p:26.50},
+];
+const BARRAS = [
+  {n:"Leche entera 1L", e:"🥛", p:26.00},
+  {n:"Atún en agua",    e:"🥫", p:21.50},
+  {n:"Café soluble",    e:"☕", p:89.90},
+  {n:"Galletas",        e:"🍪", p:18.90},
+  {n:"Queso panela",    e:"🧀", p:47.00},
+  {n:"Jugo de naranja", e:"🧃", p:32.00},
+];
+const NOMBRES = ["Doña Mary","Beto","La señora Icha","Karla","Don Ramón","Sofi","El licenciado","Pau","Chuy","La maestra Lupita"];
+const NIVELES = [
+  {nombre:"CAPACITACIÓN", clientes:1, items:[4,4], pluMin:2, paciencia:75, ayuda:true},
+  {nombre:"TURNO NORMAL", clientes:2, items:[4,6], pluMin:2, paciencia:55, ayuda:false},
+  {nombre:"HORA PICO",    clientes:3, items:[5,7], pluMin:3, paciencia:40, ayuda:false},
+];
+
+/* ── Estado ────────────────────────────────────────── */
+let nivel=0, st=null, timer=null;
+
+/* ── Audio (bips de POS, sin archivos) ─────────────── */
+let AC=null;
+function bip(freq, dur, tipo){
+  try{
+    AC = AC || new (window.AudioContext||window.webkitAudioContext)();
+    const o=AC.createOscillator(), g=AC.createGain();
+    o.type=tipo||"square"; o.frequency.value=freq;
+    g.gain.setValueAtTime(.08, AC.currentTime);
+    g.gain.exponentialRampToValueAtTime(.001, AC.currentTime+dur);
+    o.connect(g); g.connect(AC.destination);
+    o.start(); o.stop(AC.currentTime+dur);
+  }catch(e){/* sin audio, sin drama */}
+}
+const bipOk=()=>bip(1180,.09), bipErr=()=>bip(160,.25,"sawtooth"), bipCaja=()=>{bip(880,.08);setTimeout(()=>bip(1320,.12),90)};
+
+/* ── Utilidades ────────────────────────────────────── */
+const $=id=>document.getElementById(id);
+const dinero=v=>"$"+v.toFixed(2);
+const azar=arr=>arr[Math.floor(Math.random()*arr.length)];
+const entre=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+function pantalla(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("on"));$(id).classList.add("on")}
+
+/* ── Capacitación ──────────────────────────────────── */
+function pintaCodigos(){
+  $("tablaCodigos").innerHTML = PLU.map(x=>
+    `<div class="codigo"><span class="emoji">${x.e}</span><span class="num">${x.c}</span><span class="nom">${x.n}</span></div>`).join("");
+}
+
+/* ── Armar nivel ───────────────────────────────────── */
+function armaCliente(cfg){
+  const n=entre(cfg.items[0],cfg.items[1]);
+  const items=[];
+  let plus=0;
+  for(let i=0;i<n;i++){
+    const usaPlu = plus<cfg.pluMin ? true : Math.random()<.45;
+    if(usaPlu){ items.push({tipo:"plu", ...azar(PLU)}); plus++; }
+    else items.push({tipo:"barra", ...azar(BARRAS)});
+  }
+  // garantizar mínimo de PLUs aunque el azar diga otra cosa
+  return {nombre:azar(NOMBRES), items, idx:0, total:0, paciencia:100};
+}
+function iniciaNivel(n){
+  nivel=n;
+  const cfg=NIVELES[n];
+  st={
+    cfg, ok:0, mal:0, atendidos:0, perdidos:0,
+    cambiosOk:0, cambiosTot:0, fallas:{},
+    porAtender:Array.from({length:cfg.clientes},()=>armaCliente(cfg)),
+    cliente:null, fase:"item",
+  };
+  $("hNivel").textContent=n+1;
+  $("hNombre").textContent=cfg.nombre;
+  siguienteCliente();
+  pantalla("sJuego");
+  tic();
+}
+function siguienteCliente(){
+  st.cliente=st.porAtender.shift()||null;
+  if(!st.cliente){ corte(); return; }
+  st.fase="item";
+  $("lineas").innerHTML=""; $("tTotal").textContent="$0.00";
+  $("cNombre").textContent=st.cliente.nombre;
+  $("cCola").textContent=st.porAtender.length?`en fila: ${st.porAtender.length}`:"último de la fila";
+  pintaItem();
+  refrescaHud();
+}
+
+/* ── Loop de paciencia ─────────────────────────────── */
+function tic(){
+  clearInterval(timer);
+  timer=setInterval(()=>{
+    if(!st||!st.cliente||st.fase==="pago-fin")return;
+    st.cliente.paciencia -= 100/st.cfg.paciencia;
+    pintaPaciencia();
+    if(st.cliente.paciencia<=0){
+      clienteSeVa();
+    }
+  },1000);
+}
+function pintaPaciencia(){
+  const p=Math.max(0,st.cliente.paciencia);
+  $("cPaciencia").style.transform=`scaleX(${p/100})`;
+  $("cCara").textContent = p>60?"🙂":p>30?"😐":"😤";
+}
+function clienteSeVa(){
+  bipErr();
+  st.perdidos++;
+  aviso(`${st.cliente.nombre} se fue sin pagar la despensa 😱`, true);
+  setTimeout(siguienteCliente, 1200);
+  st.cliente={...st.cliente, paciencia:0}; st.fase="pago-fin";
+  refrescaHud();
+}
+
+/* ── Ítems ─────────────────────────────────────────── */
+function itemActual(){return st.cliente.items[st.cliente.idx]}
+function pintaItem(){
+  const it=itemActual();
+  if(!it){ iniciaCobro(); return; }
+  $("pArt").textContent=it.e;
+  $("pNom").textContent=it.n + (it.tipo==="plu"?" · por kilo":"");
+  $("pPista").textContent = it.tipo==="plu" ? (st.cfg.ayuda?`PLU ${it.c}`:"escribe el PLU") : "código de barras";
+  $("ctrlCodigo").style.display = it.tipo==="plu"?"block":"none";
+  $("ctrlScan").style.display   = it.tipo==="barra"?"block":"none";
+  $("ctrlCobro").style.display="none";
+  if(it.tipo==="plu"){ $("inCodigo").value=""; $("inCodigo").focus(); }
+  aviso("");
+}
+function agregaLinea(it){
+  st.cliente.total+=it.p;
+  const d=document.createElement("div");
+  d.innerHTML=`<span>${it.e} ${it.n}</span><span>${dinero(it.p)}</span>`;
+  $("lineas").appendChild(d);
+  $("lineas").scrollTop=$("lineas").scrollHeight;
+  $("tTotal").textContent=dinero(st.cliente.total);
+}
+function resuelveItem(bien, it){
+  if(bien){
+    bipOk(); st.ok++;
+    agregaLinea(it);
+    st.cliente.idx++;
+    aviso("✓ registrado", false);
+    setTimeout(pintaItem, 250);
+  }else{
+    bipErr(); st.mal++;
+    st.cliente.paciencia-=12;
+    st.fallas[it.c]=(st.fallas[it.c]||0)+1;
+    aviso(`código incorrecto — ${st.cliente.nombre} suspira`, true);
+    $("inCodigo").value=""; $("inCodigo").focus();
+    pintaPaciencia();
+  }
+  refrescaHud();
+}
+function intentaCodigo(){
+  const it=itemActual(); if(!it||it.tipo!=="plu")return;
+  const v=$("inCodigo").value.trim();
+  if(v.length<4)return;
+  resuelveItem(v===it.c, it);
+}
+function escanea(){
+  const it=itemActual(); if(!it||it.tipo!=="barra")return;
+  bipOk(); st.ok++;
+  agregaLinea(it);
+  st.cliente.idx++;
+  aviso("▮▮▮ bip", false);
+  setTimeout(pintaItem, 200);
+  refrescaHud();
+}
+
+/* ── Cobro ─────────────────────────────────────────── */
+function iniciaCobro(){
+  st.fase="pago";
+  const total=st.cliente.total;
+  const conTarjeta=Math.random()<.4;
+  $("ctrlCodigo").style.display="none";
+  $("ctrlScan").style.display="none";
+  const z=$("ctrlCobro"); z.style.display="block";
+  $("pArt").textContent = conTarjeta?"💳":"💵";
+  $("pNom").textContent = "hora de cobrar";
+  $("pPista").textContent = "";
+  if(conTarjeta){
+    z.innerHTML=`<p>${st.cliente.nombre} paga <b class="grande">${dinero(total)}</b> con tarjeta.</p>
+      <button id="bTarjeta">Insertar y cobrar</button>`;
+    $("bTarjeta").onclick=()=>{
+      bipCaja();
+      z.innerHTML=`<p class="mono" style="opacity:.8">procesando…</p>`;
+      setTimeout(()=>{ cierraCliente(true); }, 900);
+    };
+  }else{
+    // paga con billete redondeado hacia arriba
+    const opciones=[50,100,200,500].filter(b=>b>=total);
+    const paga = opciones.length?opciones[0]:Math.ceil(total/100)*100;
+    const cambio=+(paga-total).toFixed(2);
+    z.innerHTML=`<p>${st.cliente.nombre} debe <b class="grande">${dinero(total)}</b> y te da <b class="grande">${dinero(paga)}</b>.</p>
+      <p>¿Cuánto cambio le regresas?</p>
+      <div class="lector" style="max-width:340px;margin:0 auto">
+        <input id="inCambio" inputmode="decimal" autocomplete="off" placeholder="0.00" aria-label="Cambio" />
+        <button id="bCambio">Dar cambio</button>
+      </div>`;
+    st.cambiosTot++;
+    const intenta=()=>{
+      const v=parseFloat(($("inCambio").value||"").replace(",","."));
+      if(isNaN(v))return;
+      if(Math.abs(v-cambio)<0.005){
+        bipCaja(); st.cambiosOk++;
+        cierraCliente(true);
+      }else{
+        bipErr(); st.mal++; st.cliente.paciencia-=15;
+        aviso(v>cambio?"le ibas a dar de más — la caja no cuadraría":"le ibas a dar de menos — así se pierden clientes", true);
+        $("inCambio").value=""; $("inCambio").focus();
+        pintaPaciencia(); refrescaHud();
+      }
+    };
+    $("bCambio").onclick=intenta;
+    $("inCambio").addEventListener("keydown",e=>{if(e.key==="Enter")intenta()});
+    $("inCambio").focus();
+  }
+}
+function cierraCliente(pagado){
+  st.fase="pago-fin";
+  st.atendidos++;
+  aviso(`${st.cliente.nombre}: "gracias, joven" ✓`, false);
+  refrescaHud();
+  setTimeout(siguienteCliente, 1000);
+}
+
+/* ── HUD / avisos ──────────────────────────────────── */
+function refrescaHud(){
+  $("hOk").textContent=st.ok;
+  $("hMal").textContent=st.mal;
+  $("hClientes").textContent=st.atendidos;
+}
+function aviso(txt, mal){
+  const a=$("aviso");
+  a.textContent=txt;
+  a.className="aviso"+(txt?(mal?" mal":" bien"):"");
+}
+
+/* ── Corte de caja ─────────────────────────────────── */
+function corte(){
+  clearInterval(timer);
+  const total=st.ok+st.mal;
+  const prec= total? Math.round(st.ok*100/total):100;
+  const estrellas = (st.perdidos===0?1:0)+(prec>=85?1:0)+(st.cambiosTot===0||st.cambiosOk===st.cambiosTot?1:0);
+  $("corteTitulo").textContent = estrellas===3?"Cuadraste la caja como veterano":estrellas===2?"Buen turno — con detalles":"Sobreviviste, apenas";
+  $("corteEstrellas").textContent="★".repeat(Math.max(1,estrellas))+"☆".repeat(3-Math.max(1,estrellas));
+  $("mClientes").textContent=st.atendidos;
+  $("mPrecision").textContent=prec+"%";
+  $("mCambio").textContent=`${st.cambiosOk}/${st.cambiosTot}`;
+  $("mPerdidos").textContent=st.perdidos;
+  const fallas=Object.entries(st.fallas);
+  $("repaso").style.display=fallas.length?"block":"none";
+  if(fallas.length){
+    $("repasoLista").innerHTML=fallas.map(([c,veces])=>{
+      const p=PLU.find(x=>x.c===c);
+      return `<span class="item">${p.e} ${p.n} <b>${c}</b> ×${veces}</span>`;
+    }).join("");
+  }
+  const hay=nivel<NIVELES.length-1;
+  $("bSiguiente").textContent = hay?`Siguiente nivel: ${NIVELES[nivel+1].nombre} →`:"Jugar de nuevo la hora pico →";
+  $("bSiguiente").onclick=()=>iniciaNivel(hay?nivel+1:nivel);
+  pantalla("sCorte");
+}
+
+/* ── Teclado en pantalla ───────────────────────────── */
+function armaTeclado(){
+  const t=$("teclado");
+  const teclas=["1","2","3","4","5","6","7","8","9","0","⌫"];
+  t.innerHTML=teclas.map(k=>`<button class="sec ${k==="0"?"b0":""}" data-k="${k}">${k}</button>`).join("");
+  t.addEventListener("click",e=>{
+    const k=e.target.dataset.k; if(!k)return;
+    const inp=$("inCodigo");
+    if(k==="⌫") inp.value=inp.value.slice(0,-1);
+    else if(inp.value.length<4) inp.value+=k;
+    if(inp.value.length===4) intentaCodigo();
+  });
+}
+
+/* ── Eventos ───────────────────────────────────────── */
+$("bCapacita").onclick=()=>{pintaCodigos();pantalla("sCodigos")};
+$("bDirecto").onclick=()=>iniciaNivel(1);
+$("bNivel1").onclick=()=>iniciaNivel(0);
+$("bEnter").onclick=intentaCodigo;
+$("bScan").onclick=escanea;
+$("bReiniciar").onclick=()=>location.reload();
+$("inCodigo").addEventListener("keydown",e=>{if(e.key==="Enter")intentaCodigo()});
+$("inCodigo").addEventListener("input",e=>{
+  e.target.value=e.target.value.replace(/\D/g,"").slice(0,4);
+  if(e.target.value.length===4) intentaCodigo();
+});
+document.addEventListener("keydown",e=>{
+  if(e.code==="Space" && st && st.fase==="item" && itemActual() && itemActual().tipo==="barra"){
+    e.preventDefault(); escanea();
+  }
+});
+armaTeclado();
+</script>
+</body>
+</html>
