@@ -44,6 +44,66 @@
   opacity: 0.65;
 }
 
+/* Kicker protagonista del hero: que se sepa dónde estás parado */
+.kickerGrande {
+  font-size: 18px !important;
+  letter-spacing: 0.22em !important;
+  font-weight: 500;
+  padding: 6px 12px;
+  background: var(--disrupcion);
+  color: var(--tinta) !important;
+  display: inline-block !important;
+  margin-bottom: var(--e-3);
+}
+
+/* Demos como mini-tarjetas con descripción */
+.demoCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--e-2);
+  margin: var(--e-3) 0 var(--e-2);
+}
+
+.demoCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--e-2);
+  border: 1px solid var(--ia);
+  color: var(--hueso);
+  text-decoration: none;
+  transition: background-color 150ms ease;
+}
+
+.demoCard:hover {
+  background: rgba(63, 208, 224, 0.08);
+}
+
+.demoCard b {
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.demoCard b::after {
+  content: " ↗";
+  color: var(--ia);
+}
+
+.demoCard span {
+  font-size: 13.5px;
+  opacity: 0.8;
+  line-height: 1.4;
+}
+
+.demoCard .demoTag {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ia);
+  opacity: 1;
+}
+
 /* Botonera de demos */
 .demos {
   display: flex;
@@ -114,6 +174,109 @@
   font-size: 15px;
   line-height: 1.4;
   opacity: 0.9;
+}
+
+/* ── LABORATORIO: simuladores jugables ── */
+.lab {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--e-3);
+  margin: var(--e-4) 0;
+}
+
+.labCard {
+  background: var(--tinta);
+  color: var(--hueso);
+  display: flex;
+  flex-direction: column;
+  border-bottom: 4px solid var(--disrupcion);
+}
+
+.labArte {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--e-2);
+  font-size: 64px;
+  line-height: 1;
+  padding: var(--e-4) var(--e-3);
+  background: var(--navy);
+  letter-spacing: 8px;
+}
+
+.labCuerpo {
+  padding: var(--e-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-2);
+  flex: 1;
+}
+
+.labMeta {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--t-meta);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ia);
+}
+
+.labCard h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.labCard p {
+  font-size: 15.5px;
+  line-height: 1.5;
+  opacity: 0.92;
+  margin: 0;
+}
+
+.labMecanicas {
+  list-style: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.labMecanicas li {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12.5px;
+  padding-left: 18px;
+  position: relative;
+  opacity: 0.85;
+}
+
+.labMecanicas li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 10px;
+  height: 2px;
+  background: var(--disrupcion);
+}
+
+.labJugar {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--e-1);
+  min-height: 52px;
+  background: var(--disrupcion);
+  color: var(--tinta);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.labJugar:hover {
+  background: var(--hueso);
 }
 
 /* Cierre: qué demuestra el portafolio */

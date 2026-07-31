@@ -152,8 +152,42 @@
             .char-box { flex-direction: column; }
         }
     </style>
+<style id="lms-shell">
+:root{--sbA:#141b31;--sbB:#0a0f1e;--sbTitulo:#eef2ff;--sbAcento:#39e0f2;--sbCard:#1d2745;--sbCardTxt:#e8ecf7;--sbNum:#f2a33c;--sbNumTxt:#131313;--sbActiva:#273459;--sbActivaTxt:#ffffff;--cajaBg:#121212}
+  html{background:#e9edf3}
+  body{background:#e9edf3 !important;margin:0 !important;padding:0 !important}
+  .lmsTop{position:sticky;top:0;z-index:90;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 18px;background:#0f1729;color:#f5f7fb;font-family:system-ui,-apple-system,sans-serif;box-shadow:0 2px 12px rgba(2,8,20,.3)}
+  .lmsTop .lmsMarca{font-weight:800;font-size:15px;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .lmsTop .lmsMarca span{opacity:.6;font-weight:500}
+  .lmsTop a.lmsDemo{font-size:11px;letter-spacing:.1em;background:#FF5C1F;color:#0f1729;padding:5px 10px;font-weight:800;text-decoration:none;white-space:nowrap;border-radius:6px}
+  .lmsGrid{display:grid;grid-template-columns:296px minmax(0,1fr);gap:24px;max-width:1240px;margin:0 auto;padding:24px 16px 64px;align-items:start}
+  .lmsSide{position:sticky;top:64px;background:linear-gradient(170deg,var(--sbA),var(--sbB));border-radius:20px;padding:16px 14px;font-family:system-ui,-apple-system,sans-serif;font-size:14px;box-shadow:0 14px 34px rgba(10,20,40,.22)}
+  .lmsSide h4{margin:2px 4px 14px;font-size:14px;letter-spacing:.02em;color:var(--sbTitulo);border-left:4px solid var(--sbAcento);padding-left:10px;font-weight:800}
+  .lmsSide .lmsItem{display:flex;gap:11px;align-items:center;background:var(--sbCard);color:var(--sbCardTxt);border-radius:12px;padding:11px 12px;margin-bottom:9px;line-height:1.3;box-shadow:0 3px 10px rgba(8,16,32,.14);font-weight:600}
+  .lmsSide .lmsNum{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--sbNum);color:var(--sbNumTxt);display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:800}
+  .lmsSide .lmsAhora{background:var(--sbActiva);color:var(--sbActivaTxt);box-shadow:0 6px 16px rgba(8,16,32,.22);outline:2px solid var(--sbAcento)}
+  .lmsSide .lmsAhora .lmsNum{background:var(--sbAcento);color:var(--sbActiva)}
+  .lmsSide .lmsLock{opacity:.62;font-weight:500}
+  .lmsSide .lmsProg{margin:12px 4px 2px;font-size:12px;color:var(--sbTitulo);opacity:.9}
+  .lmsSide .lmsBarra{height:7px;background:rgba(127,127,127,.25);margin-top:7px;border-radius:99px;overflow:hidden}
+  .lmsSide .lmsBarra i{display:block;height:100%;background:var(--sbAcento)}
+  .lmsCaja{background:var(--cajaBg,#fff);border:1px solid #d9e0ea;border-radius:18px;box-shadow:0 14px 34px rgba(15,23,41,.09);overflow:hidden;min-width:0}
+  @media(max-width:920px){.lmsGrid{grid-template-columns:1fr}.lmsSide{position:static}}
+</style></style>
 </head>
 <body>
+<div class="lmsTop"><span class="lmsMarca">TALENTORÍA <span>· academia de reclutamiento</span></span><a class="lmsDemo" href="https://disruptia.org/portafolio" target="_blank" rel="noopener">DEMO · PORTAFOLIO DIsruptIA</a></div>
+<div class="lmsGrid">
+<aside class="lmsSide"><h4>Reclutamiento y Selección con IA</h4>
+<div class="lmsItem"><span class="lmsNum">✓</span><span>M1 · Fundamentos de IA para RH</span></div>
+<div class="lmsItem lmsAhora"><span class="lmsNum">2</span><span>M2 · Perfilamiento de vacantes</span></div>
+<div class="lmsItem lmsLock"><span class="lmsNum">3</span><span>M3 · Sourcing con IA</span></div>
+<div class="lmsItem lmsLock"><span class="lmsNum">4</span><span>M4 · Entrevista y evaluación</span></div>
+<div class="lmsItem lmsLock"><span class="lmsNum">5</span><span>M5 · Selección sin sesgos</span></div>
+<div class="lmsItem lmsLock"><span class="lmsNum">6</span><span>M6 · KPIs y calidad de contratación</span></div>
+<div class="lmsProg">Una de los cientos de lecciones del curso completo<span class="lmsBarra"><i style="width:22%"></i></span></div></aside></aside>
+<div class="lmsCaja">
+
 
 <div id="main-wrapper">
     <img src="assets/talentoriacursos-15.jpg" alt="Hero" class="hero-image">
@@ -303,5 +337,6 @@
     resizeObserver.observe(document.getElementById('main-wrapper'));
     setInterval(sendHeight, 1200);
 </script>
+</div><!--lmsCaja--></div><!--lmsGrid-->
 </body>
 </html>
