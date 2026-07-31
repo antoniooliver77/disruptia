@@ -181,10 +181,12 @@ export default function PortafolioPage() {
               <span className={p.labMeta}>SIMULADOR OPERATIVO · HABILIDAD + MEMORIA</span>
               <h3>CAJA 07 — punto de venta</h3>
               <p>
-                Tu primer turno como cajero: memoriza los códigos PLU reales
-                de frutas y verduras, escanea con ritmo, cobra y da bien el
-                cambio mientras la paciencia del cliente se agota. Tres
-                niveles, de la capacitación a la hora pico.
+                Es tu primer turno como cajero, y la estación es una caja de
+                verdad: la banda corre, el escáner dispara su láser rojo con
+                cada bip y el ticket se imprime en una pantallita verde de
+                registradora. Memoriza los códigos de las frutas, escanea
+                con ritmo para que el combo crezca y da el cambio exacto —
+                todo mientras la paciencia del cliente se agota frente a ti.
               </p>
               <ul className={p.labMecanicas}>
                 <li>Códigos PLU reales que se desbloquean por nivel</li>
@@ -209,13 +211,14 @@ export default function PortafolioPage() {
               <span className={p.labMeta}>JUEGO DE DECISIONES · LIDERAZGO Y ACCOUNTABILITY</span>
               <h3>EL VISTO BUENO — el sello es tuyo</h3>
               <p>
-                Acabas de ascender a jefe y ahora todo pasa por tu firma:
-                vacaciones, vales de gastos, horas extra. Tu trabajo es
-                revisar cada solicitud contra el reglamento — que cambia
-                todos los días — y aprobarla o rechazarla con el reloj
-                encima. Suena fácil, hasta que la solicitud llega con un
-                post-it de tu propio director pidiéndote que te hagas de la
-                vista gorda.
+                Acabas de ascender a jefe, y tu oficina es un escritorio de
+                madera con dos sellos y un reglamento en tablilla: cada
+                solicitud que llega — vacaciones, vales, horas extra — se
+                azota con APROBADO o RECHAZADO según reglas que cambian
+                todos los días, con el reloj encima y las citaciones cayendo
+                en papelito rosa cuando te equivocas. Suena fácil, hasta que
+                el papel llega con un post-it de tu propio director
+                pidiéndote que te hagas de la vista gorda.
               </p>
               <ul className={p.labMecanicas}>
                 <li>Encuentra qué solicitudes violan el reglamento del día</li>
