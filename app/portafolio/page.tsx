@@ -610,8 +610,10 @@ export default function PortafolioPage() {
 
         <h3 className={s.h3}>Pruébalo tú</h3>
         <p className={p.notaDemo}>
-          Una lección completa y los tres juegos que construimos para sus
-          temas. Los juegos se disfrutan más en computadora:
+          La primera clase del curso completa — con el juego Astro-Radar
+          integrado al final, como lo vive el alumno — y un segundo juego
+          que construimos para el tema de la recta numérica. Se disfrutan
+          más en computadora:
         </p>
         <div className={p.demoCards}>
           <a
@@ -623,8 +625,8 @@ export default function PortafolioPage() {
             <span className={p.demoTag}>LECCIÓN + SU JUEGO INTEGRADO</span>
             <b>¿Qué rayos es un número?</b>
             <span>
-              La primera clase del curso, con la voz del Profe y el
-              Astro-Radar como práctica al final.
+              La primera clase del curso con la voz del Profe, que remata
+              con el Astro-Radar como práctica jugable.
             </span>
           </a>
           <a
@@ -638,32 +640,6 @@ export default function PortafolioPage() {
             <span>
               Revienta las burbujas ubicando números en la recta antes de
               que se te vayan.
-            </span>
-          </a>
-          <a
-            className={p.demoCard}
-            href="/demos/profeluis-juego-astro-radar.html"
-            target="_blank"
-            rel="noopener"
-          >
-            <span className={p.demoTag}>JUEGO DE PRÁCTICA</span>
-            <b>Astro-Radar</b>
-            <span>
-              Detecta números en el radar espacial antes de que tu energía
-              llegue a cero.
-            </span>
-          </a>
-          <a
-            className={p.demoCard}
-            href="/demos/profeluis-ruta-fuego.html"
-            target="_blank"
-            rel="noopener"
-          >
-            <span className={p.demoTag}>MAPA DE PROGRESO JUGABLE</span>
-            <b>Ruta de Fuego</b>
-            <span>
-              El curso completo como mapa de videojuego: de aritmética a
-              ecuaciones, desbloqueando niveles.
             </span>
           </a>
         </div>
