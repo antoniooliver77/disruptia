@@ -114,6 +114,11 @@ export default function InstitucionesEducativasPage() {
         titulo="En este silo"
         items={[
           {
+            href: "/universidades",
+            label: "Universidades",
+            nota: "Programas en línea con la calidad académica que ya tienes en el aula",
+          },
+          {
             href: "/formacion-docente-en-ia",
             label: "Formación docente en IA",
             nota: "Criterio didáctico y evaluación auténtica para tu claustro",
