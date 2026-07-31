@@ -15,11 +15,22 @@ const LINKS: Link[] = [
     subs: [
       { href: "/academias-corporativas", label: "Academias corporativas" },
       { href: "/universidad-corporativa", label: "Universidad corporativa" },
+      { href: "/deteccion-de-necesidades", label: "Detección de necesidades" },
+      {
+        href: "/diseno-instruccional-empresarial",
+        label: "Diseño instruccional",
+      },
+      { href: "/implementacion-de-lms", label: "Implementación de LMS" },
+      { href: "/academia-de-ventas", label: "Academia de ventas" },
+      {
+        href: "/academia-de-servicio-al-cliente",
+        label: "Servicio al cliente",
+      },
+      { href: "/onboarding-empresarial", label: "Onboarding empresarial" },
       {
         href: "/capacitacion-con-inteligencia-artificial",
         label: "Capacitación con IA",
       },
-      { href: "/onboarding-empresarial", label: "Onboarding empresarial" },
     ],
   },
   {
@@ -27,6 +38,7 @@ const LINKS: Link[] = [
     label: "Instituciones",
     subs: [
       { href: "/instituciones-educativas", label: "Academias educativas" },
+      { href: "/universidades", label: "Universidades" },
       { href: "/formacion-docente-en-ia", label: "Formación docente en IA" },
     ],
   },

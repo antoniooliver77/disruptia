@@ -125,6 +125,31 @@ export default function AcademiasCorporativasPage() {
             label: "Onboarding empresarial",
             nota: "Los primeros 90 días para que la rotación temprana deje de costarte",
           },
+          {
+            href: "/deteccion-de-necesidades",
+            label: "Detección de necesidades (DNC)",
+            nota: "Saber qué necesita aprender tu gente antes de gastar en cursos",
+          },
+          {
+            href: "/diseno-instruccional-empresarial",
+            label: "Diseño instruccional",
+            nota: "El oficio que decide si un curso cambia el trabajo o solo existe",
+          },
+          {
+            href: "/implementacion-de-lms",
+            label: "Implementación de LMS",
+            nota: "Elegir y montar la plataforma sin que termine vacía",
+          },
+          {
+            href: "/academia-de-ventas",
+            label: "Academia de ventas",
+            nota: "Que el vendedor nuevo no aprenda quemando clientes",
+          },
+          {
+            href: "/academia-de-servicio-al-cliente",
+            label: "Servicio al cliente",
+            nota: "Criterio para resolver, en lugar de guiones que se notan",
+          },
         ]}
       />
 
@@ -285,22 +310,25 @@ export default function AcademiasCorporativasPage() {
           industria:
         </p>
         <div className={s.cards}>
-          <article className={s.card}>
+          <a className={`${s.card} ${s.cardLink}`} href="/academia-de-ventas">
             <span className={s.cardMeta}>POR FUNCIÓN</span>
             <h3>Academia de ventas</h3>
             <p>
               Onboarding comercial, producto, manejo de objeciones y práctica
               de cierre, para acortar la rampa de cada vendedor nuevo.
             </p>
-          </article>
-          <article className={s.card}>
+          </a>
+          <a
+            className={`${s.card} ${s.cardLink}`}
+            href="/academia-de-servicio-al-cliente"
+          >
             <span className={s.cardMeta}>POR FUNCIÓN</span>
             <h3>Academia de servicio al cliente</h3>
             <p>
               Criterio antes que guion: cursos donde el equipo practica
               clientes difíciles sin quemar clientes reales.
             </p>
-          </article>
+          </a>
           <a className={`${s.card} ${s.cardLink}`} href="/onboarding-empresarial">
             <span className={s.cardMeta}>POR PROCESO</span>
             <h3>Onboarding empresarial</h3>

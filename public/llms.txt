@@ -31,10 +31,29 @@ Pearson, Editores Mexicanos Unidos, Talentoría.
   - [Onboarding empresarial](https://disruptia.org/onboarding-empresarial):
     inducción en línea y diseño de los primeros 90 días para reducir la
     rotación temprana.
+  - [Detección de necesidades (DNC)](https://disruptia.org/deteccion-de-necesidades):
+    diagnóstico de brechas de competencias con evidencia de la operación,
+    para decidir en qué invertir el presupuesto de capacitación.
+  - [Diseño instruccional](https://disruptia.org/diseno-instruccional-empresarial):
+    el oficio de convertir el conocimiento de una empresa en cursos que la
+    gente termina y aplica; objetivos observables, guion instruccional y
+    evaluación de desempeño.
+  - [Implementación de LMS](https://disruptia.org/implementacion-de-lms):
+    cómo elegir plataforma de capacitación y montarla sin que termine
+    vacía. DIsruptIA no vende plataformas.
+  - [Academia de ventas](https://disruptia.org/academia-de-ventas):
+    formación del equipo comercial en línea, con práctica de objeciones y
+    cierre, para acortar la rampa del vendedor nuevo.
+  - [Servicio al cliente](https://disruptia.org/academia-de-servicio-al-cliente):
+    formación de equipos de atención basada en criterio para resolver, no
+    en guiones.
 - [Instituciones educativas](https://disruptia.org/instituciones-educativas):
   academias digitales para escuelas y universidades — educación continua,
   formación docente en IA, conversión de cursos presenciales a en línea,
   evaluación del aprendizaje, campus virtual.
+  - [Universidades](https://disruptia.org/universidades): educación en
+    línea universitaria con calidad académica — educación continua, campus
+    virtual, modalidad híbrida y formación del claustro.
   - [Formación docente en IA](https://disruptia.org/formacion-docente-en-ia):
     programa en línea de criterio didáctico, integridad académica y
     evaluación auténtica para el claustro.
